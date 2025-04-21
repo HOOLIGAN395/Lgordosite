@@ -19,7 +19,7 @@
   <!-- Header -->
   <header>
     <div class="bg-[#0d1723] flex justify-center items-center p-2">
-      <img src="logo.png" alt="L'gordo" class="w-14 h-14">
+      <img src="logo.png" alt="L'gordo" class="w-20 h-20">
     </div>
     <div class="bg-[#a27c27] h-2"></div>
   </header>
@@ -48,30 +48,45 @@
       <h3 class="text-xl font-bold mb-2">Pizza Carnivore</h3>
       <p class="text-sm text-gray-300 mb-2">Merguez, pepperoni, viande hachée, fromage</p>
       <p class="text-lg font-semibold mt-4">75 DH</p>
+
       <div class="space-y-4 mt-4">
-        <h4 class="text-md font-semibold text-white">Sodas</h4>
-        <div class="space-y-2">
-          <div class="flex items-center justify-between"><span class="font-medium">Pepsi - 10 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Pepsi', -1, 10)">-</button><span id="extra-Pepsi">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Pepsi', 1, 10)">+</button></div></div>
-          <div class="flex items-center justify-between"><span class="font-medium">Mirinda Orange - 10 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Mirinda Orange', -1, 10)">-</button><span id="extra-Mirinda Orange">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Mirinda Orange', 1, 10)">+</button></div></div>
-          <div class="flex items-center justify-between"><span class="font-medium">Mirinda Pomme - 10 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Mirinda Pomme', -1, 10)">-</button><span id="extra-Mirinda Pomme">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Mirinda Pomme', 1, 10)">+</button></div></div>
-          <div class="flex items-center justify-between"><span class="font-medium">Mirinda Citron - 10 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Mirinda Citron', -1, 10)">-</button><span id="extra-Mirinda Citron">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Mirinda Citron', 1, 10)">+</button></div></div>
-          <div class="flex items-center justify-between"><span class="font-medium">Seven Up - 10 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Seven Up', -1, 10)">-</button><span id="extra-Seven Up">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Seven Up', 1, 10)">+</button></div></div>
-          <div class="flex items-center justify-between"><span class="font-medium">Oulmès - 10 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Oulmès', -1, 10)">-</button><span id="extra-Oulmès">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Oulmès', 1, 10)">+</button></div></div>
+        <div>
+          <button onclick="toggleExtras('sodas')" class="w-full text-left font-bold text-white flex justify-between items-center">
+            Sodas <span id="arrow-sodas">▼</span>
+          </button>
+          <div id="extras-sodas" class="mt-2 space-y-2 hidden">
+            <!-- chaque extra -->
+            <div class="flex items-center justify-between"><span class="font-medium">Pepsi - 10 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Pepsi', -1, 10)">-</button><span id="extra-Pepsi">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Pepsi', 1, 10)">+</button></div></div>
+            <div class="flex items-center justify-between"><span class="font-medium">Mirinda Orange - 10 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Mirinda Orange', -1, 10)">-</button><span id="extra-Mirinda Orange">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Mirinda Orange', 1, 10)">+</button></div></div>
+            <div class="flex items-center justify-between"><span class="font-medium">Mirinda Pomme - 10 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Mirinda Pomme', -1, 10)">-</button><span id="extra-Mirinda Pomme">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Mirinda Pomme', 1, 10)">+</button></div></div>
+            <div class="flex items-center justify-between"><span class="font-medium">Mirinda Citron - 10 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Mirinda Citron', -1, 10)">-</button><span id="extra-Mirinda Citron">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Mirinda Citron', 1, 10)">+</button></div></div>
+            <div class="flex items-center justify-between"><span class="font-medium">Seven Up - 10 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Seven Up', -1, 10)">-</button><span id="extra-Seven Up">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Seven Up', 1, 10)">+</button></div></div>
+            <div class="flex items-center justify-between"><span class="font-medium">Oulmès - 10 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Oulmès', -1, 10)">-</button><span id="extra-Oulmès">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Oulmès', 1, 10)">+</button></div></div>
+          </div>
         </div>
-        <h4 class="text-md font-semibold text-white mt-4">Extras</h4>
-        <div class="space-y-2">
-          <div class="flex items-center justify-between"><span class="font-medium">Fromage - 12 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Fromage', -1, 12)">-</button><span id="extra-Fromage">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Fromage', 1, 12)">+</button></div></div>
-          <div class="flex items-center justify-between"><span class="font-medium">Viande hachée - 15 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Viande hachée', -1, 15)">-</button><span id="extra-Viande hachée">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Viande hachée', 1, 15)">+</button></div></div>
-          <div class="flex items-center justify-between"><span class="font-medium">Merguez - 15 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Merguez', -1, 15)">-</button><span id="extra-Merguez">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Merguez', 1, 15)">+</button></div></div>
-          <div class="flex items-center justify-between"><span class="font-medium">Pepperoni - 17 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Pepperoni', -1, 17)">-</button><span id="extra-Pepperoni">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Pepperoni', 1, 17)">+</button></div></div>
-          <div class="flex items-center justify-between"><span class="font-medium">Dinde fumée - 15 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Dinde fumée', -1, 15)">-</button><span id="extra-Dinde fumée">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Dinde fumée', 1, 15)">+</button></div></div>
+        <div>
+          <button onclick="toggleExtras('extras')" class="w-full text-left font-bold text-white flex justify-between items-center">
+            Extras <span id="arrow-extras">▼</span>
+          </button>
+          <div id="extras-extras" class="mt-2 space-y-2 hidden">
+            <div class="flex items-center justify-between"><span class="font-medium">Fromage - 12 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Fromage', -1, 12)">-</button><span id="extra-Fromage">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Fromage', 1, 12)">+</button></div></div>
+            <div class="flex items-center justify-between"><span class="font-medium">Viande hachée - 15 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Viande hachée', -1, 15)">-</button><span id="extra-Viande hachée">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Viande hachée', 1, 15)">+</button></div></div>
+            <div class="flex items-center justify-between"><span class="font-medium">Merguez - 15 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Merguez', -1, 15)">-</button><span id="extra-Merguez">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Merguez', 1, 15)">+</button></div></div>
+            <div class="flex items-center justify-between"><span class="font-medium">Pepperoni - 17 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Pepperoni', -1, 17)">-</button><span id="extra-Pepperoni">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Pepperoni', 1, 17)">+</button></div></div>
+            <div class="flex items-center justify-between"><span class="font-medium">Dinde fumée - 15 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Dinde fumée', -1, 15)">-</button><span id="extra-Dinde fumée">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Dinde fumée', 1, 15)">+</button></div></div>
+          </div>
         </div>
-        <h4 class="text-md font-semibold text-white mt-4">Desserts</h4>
-        <div class="space-y-2">
-          <div class="flex items-center justify-between"><span class="font-medium">Lotus - 25 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Lotus', -1, 25)">-</button><span id="extra-Lotus">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Lotus', 1, 25)">+</button></div></div>
-          <div class="flex items-center justify-between"><span class="font-medium">Oreo - 25 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Oreo', -1, 25)">-</button><span id="extra-Oreo">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Oreo', 1, 25)">+</button></div></div>
+        <div>
+          <button onclick="toggleExtras('desserts')" class="w-full text-left font-bold text-white flex justify-between items-center">
+            Desserts <span id="arrow-desserts">▼</span>
+          </button>
+          <div id="extras-desserts" class="mt-2 space-y-2 hidden">
+            <div class="flex items-center justify-between"><span class="font-medium">Lotus - 25 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Lotus', -1, 25)">-</button><span id="extra-Lotus">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Lotus', 1, 25)">+</button></div></div>
+            <div class="flex items-center justify-between"><span class="font-medium">Oreo - 25 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Oreo', -1, 25)">-</button><span id="extra-Oreo">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Oreo', 1, 25)">+</button></div></div>
+          </div>
         </div>
       </div>
+
       <div class="mt-6 flex justify-between">
         <button onclick="closeModal('carnivore')" class="text-sm text-gray-300 hover:text-white">Annuler</button>
         <button onclick="addToCart('Pizza Carnivore', 75); closeModal('carnivore')" class="bg-[#a27c27] text-white px-4 py-2 rounded-xl">Ajouter</button>
@@ -104,22 +119,54 @@
       document.getElementById(`extra-${name}`).textContent = extras[name].qty;
     }
 
-    function addToCart(productName, basePrice) {
-      let total = basePrice;
-      let extrasText = '';
-      for (const [key, value] of Object.entries(extras)) {
-        if (value.qty > 0) {
-          total += value.qty * value.price;
-          extrasText += `\n+ ${value.qty} x ${key} (${value.price} DH)`;
-        }
-      }
-      cart.push({ productName, total });
-      document.getElementById('cart-count') && (document.getElementById('cart-count').textContent = cart.length);
-      document.getElementById('cart-items').innerHTML += `<li>${productName} ${extrasText}<br><strong>${total} DH</strong></li>`;
-      document.getElementById('cart-total').textContent = cart.reduce((acc, item) => acc + item.total, 0);
-      const msg = cart.map(item => `- ${item.productName} (${item.total} DH)`).join('%0A');
-      document.getElementById('whatsapp-link').href = `https://wa.me/212600000000?text=Commande%20L'gordo%0A${msg}`;
+    function toggleExtras(category) {
+      const div = document.getElementById('extras-' + category);
+      const arrow = document.getElementById('arrow-' + category);
+      div.classList.toggle('hidden');
+      arrow.textContent = div.classList.contains('hidden') ? '▼' : '▲';
     }
+
+    function addToCart(productName, basePrice) {
+  let total = basePrice;
+  let itemExtras = {};
+  for (const [key, value] of Object.entries(extras)) {
+    if (value.qty > 0) {
+      total += value.qty * value.price;
+      itemExtras[key] = { ...value };
+    }
+  }
+  cart.push({ productName, total, extras: itemExtras });
+  updateCart();
+}
   </script>
+<script>
+  function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCart();
+  }
+
+  function updateCart() {
+    const list = document.getElementById('cart-items');
+    list.innerHTML = '';
+    cart.forEach((item, index) => {
+      const li = document.createElement('li');
+      li.className = 'mb-2 bg-gray-100 text-black rounded p-2 flex justify-between items-start';
+      const extrasList = Object.entries(item.extras)
+        .map(([name, val]) => `+ ${val.qty} x ${name} (${val.price} DH)`).join('<br>');
+      li.innerHTML = `
+        <div>
+          <strong>${item.productName}</strong><br>
+          ${extrasList}<br><strong>${item.total} DH</strong>
+        </div>
+        <button onclick="removeFromCart(${index})" class="text-red-600 text-sm ml-4">✕</button>
+      `;
+      list.appendChild(li);
+    });
+    document.getElementById('cart-total').textContent = cart.reduce((acc, item) => acc + item.total, 0);
+    const msg = cart.map(item => `- ${item.productName} (${item.total} DH)` + Object.entries(item.extras).map(e => `
+  + ${e[1].qty} x ${e[0]} (${e[1].price} DH)`).join('')).join('%0A');
+    document.getElementById('whatsapp-link').href = `https://wa.me/212600000000?text=Commande%20L'gordo%0A${msg}`;
+  }
+</script>
 </body>
 </html>
