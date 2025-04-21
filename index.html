@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>L'gordo - Commande</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
@@ -62,60 +62,37 @@
   <div class="bg-white text-black rounded-2xl p-6 w-11/12 max-w-md max-h-[90vh] overflow-y-auto">
     <h3 class="text-xl font-bold mb-4">Choisissez vos extras</h3>
 
-    <!-- 🥤 Sodas -->
+    <!-- Sodas -->
     <div class="mb-5">
       <strong class="block text-lg mb-2">Sodas</strong>
       <div class="space-y-3 text-sm">
-        ${["Pepsi", "Mirinda Orange", "Mirinda Pomme", "Mirinda Citron", "7up", "Oulmes"].map(drink => `
-        <div class="flex justify-between items-center">
-          <span>${drink} - 10 DH</span>
-          <div class="flex items-center gap-2">
-            <button class="btn" onclick="updateExtra('${drink}', -1, 10)">-</button>
-            <span id="extra-${drink}">0</span>
-            <button class="btn" onclick="updateExtra('${drink}', 1, 10)">+</button>
-          </div>
-        </div>`).join('')}
+        <div class="flex justify-between items-center"><span>Pepsi - 10 DH</span><div class="flex items-center gap-2"><button class="btn" onclick="updateExtra('Pepsi', -1, 10)">-</button><span id="extra-Pepsi">0</span><button class="btn" onclick="updateExtra('Pepsi', 1, 10)">+</button></div></div>
+        <div class="flex justify-between items-center"><span>Mirinda Orange - 10 DH</span><div class="flex items-center gap-2"><button class="btn" onclick="updateExtra('Mirinda Orange', -1, 10)">-</button><span id="extra-Mirinda Orange">0</span><button class="btn" onclick="updateExtra('Mirinda Orange', 1, 10)">+</button></div></div>
+        <div class="flex justify-between items-center"><span>Mirinda Pomme - 10 DH</span><div class="flex items-center gap-2"><button class="btn" onclick="updateExtra('Mirinda Pomme', -1, 10)">-</button><span id="extra-Mirinda Pomme">0</span><button class="btn" onclick="updateExtra('Mirinda Pomme', 1, 10)">+</button></div></div>
+        <div class="flex justify-between items-center"><span>Mirinda Citron - 10 DH</span><div class="flex items-center gap-2"><button class="btn" onclick="updateExtra('Mirinda Citron', -1, 10)">-</button><span id="extra-Mirinda Citron">0</span><button class="btn" onclick="updateExtra('Mirinda Citron', 1, 10)">+</button></div></div>
+        <div class="flex justify-between items-center"><span>7up - 10 DH</span><div class="flex items-center gap-2"><button class="btn" onclick="updateExtra('7up', -1, 10)">-</button><span id="extra-7up">0</span><button class="btn" onclick="updateExtra('7up', 1, 10)">+</button></div></div>
+        <div class="flex justify-between items-center"><span>Oulmes - 10 DH</span><div class="flex items-center gap-2"><button class="btn" onclick="updateExtra('Oulmes', -1, 10)">-</button><span id="extra-Oulmes">0</span><button class="btn" onclick="updateExtra('Oulmes', 1, 10)">+</button></div></div>
       </div>
     </div>
 
-    <!-- 🧀 Extras -->
+    <!-- Extras -->
     <div class="mb-5">
       <strong class="block text-lg mb-2">Extras</strong>
       <div class="space-y-3 text-sm">
-        ${[
-          ["Fromage", 12],
-          ["Viande hachée", 15],
-          ["Merguez", 15],
-          ["Pepperoni", 17],
-          ["Dinde fumée", 15]
-        ].map(([name, price]) => `
-        <div class="flex justify-between items-center">
-          <span>${name} - ${price} DH</span>
-          <div class="flex items-center gap-2">
-            <button class="btn" onclick="updateExtra('${name}', -1, ${price})">-</button>
-            <span id="extra-${name}">0</span>
-            <button class="btn" onclick="updateExtra('${name}', 1, ${price})">+</button>
-          </div>
-        </div>`).join('')}
+        <div class="flex justify-between items-center"><span>Fromage - 12 DH</span><div class="flex items-center gap-2"><button class="btn" onclick="updateExtra('Fromage', -1, 12)">-</button><span id="extra-Fromage">0</span><button class="btn" onclick="updateExtra('Fromage', 1, 12)">+</button></div></div>
+        <div class="flex justify-between items-center"><span>Viande hachée - 15 DH</span><div class="flex items-center gap-2"><button class="btn" onclick="updateExtra('Viande hachée', -1, 15)">-</button><span id="extra-Viande hachée">0</span><button class="btn" onclick="updateExtra('Viande hachée', 1, 15)">+</button></div></div>
+        <div class="flex justify-between items-center"><span>Merguez - 15 DH</span><div class="flex items-center gap-2"><button class="btn" onclick="updateExtra('Merguez', -1, 15)">-</button><span id="extra-Merguez">0</span><button class="btn" onclick="updateExtra('Merguez', 1, 15)">+</button></div></div>
+        <div class="flex justify-between items-center"><span>Pepperoni - 17 DH</span><div class="flex items-center gap-2"><button class="btn" onclick="updateExtra('Pepperoni', -1, 17)">-</button><span id="extra-Pepperoni">0</span><button class="btn" onclick="updateExtra('Pepperoni', 1, 17)">+</button></div></div>
+        <div class="flex justify-between items-center"><span>Dinde fumée - 15 DH</span><div class="flex items-center gap-2"><button class="btn" onclick="updateExtra('Dinde fumée', -1, 15)">-</button><span id="extra-Dinde fumée">0</span><button class="btn" onclick="updateExtra('Dinde fumée', 1, 15)">+</button></div></div>
       </div>
     </div>
 
-    <!-- 🍪 Desserts -->
+    <!-- Desserts -->
     <div class="mb-5">
       <strong class="block text-lg mb-2">Desserts</strong>
       <div class="space-y-3 text-sm">
-        ${[
-          ["Lotus", 25],
-          ["Oreo", 25]
-        ].map(([name, price]) => `
-        <div class="flex justify-between items-center">
-          <span>${name} - ${price} DH</span>
-          <div class="flex items-center gap-2">
-            <button class="btn" onclick="updateExtra('${name}', -1, ${price})">-</button>
-            <span id="extra-${name}">0</span>
-            <button class="btn" onclick="updateExtra('${name}', 1, ${price})">+</button>
-          </div>
-        </div>`).join('')}
+        <div class="flex justify-between items-center"><span>Lotus - 25 DH</span><div class="flex items-center gap-2"><button class="btn" onclick="updateExtra('Lotus', -1, 25)">-</button><span id="extra-Lotus">0</span><button class="btn" onclick="updateExtra('Lotus', 1, 25)">+</button></div></div>
+        <div class="flex justify-between items-center"><span>Oreo - 25 DH</span><div class="flex items-center gap-2"><button class="btn" onclick="updateExtra('Oreo', -1, 25)">-</button><span id="extra-Oreo">0</span><button class="btn" onclick="updateExtra('Oreo', 1, 25)">+</button></div></div>
       </div>
     </div>
 
@@ -126,7 +103,6 @@
   </div>
 </div>
 
-<!-- Script -->
 <script>
   const cart = [];
   const extras = {};
