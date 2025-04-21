@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>L'gordo - Commande</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: 'Quicksand', sans-serif; scroll-behavior: smooth; background-color: #0d1723; color: white; }
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background-color: #0d1723;
+      color: white;
+    }
     .btn {
       padding: 0.4rem 0.8rem;
       border-radius: 9999px;
@@ -44,7 +48,7 @@
 </main>
 
 <!-- Panier -->
-<div id="cart" class="fixed bottom-0 left-0 right-0 bg-white text-black p-4 shadow-2xl backdrop-blur-md rounded-t-2xl">
+<div id="cart" class="fixed bottom-0 left-0 right-0 bg-white text-black p-4 shadow-2xl rounded-t-2xl">
   <h4 class="text-lg font-bold mb-2">🛒 Panier</h4>
   <ul id="cart-items" class="text-sm space-y-2 max-h-52 overflow-y-auto pr-2"></ul>
   <div class="flex justify-between items-center mt-2">
@@ -55,15 +59,13 @@
 
 <!-- Modale -->
 <div id="modal-carnivore" class="hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
-  <div class="bg-white text-black rounded-2xl p-6 w-11/12 max-w-md">
+  <div class="bg-white text-black rounded-xl p-6 w-11/12 max-w-md">
     <h3 class="text-xl font-bold mb-4">Choisissez vos extras</h3>
 
     <!-- Sodas -->
-    <div class="mb-3">
-      <div class="flex justify-between items-center cursor-pointer" onclick="toggleExtras('Sodas')">
-        <strong>Sodas</strong><span id="arrow-Sodas">▼</span>
-      </div>
-      <div id="extras-Sodas" class="pl-2 mt-2 hidden space-y-2">
+    <div class="mb-4">
+      <strong class="block mb-2">Sodas</strong>
+      <div class="space-y-2 text-sm">
         <div>Pepsi - 10 DH <button class="btn" onclick="updateExtra('Pepsi', 1, 10)">+</button> <span id="extra-Pepsi">0</span></div>
         <div>Mirinda Orange - 10 DH <button class="btn" onclick="updateExtra('Mirinda Orange', 1, 10)">+</button> <span id="extra-Mirinda Orange">0</span></div>
         <div>Mirinda Pomme - 10 DH <button class="btn" onclick="updateExtra('Mirinda Pomme', 1, 10)">+</button> <span id="extra-Mirinda Pomme">0</span></div>
@@ -71,11 +73,9 @@
     </div>
 
     <!-- Extras -->
-    <div class="mb-3">
-      <div class="flex justify-between items-center cursor-pointer" onclick="toggleExtras('Extras')">
-        <strong>Extras</strong><span id="arrow-Extras">▼</span>
-      </div>
-      <div id="extras-Extras" class="pl-2 mt-2 hidden space-y-2">
+    <div class="mb-4">
+      <strong class="block mb-2">Extras</strong>
+      <div class="space-y-2 text-sm">
         <div>Fromage - 12 DH <button class="btn" onclick="updateExtra('Fromage', 1, 12)">+</button> <span id="extra-Fromage">0</span></div>
         <div>Viande hachée - 15 DH <button class="btn" onclick="updateExtra('Viande hachée', 1, 15)">+</button> <span id="extra-Viande hachée">0</span></div>
         <div>Merguez - 15 DH <button class="btn" onclick="updateExtra('Merguez', 1, 15)">+</button> <span id="extra-Merguez">0</span></div>
@@ -83,17 +83,15 @@
     </div>
 
     <!-- Desserts -->
-    <div class="mb-3">
-      <div class="flex justify-between items-center cursor-pointer" onclick="toggleExtras('Desserts')">
-        <strong>Desserts</strong><span id="arrow-Desserts">▼</span>
-      </div>
-      <div id="extras-Desserts" class="pl-2 mt-2 hidden space-y-2">
+    <div class="mb-4">
+      <strong class="block mb-2">Desserts</strong>
+      <div class="space-y-2 text-sm">
         <div>Lotus - 25 DH <button class="btn" onclick="updateExtra('Lotus', 1, 25)">+</button> <span id="extra-Lotus">0</span></div>
         <div>Oreo - 25 DH <button class="btn" onclick="updateExtra('Oreo', 1, 25)">+</button> <span id="extra-Oreo">0</span></div>
       </div>
     </div>
 
-    <div class="flex justify-end gap-2 mt-4">
+    <div class="flex justify-end gap-2">
       <button onclick="closeModal('carnivore')" class="btn">Annuler</button>
       <button onclick="addToCart('Pizza Carnivore', 75); closeModal('carnivore');" class="btn bg-[#a27c27] text-white">Ajouter</button>
     </div>
@@ -113,13 +111,6 @@
     document.getElementById('modal-' + id).classList.add('hidden');
   }
 
-  function toggleExtras(category) {
-    const div = document.getElementById('extras-' + category);
-    const arrow = document.getElementById('arrow-' + category);
-    div.classList.toggle('hidden');
-    arrow.textContent = div.classList.contains('hidden') ? '▼' : '▲';
-  }
-
   function updateExtra(name, qty, price) {
     if (!extras[name]) extras[name] = { qty: 0, price };
     extras[name].qty = Math.max(0, extras[name].qty + qty);
@@ -133,41 +124,3 @@
       if (value.qty > 0) {
         total += value.qty * value.price;
         itemExtras[key] = { ...value };
-      }
-    }
-    cart.push({ productName, total, extras: itemExtras, qty: 1 });
-    updateCart();
-  }
-
-  function removeFromCart(index) {
-    cart.splice(index, 1);
-    updateCart();
-  }
-
-  function updateCart() {
-    const list = document.getElementById('cart-items');
-    list.innerHTML = '';
-    cart.forEach((item, index) => {
-      const li = document.createElement('li');
-      li.className = 'bg-white text-black rounded-xl shadow-sm p-3 flex justify-between items-start';
-      const extrasList = Object.entries(item.extras)
-        .map(([name, val]) => `+ ${val.qty} x ${name} (${val.price} DH)`).join('<br>');
-      li.innerHTML = `
-        <div>
-          <strong class="text-[#a27c27]">${item.productName}</strong><br>
-          <div class="text-sm text-gray-600">${extrasList}</div>
-          <div class="mt-1 font-semibold text-black">${item.total} DH</div>
-        </div>
-        <button onclick="removeFromCart(${index})" class="text-red-600 font-bold text-xl">&times;</button>
-      `;
-      list.appendChild(li);
-    });
-    document.getElementById('cart-total').textContent = cart.reduce((acc, item) => acc + item.total, 0);
-    const msg = cart.map(item => `- ${item.productName} (${item.total} DH)` +
-      Object.entries(item.extras).map(e => `\n  + ${e[1].qty} x ${e[0]} (${e[1].price} DH)`).join('')).join('%0A');
-    document.getElementById('whatsapp-link').href = `https://wa.me/212600000000?text=Commande%20L'gordo%0A${msg}`;
-  }
-</script>
-
-</body>
-</html>
