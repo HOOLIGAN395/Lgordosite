@@ -1,187 +1,177 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>L'gordo - Commande</title>
-  <script src="https://cdn.tailwindcss.com">function changeQty(index, delta) {
-  if (cart[index].qty + delta <= 0) return;
-  cart[index].qty += delta;
-  updateCart();
-}
-</script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Quicksand', sans-serif; scroll-behavior: smooth; }
-    .fade-in { animation: fadeIn 0.3s ease-in-out; }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+    body {
+      font-family: 'Quicksand', sans-serif;
+      scroll-behavior: smooth;
+    }
+    .fade-in-up {
+      animation: fadeInUp 0.4s ease-in-out;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+    .btn {
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      transition: all 0.2s ease-in-out;
+    }
+    .btn:hover {
+      transform: scale(1.1);
+      background-color: #ffd500;
+      color: black;
+      box-shadow: 0 0 10px rgba(255, 213, 0, 0.6);
+    }
+    .cart-enter {
+      animation: cartEnter 0.4s ease-out;
+    }
+    @keyframes cartEnter {
+      from { transform: translateY(100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .highlight {
+      animation: pop 0.3s ease-in-out;
+    }
+    @keyframes pop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    .modal-animate {
+      animation: modalIn 0.3s ease-in-out;
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
     }
   </style>
 </head>
 <body class="bg-[#0d1723] text-white">
+
   <!-- Header -->
   <header>
-    <div class="bg-[#0d1723] flex justify-center items-center p-2">
-      <img src="logo.png" alt="L'gordo" class="w-20 h-20">
+    <div class="bg-[#0d1723] flex justify-center items-center py-4">
+      <img src="logo.png" alt="L'gordo" class="w-24 h-24 drop-shadow-lg animate-bounce">
     </div>
     <div class="bg-[#a27c27] h-2"></div>
   </header>
 
-  <!-- Banner -->
-  <section class="bg-[#a27c27] text-white text-center py-6">
-    <h2 class="text-2xl font-bold">Commandez vos plats préférés</h2>
-    <p class="text-sm mt-2">Pizza, Sandwichs, Boissons et plus !</p>
-  </section>
-
   <!-- Section Produit -->
-  <main class="p-4 pb-32">
+  <main class="p-4 pb-36">
     <div class="grid grid-cols-2 gap-4 mb-6">
-      <div onclick="openModal('carnivore')" class="bg-[#1e293b] rounded-2xl p-4 shadow-lg cursor-pointer hover:scale-105 transition-transform duration-200">
-        <img src="LaCarnivore.jpg" alt="Pizza Carnivore" class="w-full h-24 object-cover rounded-xl">
-        <h3 class="text-md font-bold mt-2">Pizza Carnivore</h3>
+      <div id="card-carnivore" class="fade-in-up bg-[#1e293b] rounded-2xl p-4 shadow-xl cursor-pointer hover:scale-105 transition-transform duration-200">
+        <img src="LaCarnivore.jpg" alt="Pizza Carnivore" class="w-full h-28 object-cover rounded-xl mb-2">
+        <h3 class="text-lg font-bold">Pizza Carnivore</h3>
         <p class="text-sm text-gray-300">Merguez, pepperoni, viande hachée, fromage</p>
-        <p class="text-lg font-semibold mt-1">75 DH</p>
+        <p class="text-xl font-semibold mt-1 text-[#ffd500]">75 DH</p>
       </div>
     </div>
   </main>
 
-  <!-- Modal Produit -->
-  <div id="modal-carnivore" class="hidden fixed inset-0 z-50 bg-black bg-opacity-70 flex items-center justify-center fade-in">
-    <div class="bg-[#1e293b] w-11/12 max-w-md p-6 rounded-xl shadow-xl overflow-y-auto max-h-[90vh]">
-      <h3 class="text-xl font-bold mb-2">Pizza Carnivore</h3>
-      <p class="text-sm text-gray-300 mb-2">Merguez, pepperoni, viande hachée, fromage</p>
-      <p class="text-lg font-semibold mt-4">75 DH</p>
+  <!-- Panier -->
+  <div id="cart" class="fixed bottom-0 left-0 right-0 bg-white/90 text-black p-4 shadow-2xl backdrop-blur-md rounded-t-2xl cart-enter">
+    <h4 class="text-lg font-bold mb-2">🛒 Panier</h4>
+    <ul id="cart-items" class="text-sm space-y-2 max-h-52 overflow-y-auto pr-2"></ul>
+    <div class="flex justify-between items-center mt-2">
+      <p class="font-semibold text-lg">Total : <span id="cart-total">0</span> DH</p>
+      <a id="whatsapp-link" target="_blank" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full font-bold text-sm">Commander via WhatsApp</a>
+    </div>
+  </div>
 
-      <div class="space-y-4 mt-4">
-        <div>
-          <button onclick="toggleExtras('sodas')" class="w-full text-left font-bold text-white flex justify-between items-center">
-            Sodas <span id="arrow-sodas">▼</span>
-          </button>
-          <div id="extras-sodas" class="mt-2 space-y-2 hidden">
-            <!-- chaque extra -->
-            <div class="flex items-center justify-between"><span class="font-medium">Pepsi - 10 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Pepsi', -1, 10)">-</button><span id="extra-Pepsi">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Pepsi', 1, 10)">+</button></div></div>
-            <div class="flex items-center justify-between"><span class="font-medium">Mirinda Orange - 10 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Mirinda Orange', -1, 10)">-</button><span id="extra-Mirinda Orange">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Mirinda Orange', 1, 10)">+</button></div></div>
-            <div class="flex items-center justify-between"><span class="font-medium">Mirinda Pomme - 10 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Mirinda Pomme', -1, 10)">-</button><span id="extra-Mirinda Pomme">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Mirinda Pomme', 1, 10)">+</button></div></div>
-            <div class="flex items-center justify-between"><span class="font-medium">Mirinda Citron - 10 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Mirinda Citron', -1, 10)">-</button><span id="extra-Mirinda Citron">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Mirinda Citron', 1, 10)">+</button></div></div>
-            <div class="flex items-center justify-between"><span class="font-medium">Seven Up - 10 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Seven Up', -1, 10)">-</button><span id="extra-Seven Up">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Seven Up', 1, 10)">+</button></div></div>
-            <div class="flex items-center justify-between"><span class="font-medium">Oulmès - 10 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Oulmès', -1, 10)">-</button><span id="extra-Oulmès">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Oulmès', 1, 10)">+</button></div></div>
-          </div>
-        </div>
-        <div>
-          <button onclick="toggleExtras('extras')" class="w-full text-left font-bold text-white flex justify-between items-center">
-            Extras <span id="arrow-extras">▼</span>
-          </button>
-          <div id="extras-extras" class="mt-2 space-y-2 hidden">
-            <div class="flex items-center justify-between"><span class="font-medium">Fromage - 12 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Fromage', -1, 12)">-</button><span id="extra-Fromage">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Fromage', 1, 12)">+</button></div></div>
-            <div class="flex items-center justify-between"><span class="font-medium">Viande hachée - 15 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Viande hachée', -1, 15)">-</button><span id="extra-Viande hachée">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Viande hachée', 1, 15)">+</button></div></div>
-            <div class="flex items-center justify-between"><span class="font-medium">Merguez - 15 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Merguez', -1, 15)">-</button><span id="extra-Merguez">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Merguez', 1, 15)">+</button></div></div>
-            <div class="flex items-center justify-between"><span class="font-medium">Pepperoni - 17 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Pepperoni', -1, 17)">-</button><span id="extra-Pepperoni">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Pepperoni', 1, 17)">+</button></div></div>
-            <div class="flex items-center justify-between"><span class="font-medium">Dinde fumée - 15 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Dinde fumée', -1, 15)">-</button><span id="extra-Dinde fumée">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Dinde fumée', 1, 15)">+</button></div></div>
-          </div>
-        </div>
-        <div>
-          <button onclick="toggleExtras('desserts')" class="w-full text-left font-bold text-white flex justify-between items-center">
-            Desserts <span id="arrow-desserts">▼</span>
-          </button>
-          <div id="extras-desserts" class="mt-2 space-y-2 hidden">
-            <div class="flex items-center justify-between"><span class="font-medium">Lotus - 25 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Lotus', -1, 25)">-</button><span id="extra-Lotus">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Lotus', 1, 25)">+</button></div></div>
-            <div class="flex items-center justify-between"><span class="font-medium">Oreo - 25 DH</span><div class="flex gap-2 items-center"><button class="px-2 py-1 bg-gray-600 rounded-full" onclick="updateExtra('Oreo', -1, 25)">-</button><span id="extra-Oreo">0</span><button class="px-2 py-1 bg-[#a27c27] rounded-full" onclick="updateExtra('Oreo', 1, 25)">+</button></div></div>
-          </div>
+  <!-- Modale produit -->
+  <div id="modal-carnivore" class="hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 modal-animate">
+    <div class="bg-white text-black rounded-2xl p-6 w-11/12 max-w-md">
+      <h3 class="text-xl font-bold mb-4">Choisissez vos extras</h3>
+      <p class="text-sm text-gray-600 mb-4">Les quantités seront ajoutées à votre commande.</p>
+
+      <div class="mb-4">
+        <strong class="block mb-2">Sodas</strong>
+        <div class="space-y-2">
+          <div><span>Pepsi - 10 DH</span> <button class="btn bg-gray-200" onclick="updateExtra('Pepsi', 1, 10)">+</button> <span id="extra-Pepsi">0</span></div>
+          <!-- Ajoute les autres extras ici -->
         </div>
       </div>
 
-      <div class="mt-6 flex justify-between">
-        <button onclick="closeModal('carnivore')" class="text-sm text-gray-300 hover:text-white">Annuler</button>
-        <button onclick="addToCart('Pizza Carnivore', 75); closeModal('carnivore')" class="bg-[#a27c27] text-white px-4 py-2 rounded-xl">Ajouter</button>
+      <div class="flex justify-end gap-2">
+        <button onclick="closeModal('carnivore')" class="btn bg-gray-300 text-black">Annuler</button>
+        <button onclick="addToCart('Pizza Carnivore', 75); closeModal('carnivore');" class="btn bg-[#a27c27] text-white">Ajouter</button>
       </div>
     </div>
   </div>
 
-  <!-- Panier -->
-  <div id="cart" class="fixed bottom-0 left-0 right-0 bg-white text-black p-4 shadow-inner">
-    <h4 class="text-lg font-bold">Panier</h4>
-    <ul id="cart-items" class="text-sm my-2"></ul>
-    <p class="font-semibold">Total : <span id="cart-total">0</span> DH</p>
-    <a id="whatsapp-link" target="_blank" class="mt-2 inline-block w-full text-center bg-green-600 text-white py-2 rounded">Commander via WhatsApp</a>
-  </div>
-
+  <!-- Script JS -->
   <script>
-    const cart = [];
-    const extras = {};
+    window.addEventListener('DOMContentLoaded', () => {
+      const cart = [];
+      const extras = {};
 
-    function openModal(id) {
-      document.getElementById('modal-' + id).classList.remove('hidden');
-    }
-    function closeModal(id) {
-      document.getElementById('modal-' + id).classList.add('hidden');
-    }
+      const modal = document.getElementById('modal-carnivore');
+      const card = document.getElementById('card-carnivore');
 
-    function updateExtra(name, qty, price) {
-      if (!extras[name]) extras[name] = { qty: 0, price };
-      extras[name].qty = Math.max(0, extras[name].qty + qty);
-      document.getElementById(`extra-${name}`).textContent = extras[name].qty;
-    }
+      card.addEventListener('click', () => {
+        modal.classList.remove('hidden');
+      });
 
-    function toggleExtras(category) {
-      const div = document.getElementById('extras-' + category);
-      const arrow = document.getElementById('arrow-' + category);
-      div.classList.toggle('hidden');
-      arrow.textContent = div.classList.contains('hidden') ? '▼' : '▲';
-    }
+      window.closeModal = function (id) {
+        document.getElementById('modal-' + id).classList.add('hidden');
+      }
 
-    function addToCart(productName, basePrice) {
-  let total = basePrice;
-  let itemExtras = {};
-  for (const [key, value] of Object.entries(extras)) {
-    if (value.qty > 0) {
-      total += value.qty * value.price;
-      itemExtras[key] = { ...value };
-    }
-  }
-  cart.push({ productName, total, extras: itemExtras, qty: 1 });
-  updateCart();
-}
-  </script>
-<script>
-  function removeFromCart(index) {
-    cart.splice(index, 1);
-    updateCart();
-  }
+      window.updateExtra = function (name, qty, price) {
+        if (!extras[name]) extras[name] = { qty: 0, price };
+        extras[name].qty = Math.max(0, extras[name].qty + qty);
+        document.getElementById(`extra-${name}`).textContent = extras[name].qty;
+      }
 
-  function updateCart() {
-    const list = document.getElementById('cart-items');
-    list.innerHTML = '';
-    cart.forEach((item, index) => {
-      const li = document.createElement('li');
-      li.className = 'mb-2 bg-gray-100 text-black rounded p-2 flex justify-between items-start';
-      const extrasList = Object.entries(item.extras)
-        .map(([name, val]) => `+ ${val.qty} x ${name} (${val.price} DH)`).join('<br>');
-      li.innerHTML = `
-        <div>
-          <strong>${item.productName}</strong><br>
-          <div class='flex items-center gap-2 my-1'>
-            <button onclick="changeQty(${index}, -1)" class="px-2 py-1 bg-gray-400 text-white rounded">-</button>
-            <span class="font-bold">${item.qty}</span>
-            <button onclick="changeQty(${index}, 1)" class="px-2 py-1 bg-[#a27c27] text-white rounded">+</button>
-          </div>
-          ${extrasList}<br><strong>${item.total * item.qty} DH</strong>
-        </div>
-        <button onclick="removeFromCart(${index})" class="text-red-600 text-sm ml-4">✕</button>
-      `;
-      list.appendChild(li);
+      window.addToCart = function (productName, basePrice) {
+        let total = basePrice;
+        let itemExtras = {};
+        for (const [key, value] of Object.entries(extras)) {
+          if (value.qty > 0) {
+            total += value.qty * value.price;
+            itemExtras[key] = { ...value };
+          }
+        }
+        cart.push({ productName, total, extras: itemExtras, qty: 1 });
+        updateCart();
+      }
+
+      function updateCart() {
+        const list = document.getElementById('cart-items');
+        list.innerHTML = '';
+        cart.forEach((item, index) => {
+          const li = document.createElement('li');
+          li.className = 'bg-white text-black rounded-xl shadow-sm p-3 flex justify-between items-start';
+          const extrasList = Object.entries(item.extras)
+            .map(([name, val]) => `+ ${val.qty} x ${name} (${val.price} DH)`).join('<br>');
+          li.innerHTML = `
+            <div>
+              <strong class="text-[#a27c27]">${item.productName}</strong><br>
+              <div class='text-sm text-gray-600'>${extrasList}</div>
+              <div class="mt-1 font-semibold text-black">${item.total} DH</div>
+            </div>
+            <button onclick="removeFromCart(${index})" class="text-red-600 font-bold text-xl">&times;</button>
+          `;
+          list.appendChild(li);
+        });
+        document.getElementById('cart-total').textContent = cart.reduce((acc, item) => acc + item.total, 0);
+        const msg = cart.map(item => `- ${item.productName} (${item.total} DH)` +
+          Object.entries(item.extras).map(e => `\n  + ${e[1].qty} x ${e[0]} (${e[1].price} DH)`).join('')).join('%0A');
+        document.getElementById('whatsapp-link').href = `https://wa.me/212600000000?text=Commande%20L'gordo%0A${msg}`;
+      }
+
+      window.removeFromCart = function (index) {
+        cart.splice(index, 1);
+        updateCart();
+      }
     });
-    document.getElementById('cart-total').textContent = cart.reduce((acc, item) => acc + (item.total * item.qty), 0);
-    const msg = cart.map(item => `- ${item.qty} x ${item.productName} (${item.total * item.qty} DH)` + Object.entries(item.extras).map(e => `
-  + ${e[1].qty} x ${e[0]} (${e[1].price} DH)`).join('')).join('%0A');
-document.getElementById('whatsapp-link').href = `https://wa.me/212600000000?text=Commande%20L'gordo%0A${msg}`;
-  }
-function changeQty(index, delta) {
-  if (cart[index].qty + delta <= 0) return;
-  cart[index].qty += delta;
-  updateCart();
-}
-</script>
+  </script>
+
 </body>
 </html>
