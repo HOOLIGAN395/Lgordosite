@@ -4,7 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>L'gordo - Commande</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com">function changeQty(index, delta) {
+  if (cart[index].qty + delta <= 0) return;
+  cart[index].qty += delta;
+  updateCart();
+}
+</script>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Quicksand', sans-serif; scroll-behavior: smooth; }
@@ -135,7 +140,7 @@
       itemExtras[key] = { ...value };
     }
   }
-  cart.push({ productName, total, extras: itemExtras });
+  cart.push({ productName, total, extras: itemExtras, qty: 1 });
   updateCart();
 }
   </script>
@@ -156,17 +161,27 @@
       li.innerHTML = `
         <div>
           <strong>${item.productName}</strong><br>
-          ${extrasList}<br><strong>${item.total} DH</strong>
+          <div class='flex items-center gap-2 my-1'>
+            <button onclick="changeQty(${index}, -1)" class="px-2 py-1 bg-gray-400 text-white rounded">-</button>
+            <span class="font-bold">${item.qty}</span>
+            <button onclick="changeQty(${index}, 1)" class="px-2 py-1 bg-[#a27c27] text-white rounded">+</button>
+          </div>
+          ${extrasList}<br><strong>${item.total * item.qty} DH</strong>
         </div>
         <button onclick="removeFromCart(${index})" class="text-red-600 text-sm ml-4">✕</button>
       `;
       list.appendChild(li);
     });
-    document.getElementById('cart-total').textContent = cart.reduce((acc, item) => acc + item.total, 0);
-    const msg = cart.map(item => `- ${item.productName} (${item.total} DH)` + Object.entries(item.extras).map(e => `
+    document.getElementById('cart-total').textContent = cart.reduce((acc, item) => acc + (item.total * item.qty), 0);
+    const msg = cart.map(item => `- ${item.qty} x ${item.productName} (${item.total * item.qty} DH)` + Object.entries(item.extras).map(e => `
   + ${e[1].qty} x ${e[0]} (${e[1].price} DH)`).join('')).join('%0A');
-    document.getElementById('whatsapp-link').href = `https://wa.me/212600000000?text=Commande%20L'gordo%0A${msg}`;
+document.getElementById('whatsapp-link').href = `https://wa.me/212600000000?text=Commande%20L'gordo%0A${msg}`;
   }
+function changeQty(index, delta) {
+  if (cart[index].qty + delta <= 0) return;
+  cart[index].qty += delta;
+  updateCart();
+}
 </script>
 </body>
 </html>
