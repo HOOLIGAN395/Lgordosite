@@ -59,39 +59,67 @@
 
 <!-- Modale -->
 <div id="modal-carnivore" class="hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
-  <div class="bg-white text-black rounded-2xl p-6 w-11/12 max-w-md">
+  <div class="bg-white text-black rounded-2xl p-6 w-11/12 max-w-md max-h-[90vh] overflow-y-auto">
     <h3 class="text-xl font-bold mb-4">Choisissez vos extras</h3>
 
-    <!-- Sodas -->
-    <div class="mb-4">
-      <strong class="block mb-2">🥤 Sodas</strong>
-      <div class="space-y-2 text-sm">
-        <div>Pepsi - 10 DH <button class="btn" onclick="updateExtra('Pepsi', 1, 10)">+</button> <button class="btn" onclick="updateExtra('Pepsi', -1, 10)">-</button> <span id="extra-Pepsi">0</span></div>
-        <div>Mirinda Orange - 10 DH <button class="btn" onclick="updateExtra('Mirinda Orange', 1, 10)">+</button> <button class="btn" onclick="updateExtra('Mirinda Orange', -1, 10)">-</button> <span id="extra-Mirinda Orange">0</span></div>
-        <div>Mirinda Pomme - 10 DH <button class="btn" onclick="updateExtra('Mirinda Pomme', 1, 10)">+</button> <button class="btn" onclick="updateExtra('Mirinda Pomme', -1, 10)">-</button> <span id="extra-Mirinda Pomme">0</span></div>
+    <!-- 🥤 Sodas -->
+    <div class="mb-5">
+      <strong class="block text-lg mb-2">Sodas</strong>
+      <div class="space-y-3 text-sm">
+        ${["Pepsi", "Mirinda Orange", "Mirinda Pomme", "Mirinda Citron", "7up", "Oulmes"].map(drink => `
+        <div class="flex justify-between items-center">
+          <span>${drink} - 10 DH</span>
+          <div class="flex items-center gap-2">
+            <button class="btn" onclick="updateExtra('${drink}', -1, 10)">-</button>
+            <span id="extra-${drink}">0</span>
+            <button class="btn" onclick="updateExtra('${drink}', 1, 10)">+</button>
+          </div>
+        </div>`).join('')}
       </div>
     </div>
 
-    <!-- Extras -->
-    <div class="mb-4">
-      <strong class="block mb-2">🧀 Extras</strong>
-      <div class="space-y-2 text-sm">
-        <div>Fromage - 12 DH <button class="btn" onclick="updateExtra('Fromage', 1, 12)">+</button> <button class="btn" onclick="updateExtra('Fromage', -1, 12)">-</button> <span id="extra-Fromage">0</span></div>
-        <div>Viande hachée - 15 DH <button class="btn" onclick="updateExtra('Viande hachée', 1, 15)">+</button> <button class="btn" onclick="updateExtra('Viande hachée', -1, 15)">-</button> <span id="extra-Viande hachée">0</span></div>
-        <div>Merguez - 15 DH <button class="btn" onclick="updateExtra('Merguez', 1, 15)">+</button> <button class="btn" onclick="updateExtra('Merguez', -1, 15)">-</button> <span id="extra-Merguez">0</span></div>
+    <!-- 🧀 Extras -->
+    <div class="mb-5">
+      <strong class="block text-lg mb-2">Extras</strong>
+      <div class="space-y-3 text-sm">
+        ${[
+          ["Fromage", 12],
+          ["Viande hachée", 15],
+          ["Merguez", 15],
+          ["Pepperoni", 17],
+          ["Dinde fumée", 15]
+        ].map(([name, price]) => `
+        <div class="flex justify-between items-center">
+          <span>${name} - ${price} DH</span>
+          <div class="flex items-center gap-2">
+            <button class="btn" onclick="updateExtra('${name}', -1, ${price})">-</button>
+            <span id="extra-${name}">0</span>
+            <button class="btn" onclick="updateExtra('${name}', 1, ${price})">+</button>
+          </div>
+        </div>`).join('')}
       </div>
     </div>
 
-    <!-- Desserts -->
-    <div class="mb-4">
-      <strong class="block mb-2">🍪 Desserts</strong>
-      <div class="space-y-2 text-sm">
-        <div>Lotus - 25 DH <button class="btn" onclick="updateExtra('Lotus', 1, 25)">+</button> <button class="btn" onclick="updateExtra('Lotus', -1, 25)">-</button> <span id="extra-Lotus">0</span></div>
-        <div>Oreo - 25 DH <button class="btn" onclick="updateExtra('Oreo', 1, 25)">+</button> <button class="btn" onclick="updateExtra('Oreo', -1, 25)">-</button> <span id="extra-Oreo">0</span></div>
+    <!-- 🍪 Desserts -->
+    <div class="mb-5">
+      <strong class="block text-lg mb-2">Desserts</strong>
+      <div class="space-y-3 text-sm">
+        ${[
+          ["Lotus", 25],
+          ["Oreo", 25]
+        ].map(([name, price]) => `
+        <div class="flex justify-between items-center">
+          <span>${name} - ${price} DH</span>
+          <div class="flex items-center gap-2">
+            <button class="btn" onclick="updateExtra('${name}', -1, ${price})">-</button>
+            <span id="extra-${name}">0</span>
+            <button class="btn" onclick="updateExtra('${name}', 1, ${price})">+</button>
+          </div>
+        </div>`).join('')}
       </div>
     </div>
 
-    <div class="flex justify-end gap-2">
+    <div class="flex justify-end gap-2 mt-6">
       <button onclick="closeModal('carnivore')" class="btn">Annuler</button>
       <button onclick="addToCart('Pizza Carnivore', 75); closeModal('carnivore');" class="btn bg-[#a27c27] text-white">Ajouter</button>
     </div>
@@ -130,6 +158,11 @@
     updateCart();
   }
 
+  function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCart();
+  }
+
   function updateCart() {
     const list = document.getElementById('cart-items');
     list.innerHTML = '';
@@ -152,11 +185,6 @@
     const msg = cart.map(item => `- ${item.productName} (${item.total} DH)` +
       Object.entries(item.extras).map(e => `\n  + ${e[1].qty} x ${e[0]} (${e[1].price} DH)`).join('')).join('%0A');
     document.getElementById('whatsapp-link').href = `https://wa.me/212600000000?text=Commande%20L'gordo%0A${msg}`;
-  }
-
-  function removeFromCart(index) {
-    cart.splice(index, 1);
-    updateCart();
   }
 </script>
 
