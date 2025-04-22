@@ -23,20 +23,55 @@
       padding: 1rem;
     }
     header img { width: 100px; }
-    .menu { padding: 1rem; }
-    .category { margin-top: 2rem; }
-    .category h2 { margin-bottom: 1rem; color: var(--accent); }
+    .menu {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .category {
+      width: 100%;
+    }
+    .category h2 {
+      margin-bottom: 1rem;
+      color: var(--accent);
+      font-size: 1.5rem;
+    }
+    .product-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
     .product {
       background-color: #1a2734;
-      padding: 1rem;
-      margin-bottom: 1rem;
+      padding: 0.6rem;
       border-radius: 1rem;
       cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
-    .product img { width: 100%; border-radius: 0.5rem; }
-    .product h3 { margin: 0.5rem 0 0.2rem; }
-    .product p { font-size: 0.9rem; color: #ccc; }
-    .price { color: var(--accent); font-weight: bold; }
+    .product img {
+      width: 100%;
+      max-height: 100px;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .product h3 {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+    .product .description {
+      font-size: 0.8rem;
+      color: #ccc;
+      margin-bottom: 0.3rem;
+    }
+    .product .price {
+      color: var(--accent);
+      font-weight: bold;
+    }
     .cart {
       position: fixed;
       bottom: 0;
@@ -47,10 +82,21 @@
       border-top: 3px solid var(--secondary);
       max-height: 40vh;
       overflow-y: auto;
+      z-index: 1000;
     }
-    .cart-item { margin-bottom: 1rem; border-bottom: 1px solid #333; padding-bottom: 0.5rem; }
-    .cart-item h4, .cart-item p { margin-bottom: 0.3rem; }
-    .total { margin-top: 1rem; font-size: 1.2rem; color: var(--accent); }
+    .cart-item {
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #333;
+      padding-bottom: 0.5rem;
+    }
+    .cart-item h4, .cart-item p {
+      margin-bottom: 0.3rem;
+    }
+    .total {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: var(--accent);
+    }
     .btn-whatsapp {
       margin-top: 1rem;
       background-color: var(--secondary);
@@ -81,14 +127,19 @@
       max-height: 90vh;
       overflow-y: auto;
     }
-    .extra-category { margin-top: 1rem; }
+    .extra-category {
+      margin-top: 1rem;
+    }
     .extra-category h3 {
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-    .extra-list { display: none; margin-top: 0.5rem; }
+    .extra-list {
+      display: none;
+      margin-top: 0.5rem;
+    }
     .extra-item {
       display: flex;
       justify-content: space-between;
@@ -111,142 +162,44 @@
     <img src="logo.png" alt="Logo L'gordo">
   </header>
   <main class="menu">
-    <section class="category" id="pizzas">
-      <h2>🍕 Pizzas</h2>
-      <div class="product" onclick="document.getElementById('modal').style.display = 'flex'">
-        <img src="LaCarnivore.jpg" alt="Pizza Carnivore">
-        <h3>Pizza Carnivore</h3>
-        <p>Viande hachée, merguez, pepperoni</p>
-        <p class="price">75 DH</p>
+    <div class="category" id="pizza">
+      <h2>🍕 Pizza</h2>
+      <div class="product-list">
+        <div class="product" onclick="document.getElementById('modal').style.display = 'flex'">
+          <img src="LaCarnivore.jpg" alt="Pizza Carnivore">
+          <h3>Pizza Carnivore</h3>
+          <p class="description">Viande hachée, merguez, pepperoni</p>
+          <p class="price">75 DH</p>
+        </div>
       </div>
-    </section>
+    </div>
+
+    <div class="category" id="saroukh">
+      <h2>🌯 Saroukh</h2>
+      <div class="product-list">
+        <!-- Produits à ajouter ici -->
+      </div>
+    </div>
+
+    <div class="category" id="pasta">
+      <h2>🍝 Pasta</h2>
+      <div class="product-list">
+        <!-- Produits à ajouter ici -->
+      </div>
+    </div>
+
+    <div class="category" id="deal">
+      <h2>🎁 Deal</h2>
+      <div class="product-list">
+        <!-- Produits à ajouter ici -->
+      </div>
+    </div>
   </main>
+
   <div class="cart" id="cart">
     <div id="cart-items"></div>
     <div class="total" id="total-price">Total : 0 DH</div>
     <button class="btn-whatsapp" onclick="sendWhatsAppOrder()">Commander via WhatsApp</button>
   </div>
-  <div class="modal" id="modal">
-    <div class="modal-content">
-      <h2>Ajouter des extras</h2>
-      <div class="extra-category">
-        <h3 onclick="toggleExtraList(this)">🥤 Sodas <span>▼</span></h3>
-        <div class="extra-list">
-          <div class="extra-item">
-            <span>Coca</span>
-            <div class="extra-controls">
-              <button onclick="updateExtra('Coca', -1)">-</button>
-              <span id="extra-Coca">0</span>
-              <button onclick="updateExtra('Coca', 1)">+</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="extra-category">
-        <h3 onclick="toggleExtraList(this)">🧀 Extras <span>▼</span></h3>
-        <div class="extra-list">
-          <div class="extra-item">
-            <span>Fromage râpé</span>
-            <div class="extra-controls">
-              <button onclick="updateExtra('Fromage râpé', -1)">-</button>
-              <span id="extra-Fromage râpé">0</span>
-              <button onclick="updateExtra('Fromage râpé', 1)">+</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="extra-category">
-        <h3 onclick="toggleExtraList(this)">🍪 Desserts <span>▼</span></h3>
-        <div class="extra-list">
-          <div class="extra-item">
-            <span>Cookie</span>
-            <div class="extra-controls">
-              <button onclick="updateExtra('Cookie', -1)">-</button>
-              <span id="extra-Cookie">0</span>
-              <button onclick="updateExtra('Cookie', 1)">+</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="btn-whatsapp" onclick="confirmExtras()">Ajouter au panier</button>
-    </div>
-  </div>
-  <script>
-    let cart = [];
-    let selectedExtras = {};
-    function updateExtra(name, delta) {
-      if (!selectedExtras[name]) selectedExtras[name] = 0;
-      selectedExtras[name] += delta;
-      if (selectedExtras[name] < 0) selectedExtras[name] = 0;
-      document.getElementById('extra-' + name).innerText = selectedExtras[name];
-    }
-    function confirmExtras() {
-      const extras = Object.entries(selectedExtras).filter(([_, q]) => q > 0).map(([name, quantity]) => ({ name, price: 5, quantity }));
-      const item = { name: 'Pizza Carnivore', price: 75, quantity: 1, extras };
-      cart.push(item);
-      selectedExtras = {};
-      document.getElementById('modal').style.display = 'none';
-      renderCart();
-    }
-    function renderCart() {
-      const cartItems = document.getElementById('cart-items');
-      const totalPrice = document.getElementById('total-price');
-      cartItems.innerHTML = '';
-      let total = 0;
-      cart.forEach(item => {
-        const extrasText = item.extras && item.extras.length ? '<ul>' + item.extras.map(e => `<li>${e.quantity} x ${e.name} (${e.price} DH)</li>`).join('') + '</ul>' : '';
-        const itemTotal = item.quantity * item.price + (item.extras ? item.extras.reduce((s, e) => s + e.price * e.quantity, 0) : 0);
-        const itemDiv = document.createElement('div');
-        itemDiv.className = 'cart-item';
-        itemDiv.innerHTML = `
-          <h4>${item.name}</h4>
-          <p>Prix unitaire : ${item.price} DH</p>
-          <p>Quantité :
-            <button onclick="updateQuantity('${item.name}', -1)">-</button>
-            ${item.quantity}
-            <button onclick="updateQuantity('${item.name}', 1)">+</button>
-            <button onclick="removeFromCart('${item.name}')">✖</button>
-          </p>
-          ${extrasText}
-          <p>Sous-total : ${itemTotal} DH</p>
-        `;
-        cartItems.appendChild(itemDiv);
-        total += itemTotal;
-      });
-      totalPrice.textContent = `Total : ${total} DH`;
-    }
-    function removeFromCart(name) {
-      cart = cart.filter(p => p.name !== name);
-      renderCart();
-    }
-    function updateQuantity(name, delta) {
-      const item = cart.find(p => p.name === name);
-      if (item) {
-        item.quantity += delta;
-        if (item.quantity <= 0) removeFromCart(name);
-        else renderCart();
-      }
-    }
-    function toggleExtraList(element) {
-      const list = element.nextElementSibling;
-      list.style.display = list.style.display === 'none' || !list.style.display ? 'block' : 'none';
-    }
-    function sendWhatsAppOrder() {
-      if (cart.length === 0) return;
-      let message = "Bonjour, je souhaite commander :%0A";
-      cart.forEach(item => {
-        message += `- ${item.quantity} x ${item.name} (%20${item.quantity * item.price} DH)%0A`;
-        if (item.extras && item.extras.length) {
-          item.extras.forEach(e => {
-            message += `   + ${e.quantity} x ${e.name} (%20${e.price * e.quantity} DH)%0A`;
-          });
-        }
-      });
-      const total = cart.reduce((sum, item) => sum + item.quantity * item.price + (item.extras ? item.extras.reduce((s, e) => s + e.quantity * e.price, 0) : 0), 0);
-      message += `%0ATotal : ${total} DH`;
-      const url = `https://wa.me/?text=${message}`;
-      window.open(url, '_blank');
-    }
-  </script>
 </body>
 </html>
