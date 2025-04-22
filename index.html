@@ -23,7 +23,6 @@
       padding: 1rem;
     }
     header img { width: 100px; }
-
     .tabs {
       display: flex;
       justify-content: center;
@@ -40,7 +39,6 @@
       cursor: pointer;
       font-size: 1rem;
     }
-
     .menu {
       padding: 1rem;
       display: flex;
@@ -48,7 +46,7 @@
       gap: 2rem;
     }
     .category {
-      scroll-margin-top: 100px;
+      scroll-margin-top: 80px;
     }
     .category h2 {
       margin-bottom: 1rem;
@@ -85,7 +83,6 @@
       color: var(--accent);
       font-weight: bold;
     }
-
     .cart {
       position: fixed;
       bottom: 0;
@@ -102,13 +99,11 @@
       border-bottom: 1px solid #333;
       margin-bottom: 1rem;
     }
-
     .total {
       margin-top: 1rem;
       font-size: 1.2rem;
       color: var(--accent);
     }
-
     .btn-whatsapp {
       margin-top: 1rem;
       background-color: var(--secondary);
@@ -120,7 +115,6 @@
       cursor: pointer;
       width: 100%;
     }
-
     .modal {
       display: none;
       position: fixed;
@@ -149,28 +143,17 @@
       font-size: 1.5rem;
       cursor: pointer;
     }
-    .extra-category h3 {
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 1rem;
-    }
-    .extra-list {
-      display: none;
-      margin-top: 0.5rem;
-    }
     .extra-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin: 0.3rem 0;
+      margin: 0.5rem 0;
     }
     .extra-controls button {
       background-color: var(--secondary);
       color: white;
       border: none;
-      padding: 0.3rem 0.7rem;
+      padding: 0.3rem 0.6rem;
       margin: 0 0.2rem;
       border-radius: 0.3rem;
       cursor: pointer;
@@ -181,14 +164,12 @@
   <header>
     <img src="logo.png" alt="Logo L'gordo">
   </header>
-
   <div class="tabs">
     <button onclick="scrollToCategory('pizza')">🍕 Pizza</button>
     <button onclick="scrollToCategory('saroukh')">🌯 Saroukh</button>
     <button onclick="scrollToCategory('pasta')">🍝 Pasta</button>
     <button onclick="scrollToCategory('deal')">🎁 Deal</button>
   </div>
-
   <main class="menu">
     <div class="category" id="pizza">
       <h2>🍕 Pizza</h2>
@@ -201,61 +182,61 @@
         </div>
       </div>
     </div>
-    <div class="category" id="saroukh"><h2>🌯 Saroukh</h2><div class="product-list"></div></div>
-    <div class="category" id="pasta"><h2>🍝 Pasta</h2><div class="product-list"></div></div>
-    <div class="category" id="deal"><h2>🎁 Deal</h2><div class="product-list"></div></div>
+    <div class="category" id="saroukh">
+      <h2>🌯 Saroukh</h2>
+      <div class="product-list"></div>
+    </div>
+    <div class="category" id="pasta">
+      <h2>🍝 Pasta</h2>
+      <div class="product-list"></div>
+    </div>
+    <div class="category" id="deal">
+      <h2>🎁 Deal</h2>
+      <div class="product-list"></div>
+    </div>
   </main>
-
   <div class="cart" id="cart">
     <div id="cart-items"></div>
     <div class="total" id="total-price">Total : 0 DH</div>
     <button class="btn-whatsapp">Commander via WhatsApp</button>
   </div>
-
   <div class="modal" id="modal">
     <div class="modal-content">
       <button class="close-btn" onclick="closeModal()">×</button>
       <h2>Ajouter des extras</h2>
 
       <div class="extra-category">
-        <h3 onclick="toggleExtraList(this)">🥤 Sodas <span>▼</span></h3>
-        <div class="extra-list">
-          <div class="extra-item"><span>Pepsi - 10 DH</span><div class="extra-controls"><button onclick="updateExtra('Pepsi', -1)">-</button><span id="extra-Pepsi">0</span><button onclick="updateExtra('Pepsi', 1)">+</button></div></div>
-          <div class="extra-item"><span>Mirinda Orange - 10 DH</span><div class="extra-controls"><button onclick="updateExtra('Mirinda Orange', -1)">-</button><span id="extra-Mirinda Orange">0</span><button onclick="updateExtra('Mirinda Orange', 1)">+</button></div></div>
-          <div class="extra-item"><span>Mirinda Pomme - 10 DH</span><div class="extra-controls"><button onclick="updateExtra('Mirinda Pomme', -1)">-</button><span id="extra-Mirinda Pomme">0</span><button onclick="updateExtra('Mirinda Pomme', 1)">+</button></div></div>
-          <div class="extra-item"><span>Mirinda Citron - 10 DH</span><div class="extra-controls"><button onclick="updateExtra('Mirinda Citron', -1)">-</button><span id="extra-Mirinda Citron">0</span><button onclick="updateExtra('Mirinda Citron', 1)">+</button></div></div>
-          <div class="extra-item"><span>7up - 10 DH</span><div class="extra-controls"><button onclick="updateExtra('7up', -1)">-</button><span id="extra-7up">0</span><button onclick="updateExtra('7up', 1)">+</button></div></div>
-          <div class="extra-item"><span>Oulmes - 10 DH</span><div class="extra-controls"><button onclick="updateExtra('Oulmes', -1)">-</button><span id="extra-Oulmes">0</span><button onclick="updateExtra('Oulmes', 1)">+</button></div></div>
-        </div>
+        <h3>🥤 Sodas</h3>
+        <div class="extra-item"><span>Pepsi (10 DH)</span><div class="extra-controls"><button onclick="updateExtra('Pepsi', -1)">-</button><span id="extra-Pepsi">0</span><button onclick="updateExtra('Pepsi', 1)">+</button></div></div>
+        <div class="extra-item"><span>Mirinda Orange (10 DH)</span><div class="extra-controls"><button onclick="updateExtra('Mirinda Orange', -1)">-</button><span id="extra-Mirinda Orange">0</span><button onclick="updateExtra('Mirinda Orange', 1)">+</button></div></div>
+        <div class="extra-item"><span>Mirinda Pomme (10 DH)</span><div class="extra-controls"><button onclick="updateExtra('Mirinda Pomme', -1)">-</button><span id="extra-Mirinda Pomme">0</span><button onclick="updateExtra('Mirinda Pomme', 1)">+</button></div></div>
+        <div class="extra-item"><span>Mirinda Citron (10 DH)</span><div class="extra-controls"><button onclick="updateExtra('Mirinda Citron', -1)">-</button><span id="extra-Mirinda Citron">0</span><button onclick="updateExtra('Mirinda Citron', 1)">+</button></div></div>
+        <div class="extra-item"><span>7up (10 DH)</span><div class="extra-controls"><button onclick="updateExtra('7up', -1)">-</button><span id="extra-7up">0</span><button onclick="updateExtra('7up', 1)">+</button></div></div>
+        <div class="extra-item"><span>Oulmes (10 DH)</span><div class="extra-controls"><button onclick="updateExtra('Oulmes', -1)">-</button><span id="extra-Oulmes">0</span><button onclick="updateExtra('Oulmes', 1)">+</button></div></div>
       </div>
 
       <div class="extra-category">
-        <h3 onclick="toggleExtraList(this)">🧀 Extras <span>▼</span></h3>
-        <div class="extra-list">
-          <div class="extra-item"><span>Fromage - 12 DH</span><div class="extra-controls"><button onclick="updateExtra('Fromage', -1)">-</button><span id="extra-Fromage">0</span><button onclick="updateExtra('Fromage', 1)">+</button></div></div>
-          <div class="extra-item"><span>Viande hachée - 15 DH</span><div class="extra-controls"><button onclick="updateExtra('Viande hachée', -1)">-</button><span id="extra-Viande hachée">0</span><button onclick="updateExtra('Viande hachée', 1)">+</button></div></div>
-          <div class="extra-item"><span>Merguez - 15 DH</span><div class="extra-controls"><button onclick="updateExtra('Merguez', -1)">-</button><span id="extra-Merguez">0</span><button onclick="updateExtra('Merguez', 1)">+</button></div></div>
-          <div class="extra-item"><span>Pepperoni - 17 DH</span><div class="extra-controls"><button onclick="updateExtra('Pepperoni', -1)">-</button><span id="extra-Pepperoni">0</span><button onclick="updateExtra('Pepperoni', 1)">+</button></div></div>
-          <div class="extra-item"><span>Dinde fumée - 15 DH</span><div class="extra-controls"><button onclick="updateExtra('Dinde fumée', -1)">-</button><span id="extra-Dinde fumée">0</span><button onclick="updateExtra('Dinde fumée', 1)">+</button></div></div>
-        </div>
+        <h3>🧀 Extras</h3>
+        <div class="extra-item"><span>Fromage (12 DH)</span><div class="extra-controls"><button onclick="updateExtra('Fromage', -1)">-</button><span id="extra-Fromage">0</span><button onclick="updateExtra('Fromage', 1)">+</button></div></div>
+        <div class="extra-item"><span>Viande hachée (15 DH)</span><div class="extra-controls"><button onclick="updateExtra('Viande hachée', -1)">-</button><span id="extra-Viande hachée">0</span><button onclick="updateExtra('Viande hachée', 1)">+</button></div></div>
+        <div class="extra-item"><span>Merguez (15 DH)</span><div class="extra-controls"><button onclick="updateExtra('Merguez', -1)">-</button><span id="extra-Merguez">0</span><button onclick="updateExtra('Merguez', 1)">+</button></div></div>
+        <div class="extra-item"><span>Pepperoni (17 DH)</span><div class="extra-controls"><button onclick="updateExtra('Pepperoni', -1)">-</button><span id="extra-Pepperoni">0</span><button onclick="updateExtra('Pepperoni', 1)">+</button></div></div>
+        <div class="extra-item"><span>Dinde fumée (15 DH)</span><div class="extra-controls"><button onclick="updateExtra('Dinde fumée', -1)">-</button><span id="extra-Dinde fumée">0</span><button onclick="updateExtra('Dinde fumée', 1)">+</button></div></div>
       </div>
 
       <div class="extra-category">
-        <h3 onclick="toggleExtraList(this)">🍪 Desserts <span>▼</span></h3>
-        <div class="extra-list">
-          <div class="extra-item"><span>Lotus - 25 DH</span><div class="extra-controls"><button onclick="updateExtra('Lotus', -1)">-</button><span id="extra-Lotus">0</span><button onclick="updateExtra('Lotus', 1)">+</button></div></div>
-          <div class="extra-item"><span>Oreo - 25 DH</span><div class="extra-controls"><button onclick="updateExtra('Oreo', -1)">-</button><span id="extra-Oreo">0</span><button onclick="updateExtra('Oreo', 1)">+</button></div></div>
-        </div>
+        <h3>🍪 Desserts</h3>
+        <div class="extra-item"><span>Lotus (25 DH)</span><div class="extra-controls"><button onclick="updateExtra('Lotus', -1)">-</button><span id="extra-Lotus">0</span><button onclick="updateExtra('Lotus', 1)">+</button></div></div>
+        <div class="extra-item"><span>Oreo (25 DH)</span><div class="extra-controls"><button onclick="updateExtra('Oreo', -1)">-</button><span id="extra-Oreo">0</span><button onclick="updateExtra('Oreo', 1)">+</button></div></div>
       </div>
 
-      <button class="btn-whatsapp" onclick="confirmExtras()">Ajouter au panier</button>
+      <button class="btn-whatsapp" style="margin-top: 1rem;" onclick="confirmExtras()">Ajouter au panier</button>
     </div>
   </div>
-
   <script>
     function scrollToCategory(id) {
       const section = document.getElementById(id);
-      section.scrollIntoView({ behavior: 'smooth' });
+      if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
     function openModal() {
       document.getElementById('modal').style.display = 'flex';
@@ -263,71 +244,75 @@
     function closeModal() {
       document.getElementById('modal').style.display = 'none';
     }
-
-    function toggleExtraList(el) {
-      const list = el.nextElementSibling;
-      list.style.display = list.style.display === 'none' ? 'block' : 'none';
-    }
-
     let selectedExtras = {};
     let cart = [];
-
     function updateExtra(name, delta) {
       if (!selectedExtras[name]) selectedExtras[name] = 0;
       selectedExtras[name] += delta;
       if (selectedExtras[name] < 0) selectedExtras[name] = 0;
       document.getElementById('extra-' + name).innerText = selectedExtras[name];
     }
-
     function confirmExtras() {
       const extras = Object.entries(selectedExtras)
         .filter(([_, q]) => q > 0)
         .map(([name, quantity]) => {
-          let price = 5;
-          if (['Pepsi','7up','Hawai','Mirinda Orange','Mirinda Pomme','Mirinda Citron','Oulmes'].includes(name)) price = 10;
-          if (name === 'Fromage') price = 12;
-          if (['Viande hachée','Merguez','Dinde fumée'].includes(name)) price = 15;
-          if (name === 'Pepperoni') price = 17;
-          if (['Lotus','Oreo'].includes(name)) price = 25;
+          let price = 0;
+          if (["Pepsi","Mirinda Orange","Mirinda Pomme","Mirinda Citron","7up","Oulmes"].includes(name)) price = 10;
+          else if (name === 'Fromage') price = 12;
+          else if (["Viande hachée","Merguez","Dinde fumée"].includes(name)) price = 15;
+          else if (name === 'Pepperoni') price = 17;
+          else if (["Lotus","Oreo"].includes(name)) price = 25;
           return { name, quantity, price };
         });
-
       const item = {
         name: 'Pizza Carnivore',
         price: 75,
         quantity: 1,
         extras: extras
       };
-
       cart.push(item);
+      selectedExtras = {};
       renderCart();
       closeModal();
-      selectedExtras = {};
     }
-
     function renderCart() {
       const cartItems = document.getElementById('cart-items');
       const totalPrice = document.getElementById('total-price');
       cartItems.innerHTML = '';
       let total = 0;
-
-      cart.forEach(item => {
+      cart.forEach((item, index) => {
         const extrasText = item.extras && item.extras.length
           ? '<ul>' + item.extras.map(e => `<li>${e.quantity} x ${e.name} (${e.price} DH)</li>`).join('') + '</ul>'
           : '';
-        const itemTotal = item.price + (item.extras ? item.extras.reduce((sum, e) => sum + e.price * e.quantity, 0) : 0);
+        const itemTotal = item.price * item.quantity + (item.extras ? item.extras.reduce((sum, e) => sum + e.price * e.quantity, 0) : 0);
         cartItems.innerHTML += `
           <div class="cart-item">
             <h4>${item.name}</h4>
-            <p>Quantité : ${item.quantity}</p>
+            <p>
+              Quantité :
+              <button onclick="updateQuantity(${index}, -1)">-</button>
+              ${item.quantity}
+              <button onclick="updateQuantity(${index}, 1)">+</button>
+              <button onclick="removeFromCart(${index})">✖</button>
+            </p>
             ${extrasText}
             <p>Sous-total : ${itemTotal} DH</p>
           </div>
         `;
         total += itemTotal;
       });
-
       totalPrice.textContent = `Total : ${total} DH`;
+    }
+    function updateQuantity(index, delta) {
+      cart[index].quantity += delta;
+      if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+      }
+      renderCart();
+    }
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      renderCart();
     }
   </script>
 </body>
