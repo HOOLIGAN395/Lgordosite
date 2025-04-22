@@ -174,12 +174,19 @@
     <div class="category" id="pizza">
       <h2>🍕 Pizza</h2>
       <div class="product-list">
-        <div class="product" onclick="openModal()">
+        <div class="product" onclick="openModal(this)" data-name="Pizza Carnivore" data-description="Viande hachée, merguez, pepperoni" data-price="75" data-image="LaCarnivore.jpg">
           <img src="LaCarnivore.jpg" alt="Pizza Carnivore">
           <h3>Pizza Carnivore</h3>
           <p class="description">Viande hachée, merguez, pepperoni</p>
           <p class="price">75 DH</p>
         </div>
+        <div class="product" onclick="openModal(this)" data-name="Pizza Poulet Alfredo" data-description="Sauce blanche, poulet, oignon confit, poivrons confits, champignons, origan, olive noire, mozzarella" data-price="64" data-image="PouletAlfredo.jpg">
+          <img src="PouletAlfredo.jpg" alt="Pizza Poulet Alfredo">
+          <h3>Pizza Poulet Alfredo</h3>
+          <p class="description">Sauce blanche, poulet, oignon confit, poivrons, champignons...</p>
+          <p class="price">64 DH</p>
+        </div>
+        
       </div>
     </div>
     <div class="category" id="saroukh">
@@ -247,8 +254,20 @@
       const section = document.getElementById(id);
       if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-    function openModal() {
-      document.getElementById('modal').style.display = 'flex';
+    function openModal(element) {
+  const name = element.getAttribute('data-name');
+  const description = element.getAttribute('data-description');
+  const price = parseFloat(element.getAttribute('data-price'));
+  const image = element.getAttribute('data-image');
+  
+  document.querySelector('#modal img').src = image;
+  document.querySelector('#modal img').alt = name;
+  document.querySelector('#modal .description').textContent = description;
+
+  document.getElementById('modal').setAttribute('data-name', name);
+  document.getElementById('modal').setAttribute('data-price', price);
+
+  document.getElementById('modal').style.display = 'flex';
     }
     function closeModal() {
       document.getElementById('modal').style.display = 'none';
@@ -273,9 +292,11 @@
           else if (["Lotus","Oreo"].includes(name)) price = 25;
           return { name, quantity, price };
         });
+      const name = document.getElementById('modal').getAttribute('data-name');
+      const price = parseFloat(document.getElementById('modal').getAttribute('data-price'));
       const item = {
-        name: 'Pizza Carnivore',
-        price: 75,
+        name: name,
+        price: price,
         quantity: 1,
         extras: extras
       };
