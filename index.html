@@ -12,6 +12,16 @@
       --accent: #ffd500;
       --white: #ffffff;
     }
+    .modal-content {
+  background-color: #1a2734;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  border-radius: 1rem;
+}
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Quicksand', sans-serif;
@@ -124,10 +134,7 @@
       align-items: center;
       z-index: 2000;
     }
-    $1
-  max-height: 90vh;
-  overflow-y: auto;
-}
+    
     .modal-content h2 {
   color: var(--accent);
   margin-bottom: 1rem;
@@ -262,16 +269,15 @@ input[type="checkbox"] {
   </div>
       </div>
       <div class="extra-category">
-        <h3 onclick="toggleExtraList(this)">🍪 Desserts <span>▼</span></h3>
-        <div class="extra-list" style="display: none;">
-  <div class="extra-item"><span>Lotus (25 DH)</span><div class="extra-controls"><button onclick="updateExtra('Lotus', -1)">-</button><span id="extra-Lotus">0</span><button onclick="updateExtra('Lotus', 1)">+</button></div></div>
+  <h3 onclick="toggleExtraList(this)">🍪 Desserts <span>▼</span></h3>
+  <div class="extra-list" style="display: none;">
+    <div class="extra-item"><span>Lotus (25 DH)</span><div class="extra-controls"><button onclick="updateExtra('Lotus', -1)">-</button><span id="extra-Lotus">0</span><button onclick="updateExtra('Lotus', 1)">+</button></div></div>
+    <div class="extra-item"><span>Oreo (25 DH)</span><div class="extra-controls"><button onclick="updateExtra('Oreo', -1)">-</button><span id="extra-Oreo">0</span><button onclick="updateExtra('Oreo', 1)">+</button></div></div>
   </div>
-      </div>
-    </div></div>
-        <div class="extra-item"><span>Oreo (25 DH)</span><div class="extra-controls"><button onclick="updateExtra('Oreo', -1)">-</button><span id="extra-Oreo">0</span><button onclick="updateExtra('Oreo', 1)">+</button></div></div>
-      </div>
-
-      <button class="btn-whatsapp" style="margin-top: 1rem;" onclick="confirmExtras()">Ajouter au panier</button>
+</div>
+<button class="btn-whatsapp" style="margin-top: 1rem;" onclick="confirmExtras()">Ajouter au panier</button>
+    </div>
+  </div>
     </div>
   </div>
   <script>
