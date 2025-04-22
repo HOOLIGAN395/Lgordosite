@@ -206,7 +206,8 @@
       <h2>Ajouter des extras</h2>
 
       <div class="extra-category">
-        <h3>🥤 Sodas</h3>
+        <h3 onclick="toggleExtraList(this)">🥤 Sodas <span>▼</span></h3>
+        <div class="extra-list" style="display: none;">
         <div class="extra-item"><span>Pepsi (10 DH)</span><div class="extra-controls"><button onclick="updateExtra('Pepsi', -1)">-</button><span id="extra-Pepsi">0</span><button onclick="updateExtra('Pepsi', 1)">+</button></div></div>
         <div class="extra-item"><span>Mirinda Orange (10 DH)</span><div class="extra-controls"><button onclick="updateExtra('Mirinda Orange', -1)">-</button><span id="extra-Mirinda Orange">0</span><button onclick="updateExtra('Mirinda Orange', 1)">+</button></div></div>
         <div class="extra-item"><span>Mirinda Pomme (10 DH)</span><div class="extra-controls"><button onclick="updateExtra('Mirinda Pomme', -1)">-</button><span id="extra-Mirinda Pomme">0</span><button onclick="updateExtra('Mirinda Pomme', 1)">+</button></div></div>
@@ -214,18 +215,20 @@
         <div class="extra-item"><span>7up (10 DH)</span><div class="extra-controls"><button onclick="updateExtra('7up', -1)">-</button><span id="extra-7up">0</span><button onclick="updateExtra('7up', 1)">+</button></div></div>
         <div class="extra-item"><span>Oulmes (10 DH)</span><div class="extra-controls"><button onclick="updateExtra('Oulmes', -1)">-</button><span id="extra-Oulmes">0</span><button onclick="updateExtra('Oulmes', 1)">+</button></div></div>
       </div>
-
+      </div>
       <div class="extra-category">
-        <h3>🧀 Extras</h3>
+        <h3 onclick="toggleExtraList(this)">🧀 Extras <span>▼</span></h3>
+        <div class="extra-list" style="display: none;">
         <div class="extra-item"><span>Fromage (12 DH)</span><div class="extra-controls"><button onclick="updateExtra('Fromage', -1)">-</button><span id="extra-Fromage">0</span><button onclick="updateExtra('Fromage', 1)">+</button></div></div>
         <div class="extra-item"><span>Viande hachée (15 DH)</span><div class="extra-controls"><button onclick="updateExtra('Viande hachée', -1)">-</button><span id="extra-Viande hachée">0</span><button onclick="updateExtra('Viande hachée', 1)">+</button></div></div>
         <div class="extra-item"><span>Merguez (15 DH)</span><div class="extra-controls"><button onclick="updateExtra('Merguez', -1)">-</button><span id="extra-Merguez">0</span><button onclick="updateExtra('Merguez', 1)">+</button></div></div>
         <div class="extra-item"><span>Pepperoni (17 DH)</span><div class="extra-controls"><button onclick="updateExtra('Pepperoni', -1)">-</button><span id="extra-Pepperoni">0</span><button onclick="updateExtra('Pepperoni', 1)">+</button></div></div>
         <div class="extra-item"><span>Dinde fumée (15 DH)</span><div class="extra-controls"><button onclick="updateExtra('Dinde fumée', -1)">-</button><span id="extra-Dinde fumée">0</span><button onclick="updateExtra('Dinde fumée', 1)">+</button></div></div>
       </div>
-
+      </div>
       <div class="extra-category">
-        <h3>🍪 Desserts</h3>
+        <h3 onclick="toggleExtraList(this)">🍪 Desserts <span>▼</span></h3>
+        <div class="extra-list" style="display: none;">
         <div class="extra-item"><span>Lotus (25 DH)</span><div class="extra-controls"><button onclick="updateExtra('Lotus', -1)">-</button><span id="extra-Lotus">0</span><button onclick="updateExtra('Lotus', 1)">+</button></div></div>
         <div class="extra-item"><span>Oreo (25 DH)</span><div class="extra-controls"><button onclick="updateExtra('Oreo', -1)">-</button><span id="extra-Oreo">0</span><button onclick="updateExtra('Oreo', 1)">+</button></div></div>
       </div>
@@ -234,6 +237,10 @@
     </div>
   </div>
   <script>
+    function toggleExtraList(el) {
+      const list = el.nextElementSibling;
+      list.style.display = list.style.display === 'none' ? 'block' : 'none';
+    }
     function scrollToCategory(id) {
       const section = document.getElementById(id);
       if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
