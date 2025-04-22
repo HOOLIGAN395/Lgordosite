@@ -202,6 +202,8 @@
   </div>
   <div class="modal" id="modal">
     <div class="modal-content">
+      <img src="LaCarnivore.jpg" alt="Pizza Carnivore" style="width: 100%; border-radius: 1rem; margin-bottom: 1rem; object-fit: cover; max-height: 180px;">
+      <p class="description" style="margin-bottom: 1rem; text-align: center; color: #ccc;">Viande hachée, merguez, pepperoni</p>
       <button class="close-btn" onclick="closeModal()">×</button>
       <h2>Ajouter des extras</h2>
 
@@ -321,6 +323,32 @@
       cart.splice(index, 1);
       renderCart();
     }
-  </script>
+  function generateWhatsAppMessage() {
+  let message = "*Commande L'gordo*%0A";
+  let total = 0;
+  cart.forEach(item => {
+    message += `
+*${item.quantity} x ${item.name}*`;
+    if (item.extras && item.extras.length > 0) {
+      item.extras.forEach(extra => {
+        message += `%0A  - ${extra.quantity} x ${extra.name} (${extra.price} DH)`;
+      });
+    }
+    const itemTotal = item.price * item.quantity + (item.extras ? item.extras.reduce((sum, e) => sum + e.price * e.quantity, 0) : 0);
+    message += `%0A_Sous-total: ${itemTotal} DH_%0A`;
+    total += itemTotal;
+  });
+  message += `
+*Total : ${total} DH*`;
+  return message;
+}
+
+document.querySelector('.btn-whatsapp').addEventListener('click', () => {
+  const phoneNumber = '212600000000'; // Remplace avec ton numéro WhatsApp
+  const message = generateWhatsAppMessage();
+  const url = `https://wa.me/${phoneNumber}?text=${message}`;
+  window.open(url, '_blank');
+});
+</script>
 </body>
 </html>
