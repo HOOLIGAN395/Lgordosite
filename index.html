@@ -158,7 +158,25 @@
       border-radius: 0.3rem;
       cursor: pointer;
     }
-  </style>
+  label.extra-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.5rem 0;
+  background: #223344;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  justify-content: flex-start;
+}
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--secondary);
+  cursor: pointer;
+}
+</style>
 </head>
 <body>
   <header>
@@ -174,10 +192,10 @@
     <div class="category" id="pizza">
       <h2>🍕 Pizza</h2>
       <div class="product-list">
-        <div class="product" onclick="openModal(this)" data-name="Pizza Carnivore" data-description="Viande hachée, merguez, pepperoni" data-price="75" data-image="LaCarnivore.jpg">
+        <div class="product" onclick="openModal(this)" data-name="Pizza Carnivore" data-description="Sauce tomate, merguez de bœuf, viande hachée de bœuf, pepperoni, oignon, poivrons, champignons, tomates cerises, origan, olive noir, mozzarella" data-price="75" data-image="LaCarnivore.jpg">
           <img src="LaCarnivore.jpg" alt="Pizza Carnivore">
           <h3>Pizza Carnivore</h3>
-          <p class="description">Viande hachée, merguez, pepperoni</p>
+          <p class="description">Sauce tomate, merguez de bœuf, viande hachée de bœuf, pepperoni, oignon, poivrons, champignons, tomates cerises, origan, olive noir, mozzarella</p>
           <p class="price">75 DH</p>
         </div>
         <div class="product" onclick="openModal(this)" data-name="Pizza Poulet Alfredo" data-description="Sauce blanche, poulet, oignon confit, poivrons confits, champignons, origan, olive noire, mozzarella" data-price="64" data-image="PouletAlfredo.jpg">
@@ -226,19 +244,22 @@
       </div>
       </div>
       <div class="extra-category">
-        <h3 onclick="toggleExtraList(this)">🧀 Extras <span>▼</span></h3>
-        <div class="extra-list" style="display: none;">
-        <div class="extra-item"><span>Fromage (12 DH)</span><div class="extra-controls"><button onclick="updateExtra('Fromage', -1)">-</button><span id="extra-Fromage">0</span><button onclick="updateExtra('Fromage', 1)">+</button></div></div>
-        <div class="extra-item"><span>Viande hachée (15 DH)</span><div class="extra-controls"><button onclick="updateExtra('Viande hachée', -1)">-</button><span id="extra-Viande hachée">0</span><button onclick="updateExtra('Viande hachée', 1)">+</button></div></div>
-        <div class="extra-item"><span>Merguez (15 DH)</span><div class="extra-controls"><button onclick="updateExtra('Merguez', -1)">-</button><span id="extra-Merguez">0</span><button onclick="updateExtra('Merguez', 1)">+</button></div></div>
-        <div class="extra-item"><span>Pepperoni (17 DH)</span><div class="extra-controls"><button onclick="updateExtra('Pepperoni', -1)">-</button><span id="extra-Pepperoni">0</span><button onclick="updateExtra('Pepperoni', 1)">+</button></div></div>
-        <div class="extra-item"><span>Dinde fumée (15 DH)</span><div class="extra-controls"><button onclick="updateExtra('Dinde fumée', -1)">-</button><span id="extra-Dinde fumée">0</span><button onclick="updateExtra('Dinde fumée', 1)">+</button></div></div>
-      </div>
+  <h3 onclick="toggleExtraList(this)">🧀 Extras <span>▼</span></h3>
+  <div class="extra-list" style="display: none;">
+    <label class="extra-item"><input type="checkbox" name="extra-checkbox" value="Fromage" data-price="12"> Fromage (12 DH)</label>
+    <label class="extra-item"><input type="checkbox" name="extra-checkbox" value="Viande hachée" data-price="15"> Viande hachée (15 DH)</label>
+    <label class="extra-item"><input type="checkbox" name="extra-checkbox" value="Merguez" data-price="15"> Merguez (15 DH)</label>
+    <label class="extra-item"><input type="checkbox" name="extra-checkbox" value="Pepperoni" data-price="17"> Pepperoni (17 DH)</label>
+    <label class="extra-item"><input type="checkbox" name="extra-checkbox" value="Dinde fumée" data-price="15"> Dinde fumée (15 DH)</label>
+  </div>
       </div>
       <div class="extra-category">
         <h3 onclick="toggleExtraList(this)">🍪 Desserts <span>▼</span></h3>
         <div class="extra-list" style="display: none;">
-        <div class="extra-item"><span>Lotus (25 DH)</span><div class="extra-controls"><button onclick="updateExtra('Lotus', -1)">-</button><span id="extra-Lotus">0</span><button onclick="updateExtra('Lotus', 1)">+</button></div></div>
+          <div class="extra-item"><span>Lotus (25 DH)</span><div class="extra-controls"><button onclick="updateExtra('Lotus', -1)">-</button><span id="extra-Lotus">0</span><button onclick="updateExtra('Lotus', 1)">+</button></div></div>
+          <div class="extra-item"><span>Oreo (25 DH)</span><div class="extra-controls"><button onclick="updateExtra('Oreo', -1)">-</button><span id="extra-Oreo">0</span><button onclick="updateExtra('Oreo', 1)">+</button></div></div>
+        </div>
+      </div></div>
         <div class="extra-item"><span>Oreo (25 DH)</span><div class="extra-controls"><button onclick="updateExtra('Oreo', -1)">-</button><span id="extra-Oreo">0</span><button onclick="updateExtra('Oreo', 1)">+</button></div></div>
       </div>
 
@@ -286,12 +307,12 @@
         .map(([name, quantity]) => {
           let price = 0;
           if (["Pepsi","Mirinda Orange","Mirinda Pomme","Mirinda Citron","7up","Oulmes"].includes(name)) price = 10;
-          else if (name === 'Fromage') price = 12;
-          else if (["Viande hachée","Merguez","Dinde fumée"].includes(name)) price = 15;
-          else if (name === 'Pepperoni') price = 17;
           else if (["Lotus","Oreo"].includes(name)) price = 25;
           return { name, quantity, price };
         });
+      document.querySelectorAll('input[name="extra-checkbox"]:checked').forEach(cb => {
+        extras.push({ name: cb.value, quantity: 1, price: parseFloat(cb.dataset.price) });
+      });
       const name = document.getElementById('modal').getAttribute('data-name');
       const price = parseFloat(document.getElementById('modal').getAttribute('data-price'));
       const item = {
