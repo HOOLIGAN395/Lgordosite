@@ -124,15 +124,23 @@
       align-items: center;
       z-index: 2000;
     }
-    .modal-content {
-      background-color: #1a2734;
-      padding: 2rem;
-      border-radius: 1rem;
-      width: 90%;
-      max-width: 400px;
-      position: relative;
-    }
-    .modal-content h2 { color: var(--accent); margin-bottom: 1rem; }
+    $1
+  max-height: 90vh;
+  overflow-y: auto;
+}
+    .modal-content h2 {
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+.modal-content {
+  background-color: #1a2734;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2rem;
+}
     .modal-content .close-btn {
       position: absolute;
       top: 10px;
@@ -256,10 +264,10 @@ input[type="checkbox"] {
       <div class="extra-category">
         <h3 onclick="toggleExtraList(this)">🍪 Desserts <span>▼</span></h3>
         <div class="extra-list" style="display: none;">
-          <div class="extra-item"><span>Lotus (25 DH)</span><div class="extra-controls"><button onclick="updateExtra('Lotus', -1)">-</button><span id="extra-Lotus">0</span><button onclick="updateExtra('Lotus', 1)">+</button></div></div>
-          <div class="extra-item"><span>Oreo (25 DH)</span><div class="extra-controls"><button onclick="updateExtra('Oreo', -1)">-</button><span id="extra-Oreo">0</span><button onclick="updateExtra('Oreo', 1)">+</button></div></div>
-        </div>
-      </div></div>
+  <div class="extra-item"><span>Lotus (25 DH)</span><div class="extra-controls"><button onclick="updateExtra('Lotus', -1)">-</button><span id="extra-Lotus">0</span><button onclick="updateExtra('Lotus', 1)">+</button></div></div>
+  </div>
+      </div>
+    </div></div>
         <div class="extra-item"><span>Oreo (25 DH)</span><div class="extra-controls"><button onclick="updateExtra('Oreo', -1)">-</button><span id="extra-Oreo">0</span><button onclick="updateExtra('Oreo', 1)">+</button></div></div>
       </div>
 
