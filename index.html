@@ -12,16 +12,6 @@
       --accent: #ffd500;
       --white: #ffffff;
     }
-    .modal-content {
-  background-color: #1a2734;
-  max-height: 90vh;
-  overflow-y: auto;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  padding: 2rem;
-  border-radius: 1rem;
-}
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Quicksand', sans-serif;
@@ -31,8 +21,10 @@
     header {
       text-align: center;
       padding: 1rem;
+      background: #1a2734;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
     }
-    header img { width: 100px; }
+    header img { width: 90px; border-radius: 50%; }
     .tabs {
       display: flex;
       justify-content: center;
@@ -44,10 +36,14 @@
       background-color: var(--secondary);
       border: none;
       color: var(--white);
-      padding: 0.5rem 1rem;
-      border-radius: 1rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: 9999px;
       cursor: pointer;
       font-size: 1rem;
+      transition: background 0.3s;
+    }
+    .tabs button:hover {
+      background-color: #c99c3d;
     }
     .menu {
       padding: 1rem;
@@ -65,33 +61,38 @@
     }
     .product-list {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
       gap: 1rem;
     }
     .product {
       background-color: #1a2734;
-      padding: 0.6rem;
+      padding: 1rem;
       border-radius: 1rem;
       cursor: pointer;
       text-align: center;
+      transition: transform 0.2s;
+    }
+    .product:hover {
+      transform: translateY(-4px);
     }
     .product img {
       width: 100%;
-      max-height: 100px;
+      max-height: 120px;
       object-fit: cover;
-      border-radius: 0.5rem;
-      margin-bottom: 0.5rem;
+      border-radius: 0.75rem;
+      margin-bottom: 0.75rem;
     }
     .product h3 {
-      font-size: 1rem;
+      font-size: 1.1rem;
     }
     .product .description {
-      font-size: 0.8rem;
-      color: #ccc;
+      font-size: 0.85rem;
+      color: #bbb;
     }
     .product .price {
       color: var(--accent);
       font-weight: bold;
+      margin-top: 0.3rem;
     }
     .cart {
       position: fixed;
@@ -104,6 +105,7 @@
       max-height: 40vh;
       overflow-y: auto;
       z-index: 1000;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.3);
     }
     .cart-item {
       border-bottom: 1px solid #333;
@@ -121,9 +123,13 @@
       border: none;
       padding: 0.75rem 1.5rem;
       font-size: 1rem;
-      border-radius: 0.5rem;
+      border-radius: 0.75rem;
       cursor: pointer;
       width: 100%;
+      transition: background 0.3s;
+    }
+    .btn-whatsapp:hover {
+      background-color: #c99c3d;
     }
     .modal {
       display: none;
@@ -134,20 +140,22 @@
       align-items: center;
       z-index: 2000;
     }
-    
+    .modal-content {
+      background-color: #1a2734;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
     .modal-content h2 {
-  color: var(--accent);
-  margin-bottom: 1rem;
-}
-.modal-content {
-  background-color: #1a2734;
-  max-height: 90vh;
-  overflow-y: auto;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 2rem;
-}
+      color: var(--accent);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
     .modal-content .close-btn {
       position: absolute;
       top: 10px;
@@ -173,25 +181,25 @@
       border-radius: 0.3rem;
       cursor: pointer;
     }
-  label.extra-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin: 0.5rem 0;
-  background: #223344;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  font-size: 0.9rem;
-  cursor: pointer;
-  justify-content: flex-start;
-}
-input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  accent-color: var(--secondary);
-  cursor: pointer;
-}
-</style>
+    label.extra-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 0.5rem 0;
+      background: #223344;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      justify-content: flex-start;
+    }
+    input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--secondary);
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
   <header>
