@@ -1,3 +1,4 @@
+<!-- Code entièrement restauré à l'état antérieur validé avec extras dynamiques et design propre -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -9,7 +10,7 @@
     :root {
       --primary: #0d1723;
       --secondary: #a27c27;
-      --accent: #ffd500;
+      --accent: #ff914d;
     }
     body {
       margin: 0;
@@ -17,18 +18,14 @@
       background-color: var(--primary);
       color: white;
       overflow-x: hidden;
-    }
-    header {
-      text-align: center;
-      padding: 1rem;
-      background-color: var(--primary);
+      overflow-y: hidden;
     }
     header img {
       width: 120px;
     }
     nav {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       gap: 1rem;
       background-color: var(--secondary);
       padding: 0.5rem;
@@ -41,11 +38,18 @@
     section {
       padding: 1rem;
     }
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-between;
+    }
     .product {
       background-color: #1a1f2b;
       border-radius: 12px;
       padding: 1rem;
-      margin: 1rem 0;
+      width: calc(50% - 0.5rem);
+      box-sizing: border-box;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -61,6 +65,7 @@
     .product p {
       font-size: 0.9rem;
       color: #ccc;
+      text-align: center;
     }
     .price {
       color: var(--accent);
@@ -70,7 +75,7 @@
       position: fixed;
       bottom: 20px;
       left: 20px;
-      background-color: var(--accent);
+      background-color: var(--accent); color: black;
       color: black;
       font-weight: bold;
       border: none;
@@ -86,12 +91,13 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background-color: rgba(0,0,0,0.8);
+      background-color: rgba(0, 0, 0, 0.8);
       justify-content: center;
       align-items: center;
       z-index: 999;
     }
     .modal-content {
+      position: relative;
       background-color: #1e2533;
       padding: 2rem;
       border-radius: 15px;
@@ -101,30 +107,28 @@
       text-align: left;
       max-height: 90vh;
       overflow-y: auto;
+      scrollbar-width: none;
     }
-    .modal-content h3 {
-      margin-top: 0;
-    }
-    .close-btn {
-      background-color: red;
+    .modal-content button {
+      background-color: var(--secondary);
       color: white;
       border: none;
-      padding: 0.5rem 1rem;
+      padding: 0.4rem 0.8rem;
       margin-top: 1rem;
-      cursor: pointer;
       border-radius: 8px;
-    }
-    .extra-category {
-      margin-top: 1rem;
+      font-size: 0.9rem;
+      cursor: pointer;
     }
     .extra-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
       background-color: #2a2f3d;
       padding: 0.5rem 1rem;
-      cursor: pointer;
       border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
     }
     .extra-content {
       display: none;
@@ -135,62 +139,98 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 0.5rem;
     }
     .quantity-btns {
       display: flex;
       align-items: center;
-      gap: 0.3rem;
+      justify-content: space-between;
+      background-color: #1a1f2b;
+      border-radius: 8px;
+      padding: 0.2rem 0.5rem;
+      min-width: 90px;
+      box-shadow: 0 0 4px rgba(0,0,0,0.2);
     }
     .quantity-btns button {
       background-color: var(--secondary);
       border: none;
       color: white;
-      padding: 0.2rem 0.6rem;
-      border-radius: 5px;
+      font-size: 1rem;
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
       cursor: pointer;
+      font-weight: bold;
     }
     .quantity {
-      min-width: 20px;
+      width: 24px;
+      height: 26px;
       text-align: center;
+      font-size: 0.95rem;
+      line-height: 26px;
+      font-weight: bold;
+      color: white;
+    }
+      body::-webkit-scrollbar {
+      display: none;
+    }
+      .modal-content::-webkit-scrollbar {
+      display: none;
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="logo.png" alt="L'gordo Logo">
-  </header>
-  <nav>
-    <a href="#pizza">🍕 Pizza</a>
-    <a href="#saroukh">🌯 Saroukh</a>
-    <a href="#pasta">🍝 Pasta</a>
-    <a href="#deal">🎁 Deal</a>
-  </nav>
-  <section id="pizza">
+  <header style="text-align: center; padding: 2rem 0;">
+  <img src="logo.png" alt="L'gordo Logo" style="width: 180px; max-width: 80%; display: block; margin: 0 auto;">
+</header>
+  <nav style="display: flex; justify-content: center; gap: 1.5rem; padding: 1rem; background: none;">
+  <a href="#pizza" style="border: 2px solid rgba(255,255,255,0.2); padding: 0.5rem 1.2rem; border-radius: 12px; background-color: var(--secondary); color: white;">🍕 Pizza</a>
+  <a href="#saroukh" style="border: 2px solid rgba(255,255,255,0.2); padding: 0.5rem 1.2rem; border-radius: 12px; background-color: var(--secondary); color: white;">🌯 Saroukh</a>
+  <a href="#pasta" style="border: 2px solid rgba(255,255,255,0.2); padding: 0.5rem 1.2rem; border-radius: 12px; background-color: var(--secondary); color: white;">🍝 Pasta</a>
+  <a href="#deal" style="border: 2px solid rgba(255,255,255,0.2); padding: 0.5rem 1.2rem; border-radius: 12px; background-color: var(--secondary); color: white;">🎁 Deal</a>
+</nav>
+  <section id="pizza" style="background: none; border: 2px solid rgba(255,255,255,0.1); border-radius: 16px; margin: 1rem; padding: 1rem;">
     <h2>🍕 Pizza</h2>
-    <div class="product" onclick="openModal('Pizza Carnivore', '75 DH', 'Bouchées savoureuses de viande hachée assaisonnée à la marocaine avec du fromage fondant.')">
-      <img src="LaCarnivore.jpg" alt="Pizza Carnivore">
-      <h3>Pizza Carnivore</h3>
-      <p>Bouchées de viande assaisonnée et fromage fondant.</p>
-      <span class="price">75 DH</span>
+    <div class="product-grid">
+      <div class="product" onclick="openModal('Pizza Carnivore', '75 DH', 'Bouchées savoureuses de viande hachée assaisonnée à la marocaine avec du fromage fondant.')">
+        <img src="LaCarnivore.jpg" alt="Pizza Carnivore">
+        <h3>Pizza Carnivore</h3>
+        <p>Bouchées de viande assaisonnée et fromage fondant.</p>
+        <span class="price">75 DH</span>
+      </div>
+      <div class="product" onclick="openModal('La Kefta', '64 DH', 'Sauce tomate, viande hachée de bœuf, oignon, poivrons, champignons, origan, olive noir, mozzarella.')">
+        <img src="LAKEFTA.jpg" alt="Pizza La Kefta">
+        <h3>La Kefta</h3>
+        <p>Viande hachée, oignons, poivrons, olives…</p>
+        <span class="price">64 DH</span>
+      </div>
     </div>
   </section>
   <button class="cart-btn" onclick="toggleCart()">🛒 (0)</button>
-  <div class="modal" id="productModal">
+
+  <div id="productModal" class="modal">
     <div class="modal-content">
+      <span onclick="closeModal()" style="position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: white;">&times;</span>
+      <img id="modalImage" src="" alt="Image du produit" style="width: 100%; height: auto; max-height: 180px; object-fit: cover; border-radius: 12px; margin-bottom: 1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
       <h3 id="modalTitle"></h3>
       <p id="modalDescription"></p>
       <span id="modalPrice"></span>
+
       <div class="extra-category">
         <div class="extra-header" onclick="toggleExtras('sodas')">🥤 Sodas ▼</div>
         <div class="extra-content" id="sodas">
-          <div class="extra-item">Pepsi – 10 DH <span class="quantity-btns"><button>-</button><span class="quantity">0</span><button>+</button></span></div>
-          <div class="extra-item">Mirinda Orange – 10 DH <span class="quantity-btns"><button>-</button><span class="quantity">0</span><button>+</button></span></div>
-          <div class="extra-item">Mirinda Pomme – 10 DH <span class="quantity-btns"><button>-</button><span class="quantity">0</span><button>+</button></span></div>
-          <div class="extra-item">Mirinda Citron – 10 DH <span class="quantity-btns"><button>-</button><span class="quantity">0</span><button>+</button></span></div>
-          <div class="extra-item">7up – 10 DH <span class="quantity-btns"><button>-</button><span class="quantity">0</span><button>+</button></span></div>
-          <div class="extra-item">Oulmes – 10 DH <span class="quantity-btns"><button>-</button><span class="quantity">0</span><button>+</button></span></div>
+          <div class="extra-item">Pepsi – 10 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
+          <div class="extra-item">Mirinda Orange – 10 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
+          <div class="extra-item">Mirinda Pomme – 10 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
+          <div class="extra-item">Mirinda Citron – 10 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
+          <div class="extra-item">7up – 10 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
+          <div class="extra-item">Oulmes – 10 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
         </div>
       </div>
+
       <div class="extra-category">
         <div class="extra-header" onclick="toggleExtras('extras')">🧀 Extras ▼</div>
         <div class="extra-content" id="extras">
@@ -201,49 +241,46 @@
           <div class="extra-item"><label><input type="checkbox"> Dinde fumée – 15 DH</label></div>
         </div>
       </div>
+
       <div class="extra-category">
         <div class="extra-header" onclick="toggleExtras('desserts')">🍪 Desserts ▼</div>
         <div class="extra-content" id="desserts">
-          <div class="extra-item">Lotus – 25 DH <span class="quantity-btns"><button>-</button><span class="quantity">0</span><button>+</button></span></div>
-          <div class="extra-item">Oreo – 25 DH <span class="quantity-btns"><button>-</button><span class="quantity">0</span><button>+</button></span></div>
+          <div class="extra-item">Lotus – 25 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
+          <div class="extra-item">Oreo – 25 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
         </div>
       </div>
-      <button class="close-btn" onclick="closeModal()">Fermer</button>
+
+      <button onclick="addToCart()" style="background-color: var(--secondary); color: white; margin: 1.5rem auto 0 auto; display: block; padding: 0.7rem 1.5rem; font-weight: bold; border-radius: 10px; font-size: 1rem; box-shadow: 0 2px 6px rgba(0,0,0,0.3); transition: background-color 0.3s ease;">Ajouter au panier</button>
+      
     </div>
   </div>
+
   <script>
     function openModal(title, price, description) {
       document.getElementById('modalTitle').innerText = title;
-      document.getElementById('modalPrice').innerText = price;
       document.getElementById('modalDescription').innerText = description;
+      document.getElementById('modalPrice').innerText = price;
+      document.getElementById('modalImage').src = title.includes('Carnivore') ? 'LaCarnivore.jpg' : title.includes('Kefta') ? 'LAKEFTA.jpg' : '';
       document.getElementById('productModal').style.display = 'flex';
-
-      document.querySelectorAll('.extra-item .quantity-btns').forEach(group => {
-        const minus = group.querySelector('button:first-child');
-        const plus = group.querySelector('button:last-child');
-        const quantity = group.querySelector('.quantity');
-
-        minus.onclick = (e) => {
-          e.stopPropagation();
-          let val = parseInt(quantity.innerText);
-          if (val > 0) quantity.innerText = val - 1;
-        };
-        plus.onclick = (e) => {
-          e.stopPropagation();
-          let val = parseInt(quantity.innerText);
-          quantity.innerText = val + 1;
-        };
-      });
     }
     function closeModal() {
       document.getElementById('productModal').style.display = 'none';
     }
     function toggleCart() {
-      alert('Fonctionnalité de panier à implémenter.');
+      alert('Panier non implémenté pour le moment.');
+    }
+    function addToCart() {
+      alert('Produit ajouté au panier ! (simulation)');
     }
     function toggleExtras(id) {
       const el = document.getElementById(id);
       el.style.display = el.style.display === 'block' ? 'none' : 'block';
+    }
+    function adjustQty(btn, delta) {
+      const quantitySpan = btn.parentElement.querySelector('.quantity');
+      let current = parseInt(quantitySpan.innerText);
+      let newVal = Math.max(0, current + delta);
+      quantitySpan.innerText = newVal;
     }
   </script>
 </body>
