@@ -141,6 +141,7 @@
       z-index: 2000;
     }
     .modal-content {
+  animation: fadeIn 0.3s ease-in-out;
       background-color: #1a2734;
       max-height: 90vh;
       overflow-y: auto;
@@ -199,7 +200,24 @@
       accent-color: var(--secondary);
       cursor: pointer;
     }
-  </style>
+  @keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media screen and (max-width: 600px) {
+  .modal-content {
+    padding: 1.2rem;
+  }
+  .btn-whatsapp {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+  .extra-item span, label.extra-item {
+    font-size: 0.85rem;
+  }
+}
+</style>
 </head>
 <body>
   <header>
@@ -297,8 +315,9 @@
   </div>
   <div class="modal" id="modal">
     <div class="modal-content">
+      <h2 id="modal-title" style="color: var(--accent); text-align: center; font-size: 1.4rem; margin-bottom: 0.5rem;">Nom du produit</h2>
       <img src="LaCarnivore.jpg" alt="Pizza Carnivore" style="width: 100%; border-radius: 1rem; margin-bottom: 1rem; object-fit: cover; max-height: 180px;">
-      <p class="description" style="margin-bottom: 1rem; text-align: center; color: #ccc;">Viande hachée, merguez, pepperoni</p>
+      <p class="description" id="modal-description" style="margin-bottom: 1rem; text-align: center; color: #ccc;">Description ici</p>
       <button class="close-btn" onclick="closeModal()">×</button>
       <h2>Ajouter des extras</h2>
 
@@ -349,10 +368,11 @@
   const description = element.getAttribute('data-description');
   const price = parseFloat(element.getAttribute('data-price'));
   const image = element.getAttribute('data-image');
-  
+
   document.querySelector('#modal img').src = image;
   document.querySelector('#modal img').alt = name;
-  document.querySelector('#modal .description').textContent = description;
+  document.querySelector('#modal-title').textContent = name;
+  document.querySelector('#modal-description').textContent = description;
 
   document.getElementById('modal').setAttribute('data-name', name);
   document.getElementById('modal').setAttribute('data-price', price);
@@ -396,6 +416,8 @@
       closeModal();
     }
     function renderCart() {
+  const whatsappBtn = document.querySelector('.btn-whatsapp');
+  whatsappBtn.style.display = cart.length > 0 ? 'block' : 'none';
       const cartItems = document.getElementById('cart-items');
       const totalPrice = document.getElementById('total-price');
       cartItems.innerHTML = '';
