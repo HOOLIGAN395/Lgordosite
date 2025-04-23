@@ -90,35 +90,14 @@
   margin-bottom: 0.25rem;
   min-height: 2.2rem;
 }
-    $1
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+    
     .product .price {
       color: var(--accent);
       font-weight: bold;
       margin-top: 0.3rem;
     }
-    .cart {
-  font-size: 0.75rem;
-  padding: 0.5rem;
-  max-height: 30vh;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #1a2734;
-  border-top: 3px solid var(--secondary);
-  overflow-y: auto;
-  z-index: 1000;
-  box-shadow: 0 -2px 8px rgba(0,0,0,0.3);
-  transition: transform 0.3s ease-in-out;
-}
-    .cart-item {
-  padding-bottom: 0.5rem;
-      border-bottom: 1px solid #333;
-      margin-bottom: 1rem;
-    }
+    
+    
     .total {
   font-size: 1rem;
   margin-top: 1rem;
@@ -133,8 +112,9 @@
 }
 
 .btn-whatsapp {
-  font-size: 0.85rem;
-  padding: 0.5rem 0.8rem;
+  font-size: 0.95rem;
+  padding: 0.6rem 1rem;
+
   font-size: 0.95rem;
   padding: 0.6rem 1rem;
   margin-top: 1rem;
@@ -235,19 +215,7 @@
     font-size: 0.85rem;
   }
 }
-.cart::before {
-  content: '🛒';
-  position: absolute;
-  top: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--secondary);
-  color: white;
-  font-size: 1.2rem;
-  padding: 0.2rem 0.5rem;
-  border-radius: 9999px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-}
+
 </style>
 </head>
 <body>
@@ -339,7 +307,7 @@
       <div class="product-list"></div>
     </div>
   </main>
-  <div id="cart-toggle" onclick="toggleCartPanel()" style="position: fixed; bottom: 1rem; left: 1rem; background: var(--accent); color: black; border-radius: 9999px; padding: 0.8rem 1.4rem; font-size: 1rem; font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 0.5rem; cursor: pointer; z-index: 1001;">
+  <div id="cart-toggle" onclick="toggleCartPanel()" style="position: fixed; bottom: 1rem; left: 1rem; background: var(--secondary); color: black; border-radius: 9999px; padding: 0.8rem 1.4rem; font-size: 1rem; font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 0.5rem; cursor: pointer; z-index: 2001;">
   <img src="https://img.icons8.com/ios-filled/50/000000/restaurant.png" alt="Panier" style="width: 22px; height: 22px;"> Voir mon panier <span id="cart-count" style="background: black; color: var(--accent); font-size: 0.75rem; padding: 2px 6px; border-radius: 999px; margin-left: auto;">0</span>
 </div>
 <div class="modal" id="cart-modal" style="display:none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.7); justify-content: center; align-items: center; z-index: 2000;">
@@ -456,8 +424,7 @@
       closeModal();
     }
     function renderCart() {
-  const cartPanel = document.getElementById('cart');
-  const cartToggle = document.getElementById('cart-toggle');
+    const cartToggle = document.getElementById('cart-toggle');
   const cartCount = document.getElementById('cart-count');
   cartCount.textContent = cart.length;
     const whatsappBtn = document.getElementById('whatsapp-cart-btn');
