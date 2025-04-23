@@ -189,8 +189,6 @@
         padding: 0.75rem;
       }
     }
-    }
-    }
   </style>
 </head>
 <body>
@@ -206,21 +204,70 @@
   <section id="pizza" style="background: none; border: 2px solid rgba(255,255,255,0.1); border-radius: 16px; margin: 1rem; padding: 1rem;">
     <h2>🍕 Pizza</h2>
     <div class="product-grid">
-      <div class="product" onclick="openModal('Pizza Carnivore', '75 DH', 'Bouchées savoureuses de viande hachée assaisonnée à la marocaine avec du fromage fondant.')">
-        <img src="LaCarnivore.jpg" alt="Pizza Carnivore">
+    
+<div class="product" onclick="openModal('Pizza Carnivore', '75 DH', 'Bouchées savoureuses de viande hachée assaisonnée à la marocaine avec du fromage fondant.')">
+        <img src="$1.jpg" style="display:none" alt="Pizza Carnivore">
         <h3>Pizza Carnivore</h3>
         <p>Bouchées de viande assaisonnée et fromage fondant.</p>
         <span class="price">75 DH</span>
       </div>
       <div class="product" onclick="openModal('La Kefta', '64 DH', 'Sauce tomate, viande hachée de bœuf, oignon, poivrons, champignons, origan, olive noir, mozzarella.')">
-        <img src="LAKEFTA.jpg" alt="Pizza La Kefta">
-        <h3>La Kefta</h3>
-        <p>Viande hachée, oignons, poivrons, olives…</p>
-        <span class="price">64 DH</span>
-      </div>
-    </div>
-  </section>
-  <button class="cart-btn" onclick="toggleCart()">🛒 (0)</button>
+  <img src="lakefta.jpg" alt="Pizza La Kefta">
+  <h3>La Kefta</h3>
+  <p>Viande hachée, légumes, mozzarella.</p>
+  <span class="price">64 DH</span>
+</div>
+    <div class="product" onclick="openModal('La Pepperoni', '64 DH', 'Sauce tomate, pepperoni, oignon, champignons poivrons, origan, olive noir, mozzarella')">
+  <img src="lapeperoni.jpg" alt="Pizza La Pepperoni">
+  <h3>La Pepperoni</h3>
+  <p>Pepperoni, légumes, mozzarella.</p>
+  <span class="price">64 DH</span>
+</div>
+<div class="product" onclick="openModal('La Tuna', '62 DH', 'Sauce tomate, thon, origan, olive noir, mozzarella.')">
+  <img src="latuna.jpg" alt="Pizza La Tuna">
+  <h3>La Tuna</h3>
+  <p>Thon, origan, mozzarella.</p>
+  <span class="price">62 DH</span>
+</div>
+<div class="product" onclick="openModal('La 4 Fromages', '65 DH', 'Sauce tomate, mozzarella, fromage bleu, gouda, emmental, origan, olive.')">
+  <img src="la4fromages.jpg" alt="Pizza 4 Fromages">
+  <h3>4 Fromages</h3>
+  <p>4 fromages fondants.</p>
+  <span class="price">65 DH</span>
+</div>
+<div class="product" onclick="openModal('La Fumée', '64 DH', 'Sauce blanche, dinde fumée, oignon confit, champignons, origan, olive noir, mozzarella')">
+  <img src="lafumee.jpg" alt="Pizza La Fumée">
+  <h3>La Fumée</h3>
+  <p>Dinde fumée, champignons, mozzarella.</p>
+  <span class="price">64 DH</span>
+</div>
+<div class="product" onclick="openModal('Poulet Barbecue', '65 DH', 'Une base de sauce tomate onctueuse, garnie de poulet mariné tendre, d\'oignons croquants, de poivrons colorés et rehaussée d\'une sauce barbecue savoureuse. Une explosion de saveurs équilibrées et gourmandes !')">
+  <img src="pouletbarbecue.jpg" alt="Pizza Poulet Barbecue">
+  <h3>Poulet Barbecue</h3>
+  <p>Poulet, BBQ, oignons, poivrons.</p>
+  <span class="price">65 DH</span>
+</div>
+<div class="product" onclick="openModal('La Merguez', '64 DH', 'Sauce tomate, merguez de bœuf, oignon, poivrons, champignons, origan, olive noir, mozzarella.')">
+  <img src="lamerguez.jpg" alt="Pizza La Merguez">
+  <h3>La Merguez</h3>
+  <p>Merguez, légumes, mozzarella.</p>
+  <span class="price">64 DH</span>
+</div>
+<div class="product" onclick="openModal('Poulet Pesto', '105 DH', 'Une base de sauce fromagère maison, garnie de poulet mariné tendre, d\'une généreuse couche d\'extra mozzarella, et sublimée par une délicieuse sauce pesto maison. Un équilibre parfait de saveurs gourmandes')">
+  <img src="pouletpesto.jpg" alt="Pizza Poulet Pesto">
+  <h3>Poulet Pesto</h3>
+  <p>Poulet, mozza, pesto maison.</p>
+  <span class="price">105 DH</span>
+</div>
+<div class="product" onclick="openModal('Bianca Suprême', '105 DH', 'Une base de sauce fromagère maison onctueuse, garnie de morceaux de poulet mariné savoureux, d\'une généreuse portion de fromage fondant et de tranches de pepperoni. Une création riche et irrésistible pour les vrais gourmands')">
+  <img src="biancasupreme.jpg" alt="Pizza Bianca Suprême">
+  <h3>Bianca Suprême</h3>
+  <p>Poulet, fromage, pepperoni.</p>
+  <span class="price">105 DH</span>
+</div>
+</div>
+</section>
+<button class="cart-btn" onclick="toggleCart()">🛒 (0)</button>
 
   <div id="productModal" class="modal">
     <div class="modal-content">
@@ -271,7 +318,19 @@
       document.getElementById('modalTitle').innerText = title;
       document.getElementById('modalDescription').innerText = description;
       document.getElementById('modalPrice').innerText = price;
-      document.getElementById('modalImage').src = title.includes('Carnivore') ? 'LaCarnivore.jpg' : title.includes('Kefta') ? 'LAKEFTA.jpg' : '';
+      document.getElementById('modalImage').src =
+        title.includes('Carnivore') ? 'lacarnivore.jpg' :
+        title.includes('Kefta') ? 'lakefta.jpg' :
+        title.includes('Pepperoni') ? 'lapeperoni.jpg' :
+        title.includes('Tuna') ? 'latuna.jpg' :
+        title.includes('4 Fromages') ? 'la4fromages.jpg' :
+        title.includes('Fumée') ? 'lafumee.jpg' :
+        title.includes('Poulet Barbecue') ? 'pouletbarbecue.jpg' :
+        title.includes('Merguez') ? 'lamerguez.jpg' :
+        title.includes('Poulet Pesto') ? 'pouletpesto.jpg' :
+        title.includes('Bianca Suprême') ? 'biancasupreme.jpg' :
+        title.includes('Poulet Alfredo') ? 'pouletalfredo.jpg' :
+        '';
       document.getElementById('productModal').style.display = 'flex';
     }
     function closeModal() {
