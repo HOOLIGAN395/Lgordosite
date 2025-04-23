@@ -60,35 +60,40 @@
       font-size: 1.5rem;
     }
     .product-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 1rem;
-    }
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+}
     .product {
-      background-color: #1a2734;
-      padding: 1rem;
-      border-radius: 1rem;
-      cursor: pointer;
-      text-align: center;
-      transition: transform 0.2s;
-    }
+  background-color: #1a2734;
+  padding: 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
     .product:hover {
-      transform: translateY(-4px);
-    }
+  transform: translateY(-4px);
+}
     .product img {
-      width: 100%;
-      max-height: 120px;
-      object-fit: cover;
-      border-radius: 0.75rem;
-      margin-bottom: 0.75rem;
-    }
+  width: 100%;
+  max-height: 120px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  margin-bottom: 0.5rem;
+}
     .product h3 {
-      font-size: 1.1rem;
-    }
-    .product .description {
-      font-size: 0.85rem;
-      color: #bbb;
-    }
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+  min-height: 2.2rem;
+}
+    $1
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
     .product .price {
       color: var(--accent);
       font-weight: bold;
@@ -119,7 +124,15 @@
   margin-top: 1rem;
   color: var(--accent);
 }
-    .btn-whatsapp {
+    .product .description {
+  font-size: 0.85rem;
+  line-height: 1.2;
+  min-height: 2.5rem;
+  color: #ccc;
+  margin: 0.3rem 0;
+}
+
+.btn-whatsapp {
   font-size: 0.85rem;
   padding: 0.5rem 0.8rem;
   font-size: 0.95rem;
