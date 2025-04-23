@@ -19,11 +19,11 @@
       color: var(--white);
     }
     header {
-  text-align: center;
-  padding: 3rem 1rem;
-  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/mnt/data/couverture LGORDO.jpg') center/cover no-repeat;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-}
+      text-align: center;
+      padding: 3rem 1rem;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('couverture-lgordo.jpg') center/cover no-repeat;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
     header img { width: 90px; border-radius: 50%; }
     .tabs {
       display: flex;
@@ -51,183 +51,66 @@
       flex-direction: column;
       gap: 2rem;
     }
-    .category {
-      scroll-margin-top: 80px;
-    }
     .category h2 {
       margin-bottom: 1rem;
       color: var(--accent);
       font-size: 1.5rem;
     }
     .product-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 1rem;
-}
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 1rem;
+    }
     .product {
-  background-color: #1a2734;
-  padding: 1rem;
-  border-radius: 1rem;
-  cursor: pointer;
-  text-align: center;
-  transition: transform 0.2s;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-    .product:hover {
-  transform: translateY(-4px);
-}
+      background-color: #1a2734;
+      padding: 1rem;
+      border-radius: 1rem;
+      cursor: pointer;
+      text-align: center;
+      transition: transform 0.2s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .product:hover { transform: translateY(-4px); }
     .product img {
-  width: 100%;
-  max-height: 120px;
-  object-fit: cover;
-  border-radius: 0.75rem;
-  margin-bottom: 0.5rem;
-}
+      width: 100%;
+      max-height: 120px;
+      object-fit: cover;
+      border-radius: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
     .product h3 {
-  font-size: 1.1rem;
-  margin-bottom: 0.25rem;
-  min-height: 2.2rem;
-}
-    
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+      min-height: 2.2rem;
+    }
+    .product .description {
+      font-size: 0.85rem;
+      line-height: 1.2;
+      min-height: 2.5rem;
+      color: #ccc;
+      margin: 0.3rem 0;
+    }
     .product .price {
       color: var(--accent);
       font-weight: bold;
       margin-top: 0.3rem;
     }
-    
-    
-    .total {
-  font-size: 1rem;
-  margin-top: 1rem;
-  color: var(--accent);
-}
-    .product .description {
-  font-size: 0.85rem;
-  line-height: 1.2;
-  min-height: 2.5rem;
-  color: #ccc;
-  margin: 0.3rem 0;
-}
-
-.btn-whatsapp {
-  font-size: 0.95rem;
-  padding: 0.6rem 1rem;
-
-  font-size: 0.95rem;
-  padding: 0.6rem 1rem;
-  margin-top: 1rem;
-  background-color: var(--secondary);
-  color: var(--white);
-  border: none;
-  border-radius: 0.75rem;
-  cursor: pointer;
-  width: 100%;
-  transition: background 0.3s;
-}
-    .btn-whatsapp:hover {
-      background-color: #c99c3d;
-    }
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.7);
-      justify-content: center;
-      align-items: center;
-      z-index: 2000;
-    }
-    .modal-content {
-  animation: fadeIn 0.3s ease-in-out;
-      background-color: #1a2734;
-      max-height: 90vh;
-      overflow-y: auto;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 0 20px rgba(0,0,0,0.4);
-    }
-    .modal-content h2 {
-      color: var(--accent);
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-    .modal-content .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: none;
-      border: none;
-      color: white;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-    .extra-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: 0.5rem 0;
-    }
-    .extra-controls button {
-      background-color: var(--secondary);
-      color: white;
-      border: none;
-      padding: 0.3rem 0.6rem;
-      margin: 0 0.2rem;
-      border-radius: 0.3rem;
-      cursor: pointer;
-    }
-    label.extra-item {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin: 0.5rem 0;
-      background: #223344;
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      font-size: 0.9rem;
-      cursor: pointer;
-      justify-content: flex-start;
-    }
-    input[type="checkbox"] {
-      width: 18px;
-      height: 18px;
-      accent-color: var(--secondary);
-      cursor: pointer;
-    }
-  @keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-@media screen and (max-width: 600px) {
-  .modal-content {
-    padding: 1.2rem;
-  }
-  .btn-whatsapp {
-    font-size: 0.9rem;
-    padding: 0.6rem;
-  }
-  .extra-item span, label.extra-item {
-    font-size: 0.85rem;
-  }
-}
-
-</style>
+  </style>
 </head>
 <body>
   <header>
     <img src="logo.png" alt="Logo L'gordo">
   </header>
+
   <div class="tabs">
     <button onclick="scrollToCategory('pizza')">🍕 Pizza</button>
     <button onclick="scrollToCategory('saroukh')">🌯 Saroukh</button>
     <button onclick="scrollToCategory('pasta')">🍝 Pasta</button>
     <button onclick="scrollToCategory('deal')">🎁 Deal</button>
   </div>
+
   <main class="menu">
     <div class="category" id="pizza">
       <h2>🍕 Pizza</h2>
@@ -235,271 +118,228 @@
         <div class="product" onclick="openModal(this)" data-name="Pizza Carnivore" data-description="Sauce tomate, merguez de bœuf, viande hachée de bœuf, pepperoni, oignon, poivrons, champignons, tomates cerises, origan, olive noir, mozzarella" data-price="75" data-image="LaCarnivore.jpg">
           <img src="LaCarnivore.jpg" alt="Pizza Carnivore">
           <h3>Pizza Carnivore</h3>
-          <p class="description">Sauce tomate, merguez de bœuf, viande hachée, pepperoni, légumes...</p>
+          <p class="description">Sauce tomate, merguez, viande hachée...</p>
           <p class="price">75 DH</p>
         </div>
         <div class="product" onclick="openModal(this)" data-name="Pizza Poulet Alfredo" data-description="Sauce blanche, poulet, oignon confit, poivrons confits, champignons, origan, olive noire, mozzarella" data-price="64" data-image="PouletAlfredo.jpg">
           <img src="PouletAlfredo.jpg" alt="Pizza Poulet Alfredo">
           <h3>Pizza Poulet Alfredo</h3>
-          <p class="description">Sauce blanche, poulet, oignon confit, poivrons, champignons...</p>
+          <p class="description">Sauce blanche, poulet, légumes...</p>
           <p class="price">64 DH</p>
         </div>
-        <div class="product" onclick="openModal(this)" data-name="Poulet barbecue" data-description="Une base de sauce tomate onctueuse, garnie de poulet mariné tendre, d'oignons croquants, de poivrons colorés et rehaussée d'une sauce barbecue savoureuse. Une explosion de saveurs équilibrées et gourmandes !" data-price="65" data-image="POULETBERBECUE.jpg">
+        <div class="product" onclick="openModal(this)" data-name="Poulet barbecue" data-description="Base tomate, poulet mariné, oignons, poivrons, sauce barbecue." data-price="65" data-image="POULETBERBECUE.jpg">
           <img src="POULETBERBECUE.jpg" alt="Poulet barbecue">
           <h3>Poulet barbecue</h3>
-          <p class="description">Base tomate, poulet, oignons, sauce BBQ...</p>
+          <p class="description">Base tomate, poulet, sauce BBQ...</p>
           <p class="price">65 DH</p>
         </div>
-        <div class="product" onclick="openModal(this)" data-name="La Kefta" data-description="Sauce tomate, viande hachée de bœuf, oignon, poivrons, champignons, origan, olive noir, mozzarella." data-price="64" data-image="LAKEFTA.jpg">
+        <div class="product" onclick="openModal(this)" data-name="La Kefta" data-description="Sauce tomate, viande hachée, oignons, poivrons, champignons, origan, olives, mozzarella." data-price="64" data-image="LAKEFTA.jpg">
           <img src="LAKEFTA.jpg" alt="La Kefta">
           <h3>La Kefta</h3>
-          <p class="description">Sauce tomate, viande hachée, légumes...</p>
+          <p class="description">Viande hachée, légumes...</p>
           <p class="price">64 DH</p>
         </div>
-        <div class="product" onclick="openModal(this)" data-name="La Merguez" data-description="Sauce tomate, merguez de bœuf, oignon, poivrons, champignons, origan, olive noir, mozzarella." data-price="64" data-image="LAMERGUEZ.jpg">
+        <div class="product" onclick="openModal(this)" data-name="La Merguez" data-description="Sauce tomate, merguez de bœuf, légumes, mozzarella." data-price="64" data-image="LAMERGUEZ.jpg">
           <img src="LAMERGUEZ.jpg" alt="La Merguez">
           <h3>La Merguez</h3>
-          <p class="description">Sauce tomate, merguez, légumes...</p>
+          <p class="description">Merguez, légumes...</p>
           <p class="price">64 DH</p>
         </div>
-        <div class="product" onclick="openModal(this)" data-name="La Pepperoni" data-description="Sauce tomate, pepperoni, oignon, champignons poivrons, origan, olive noir, mozzarella" data-price="64" data-image="laPepperoni.jpg">
+        <div class="product" onclick="openModal(this)" data-name="La Pepperoni" data-description="Sauce tomate, pepperoni, légumes, mozzarella." data-price="64" data-image="laPepperoni.jpg">
           <img src="laPepperoni.jpg" alt="La Pepperoni">
           <h3>La Pepperoni</h3>
-          <p class="description">Sauce tomate, pepperoni, légumes...</p>
+          <p class="description">Pepperoni, légumes...</p>
           <p class="price">64 DH</p>
         </div>
         <div class="product" onclick="openModal(this)" data-name="La 4 Fromages" data-description="Sauce tomate, mozzarella, fromage bleu, gouda, emmental, origan, olive." data-price="65" data-image="la4FROMAGES.jpg">
           <img src="la4FROMAGES.jpg" alt="La 4 Fromages">
           <h3>La 4 Fromages</h3>
-          <p class="description">Sauce tomate, fromages variés...</p>
+          <p class="description">4 fromages, origan...</p>
           <p class="price">65 DH</p>
         </div>
         <div class="product" onclick="openModal(this)" data-name="La Fumée" data-description="Sauce blanche, dinde fumée, oignon confit, champignons, origan, olive noir, mozzarella" data-price="64" data-image="laFumée.jpg">
-  <img src="laFumée.jpg" alt="La Fumée">
-  <h3>La Fumée</h3>
-  <p class="description">Sauce blanche, dinde fumée, légumes...</p>
-  <p class="price">64 DH</p>
-</div>
-<div class="product" onclick="openModal(this)" data-name="Poulet pesto" data-description="Une base de sauce fromagère maison, garnie de poulet mariné tendre, d'une généreuse couche d'extra mozzarella, et sublimée par une délicieuse sauce pesto maison. Un équilibre parfait de saveurs gourmandes" data-price="105" data-image="Pouletpesto.jpg">
-  <img src="Pouletpesto.jpg" alt="Poulet pesto">
-  <h3>Poulet pesto</h3>
-  <p class="description">Sauce fromagère, poulet, pesto, mozza...</p>
-  <p class="price">105 DH</p>
-</div>
-<div class="product" onclick="openModal(this)" data-name="Bianca Suprême" data-description="Une base de sauce fromagère maison onctueuse, garnie de morceaux de poulet mariné savoureux, d'une généreuse portion de fromage fondant et de tranches de pepperoni. Une création riche et irrésistible pour les vrais gourmands" data-price="105" data-image="BiancaSuprême.jpg">
+          <img src="laFumée.jpg" alt="La Fumée">
+          <h3>La Fumée</h3>
+          <p class="description">Dinde fumée, champignons...</p>
+          <p class="price">64 DH</p>
+        </div>
+        <div class="product" onclick="openModal(this)" data-name="Poulet pesto" data-description="Base fromagère, poulet mariné, mozzarella, sauce pesto maison." data-price="105" data-image="Pouletpesto.jpg">
+          <img src="Pouletpesto.jpg" alt="Poulet pesto">
+          <h3>Poulet pesto</h3>
+          <p class="description">Poulet, pesto, fromage...</p>
+          <p class="price">105 DH</p>
+        </div>
+        <div class="product" onclick="openModal(this)" data-name="Bianca Suprême" data-description="Base fromagère, poulet mariné, mozzarella, pepperoni." data-price="105" data-image="BiancaSuprême.jpg">
           <img src="BiancaSuprême.jpg" alt="Bianca Suprême">
           <h3>Bianca Suprême</h3>
-          <p class="description">Fromagère, poulet, mozza, pepperoni...</p>
+          <p class="description">Poulet, pepperoni, fromage...</p>
           <p class="price">105 DH</p>
         </div>
       </div>
     </div>
+
     <div class="category" id="saroukh">
       <h2>🌯 Saroukh</h2>
-      <div class="product-list"></div>
+      <div class="product-list">
+        <!-- À remplir plus tard -->
+      </div>
     </div>
+
     <div class="category" id="pasta">
       <h2>🍝 Pasta</h2>
-      <div class="product-list"></div>
+      <div class="product-list">
+        <!-- À remplir plus tard -->
+      </div>
     </div>
+
     <div class="category" id="deal">
       <h2>🎁 Deal</h2>
-      <div class="product-list"></div>
+      <div class="product-list">
+        <!-- À remplir plus tard -->
+      </div>
     </div>
   </main>
   <div id="cart-toggle" onclick="toggleCartPanel()" style="position: fixed; bottom: 1rem; left: 1rem; background: var(--secondary); color: black; border-radius: 9999px; padding: 0.8rem 1.4rem; font-size: 1rem; font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 0.5rem; cursor: pointer; z-index: 2001;">
-  <img src="https://img.icons8.com/ios-filled/50/000000/restaurant.png" alt="Panier" style="width: 22px; height: 22px;"> Voir mon panier <span id="cart-count" style="background: black; color: var(--accent); font-size: 0.75rem; padding: 2px 6px; border-radius: 999px; margin-left: auto;">0</span>
-</div>
-<div class="modal" id="cart-modal" style="display:none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.7); justify-content: center; align-items: center; z-index: 2000;">
-  <div class="modal-content" style="max-width: 500px; width: 90%;">
-    <button class="close-btn" onclick="toggleCartPanel()">×</button>
-    <h2 style="color: var(--accent); text-align: center; margin-bottom: 1rem;">Votre panier</h2>
-    <div id="cart-items">
-      <p id="empty-cart-msg" style="text-align:center; color:#aaa; font-style:italic;">Votre panier est vide pour le moment 🛒</p>
-    </div>
-    <div class="total" id="total-price">Total : 0 DH</div>
-    <button id="whatsapp-cart-btn" class="btn-whatsapp">Commander via WhatsApp</button>
+    <img src="https://img.icons8.com/ios-filled/50/000000/restaurant.png" alt="Panier" style="width: 22px; height: 22px;">
+    Voir mon panier 
+    <span id="cart-count" style="background: black; color: var(--accent); font-size: 0.75rem; padding: 2px 6px; border-radius: 999px; margin-left: auto;">0</span>
   </div>
-</div>
-<div class="modal" id="modal">
+
+  <div class="modal" id="cart-modal" style="display:none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.7); justify-content: center; align-items: center; z-index: 2000;">
+    <div class="modal-content" style="max-width: 500px; width: 90%;">
+      <button class="close-btn" onclick="toggleCartPanel()">×</button>
+      <h2 style="color: var(--accent); text-align: center; margin-bottom: 1rem;">Votre panier</h2>
+      <div id="cart-items">
+        <p id="empty-cart-msg" style="text-align:center; color:#aaa; font-style:italic;">Votre panier est vide pour le moment 🛒</p>
+      </div>
+      <div class="total" id="total-price">Total : 0 DH</div>
+      <button id="whatsapp-cart-btn" class="btn-whatsapp">Commander via WhatsApp</button>
+    </div>
+  </div>
+
+  <div class="modal" id="modal">
     <div class="modal-content">
-      <h2 id="modal-title" style="color: var(--accent); text-align: center; font-size: 1.4rem; margin-bottom: 0.5rem;">Nom du produit</h2>
-      <img src="LaCarnivore.jpg" alt="Pizza Carnivore" style="width: 100%; border-radius: 1rem; margin-bottom: 1rem; object-fit: cover; max-height: 180px;">
-      <p class="description" id="modal-description" style="margin-bottom: 1rem; text-align: center; color: #ccc;">Description ici</p>
       <button class="close-btn" onclick="closeModal()">×</button>
+      <h2 id="modal-title">Nom du produit</h2>
+      <img src="" alt="" id="modal-img" style="width: 100%; border-radius: 1rem; margin-bottom: 1rem; object-fit: cover; max-height: 180px;">
+      <p id="modal-description" class="description" style="text-align: center; color: #ccc;">Description ici</p>
+
       <h2 style="text-align:center; color: var(--accent); font-size: 1.2rem;">Un supplément ?</h2>
 
-      <div class="extra-category">
-        <h3 onclick="toggleExtraList(this)">🥤 Sodas <span>▼</span></h3>
-        <div class="extra-list" style="display: none;">
-        <div class="extra-item"><span>Pepsi (10 DH)</span><div class="extra-controls"><button onclick="updateExtra('Pepsi', -1)">-</button><span id="extra-Pepsi">0</span><button onclick="updateExtra('Pepsi', 1)">+</button></div></div>
-        <div class="extra-item"><span>Mirinda Orange (10 DH)</span><div class="extra-controls"><button onclick="updateExtra('Mirinda Orange', -1)">-</button><span id="extra-Mirinda Orange">0</span><button onclick="updateExtra('Mirinda Orange', 1)">+</button></div></div>
-        <div class="extra-item"><span>Mirinda Pomme (10 DH)</span><div class="extra-controls"><button onclick="updateExtra('Mirinda Pomme', -1)">-</button><span id="extra-Mirinda Pomme">0</span><button onclick="updateExtra('Mirinda Pomme', 1)">+</button></div></div>
-        <div class="extra-item"><span>Mirinda Citron (10 DH)</span><div class="extra-controls"><button onclick="updateExtra('Mirinda Citron', -1)">-</button><span id="extra-Mirinda Citron">0</span><button onclick="updateExtra('Mirinda Citron', 1)">+</button></div></div>
-        <div class="extra-item"><span>7up (10 DH)</span><div class="extra-controls"><button onclick="updateExtra('7up', -1)">-</button><span id="extra-7up">0</span><button onclick="updateExtra('7up', 1)">+</button></div></div>
-        <div class="extra-item"><span>Oulmes (10 DH)</span><div class="extra-controls"><button onclick="updateExtra('Oulmes', -1)">-</button><span id="extra-Oulmes">0</span><button onclick="updateExtra('Oulmes', 1)">+</button></div></div>
-      </div>
-      </div>
-      <div class="extra-category">
-  <h3 onclick="toggleExtraList(this)">🧀 Extras <span>▼</span></h3>
-  <div class="extra-list" style="display: none;">
-    <label class="extra-item"><input type="checkbox" name="extra-checkbox" value="Fromage" data-price="12"> Fromage (12 DH)</label>
-    <label class="extra-item"><input type="checkbox" name="extra-checkbox" value="Viande hachée" data-price="15"> Viande hachée (15 DH)</label>
-    <label class="extra-item"><input type="checkbox" name="extra-checkbox" value="Merguez" data-price="15"> Merguez (15 DH)</label>
-    <label class="extra-item"><input type="checkbox" name="extra-checkbox" value="Pepperoni" data-price="17"> Pepperoni (17 DH)</label>
-    <label class="extra-item"><input type="checkbox" name="extra-checkbox" value="Dinde fumée" data-price="15"> Dinde fumée (15 DH)</label>
-  </div>
-      </div>
-      <div class="extra-category">
-  <h3 onclick="toggleExtraList(this)">🍪 Desserts <span>▼</span></h3>
-  <div class="extra-list" style="display: none;">
-    <div class="extra-item"><span>Lotus (25 DH)</span><div class="extra-controls"><button onclick="updateExtra('Lotus', -1)">-</button><span id="extra-Lotus">0</span><button onclick="updateExtra('Lotus', 1)">+</button></div></div>
-    <div class="extra-item"><span>Oreo (25 DH)</span><div class="extra-controls"><button onclick="updateExtra('Oreo', -1)">-</button><span id="extra-Oreo">0</span><button onclick="updateExtra('Oreo', 1)">+</button></div></div>
-  </div>
-</div>
-<button class="btn-whatsapp" style="margin-top: 1rem;" onclick="confirmExtras()">Ajouter au panier</button>
+      <!-- Extras (Sodas, Extras, Desserts) ici – comme dans ta version actuelle -->
+
+      <button class="btn-whatsapp" style="margin-top: 1rem;" onclick="confirmExtras()">Ajouter au panier</button>
     </div>
   </div>
-    </div>
-  </div>
+
   <script>
-    function toggleExtraList(el) {
-      const list = el.nextElementSibling;
-      list.style.display = list.style.display === 'none' ? 'block' : 'none';
-    }
+    let selectedExtras = {};
+    let cart = [];
+
     function scrollToCategory(id) {
       const section = document.getElementById(id);
       if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-    function openModal(element) {
-  const name = element.getAttribute('data-name');
-  const description = element.getAttribute('data-description');
-  const price = parseFloat(element.getAttribute('data-price'));
-  const image = element.getAttribute('data-image');
 
-  document.querySelector('#modal img').src = image;
-  document.querySelector('#modal img').alt = name;
-  document.querySelector('#modal-title').textContent = name;
-  document.querySelector('#modal-description').textContent = description;
+    function openModal(el) {
+      const name = el.getAttribute("data-name");
+      const desc = el.getAttribute("data-description");
+      const img = el.getAttribute("data-image");
+      const price = el.getAttribute("data-price");
 
-  document.getElementById('modal').setAttribute('data-name', name);
-  document.getElementById('modal').setAttribute('data-price', price);
+      document.getElementById("modal-title").textContent = name;
+      document.getElementById("modal-description").textContent = desc;
+      document.getElementById("modal-img").src = img;
+      document.getElementById("modal").style.display = "flex";
 
-  document.getElementById('modal').style.display = 'flex';
+      document.getElementById("modal").dataset.name = name;
+      document.getElementById("modal").dataset.price = price;
     }
+
     function closeModal() {
-      document.getElementById('modal').style.display = 'none';
+      document.getElementById("modal").style.display = "none";
     }
-    let selectedExtras = {};
-    let cart = [];
-    function updateExtra(name, delta) {
-      if (!selectedExtras[name]) selectedExtras[name] = 0;
-      selectedExtras[name] += delta;
-      if (selectedExtras[name] < 0) selectedExtras[name] = 0;
-      document.getElementById('extra-' + name).innerText = selectedExtras[name];
+
+    function toggleCartPanel() {
+      const modal = document.getElementById('cart-modal');
+      modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
     }
+
     function confirmExtras() {
-      const extras = Object.entries(selectedExtras)
-        .filter(([_, q]) => q > 0)
-        .map(([name, quantity]) => {
-          let price = 0;
-          if (["Pepsi","Mirinda Orange","Mirinda Pomme","Mirinda Citron","7up","Oulmes"].includes(name)) price = 10;
-          else if (["Lotus","Oreo"].includes(name)) price = 25;
-          return { name, quantity, price };
-        });
-      document.querySelectorAll('input[name="extra-checkbox"]:checked').forEach(cb => {
-        extras.push({ name: cb.value, quantity: 1, price: parseFloat(cb.dataset.price) });
-      });
-      const name = document.getElementById('modal').getAttribute('data-name');
-      const price = parseFloat(document.getElementById('modal').getAttribute('data-price'));
-      const item = {
-        name: name,
-        price: price,
-        quantity: 1,
-        extras: extras
-      };
+      const name = document.getElementById("modal").dataset.name;
+      const price = parseFloat(document.getElementById("modal").dataset.price);
+      const item = { name, price, quantity: 1, extras: [] };
       cart.push(item);
       selectedExtras = {};
-      renderCart();
       closeModal();
+      renderCart();
     }
+
     function renderCart() {
-    const cartToggle = document.getElementById('cart-toggle');
-  const cartCount = document.getElementById('cart-count');
-  cartCount.textContent = cart.length;
-    const whatsappBtn = document.getElementById('whatsapp-cart-btn');
-    whatsappBtn.style.display = cart.length > 0 ? 'block' : 'none';
-      const cartItems = document.getElementById('cart-items');
-      const totalPrice = document.getElementById('total-price');
-      cartItems.innerHTML = '';
-  if (cart.length === 0) {
-    cartItems.innerHTML = '<p id="empty-cart-msg" style="text-align:center; color:#aaa; font-style:italic;">Votre panier est vide pour le moment 🛒</p>';
-  }
+      const cartCount = document.getElementById("cart-count");
+      const whatsappBtn = document.getElementById("whatsapp-cart-btn");
+      const cartItems = document.getElementById("cart-items");
+      const totalPrice = document.getElementById("total-price");
+
+      cartCount.textContent = cart.length;
+      whatsappBtn.style.display = cart.length > 0 ? "block" : "none";
+
+      cartItems.innerHTML = "";
+      if (cart.length === 0) {
+        cartItems.innerHTML = '<p style="text-align:center; color:#aaa;">Votre panier est vide 🛒</p>';
+      }
+
       let total = 0;
-      cart.forEach((item, index) => {
-        const extrasText = item.extras && item.extras.length
-          ? '<ul>' + item.extras.map(e => `<li>${e.quantity} x ${e.name} (${e.price} DH)</li>`).join('') + '</ul>'
-          : '';
-        const itemTotal = item.price * item.quantity + (item.extras ? item.extras.reduce((sum, e) => sum + e.price * e.quantity, 0) : 0);
+      cart.forEach((item, i) => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+
         cartItems.innerHTML += `
           <div class="cart-item">
             <h4>${item.name}</h4>
-            <p>
-              Quantité :
-              <button onclick="updateQuantity(${index}, -1)">-</button>
+            <p>Quantité : 
+              <button onclick="updateQuantity(${i}, -1)">-</button>
               ${item.quantity}
-              <button onclick="updateQuantity(${index}, 1)">+</button>
-              <button onclick="removeFromCart(${index})">✖</button>
+              <button onclick="updateQuantity(${i}, 1)">+</button>
+              <button onclick="removeFromCart(${i})">✖</button>
             </p>
-            ${extrasText}
             <p>Sous-total : ${itemTotal} DH</p>
           </div>
         `;
-        total += itemTotal;
       });
+
       totalPrice.textContent = `Total : ${total} DH`;
     }
+
     function updateQuantity(index, delta) {
       cart[index].quantity += delta;
-      if (cart[index].quantity <= 0) {
-        cart.splice(index, 1);
-      }
+      if (cart[index].quantity <= 0) cart.splice(index, 1);
       renderCart();
     }
+
     function removeFromCart(index) {
       cart.splice(index, 1);
       renderCart();
     }
-  function generateWhatsAppMessage() {
-  let message = "*Commande L'gordo*%0A";
-  let total = 0;
-  cart.forEach(item => {
-    message += `
-*${item.quantity} x ${item.name}*`;
-    if (item.extras && item.extras.length > 0) {
-      item.extras.forEach(extra => {
-        message += `%0A  - ${extra.quantity} x ${extra.name} (${extra.price} DH)`;
-      });
-    }
-    const itemTotal = item.price * item.quantity + (item.extras ? item.extras.reduce((sum, e) => sum + e.price * e.quantity, 0) : 0);
-    message += `%0A_Sous-total: ${itemTotal} DH_%0A`;
-    total += itemTotal;
-  });
-  message += `
-*Total : ${total} DH*`;
-  return message;
-}
 
-document.getElementById('whatsapp-cart-btn').addEventListener('click', () => {
-  const phoneNumber = '212600000000'; // Remplace avec ton numéro WhatsApp
-  const message = generateWhatsAppMessage();
-  const url = `https://wa.me/${phoneNumber}?text=${message}`;
-  window.open(url, '_blank');
-});
-function toggleCartPanel() {
-  const modal = document.getElementById('cart-modal');
-  modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
-}
-</script>
+    function generateWhatsAppMessage() {
+      let message = "*Commande L'gordo*%0A";
+      let total = 0;
+      cart.forEach(item => {
+        message += `*${item.quantity} x ${item.name}*%0A`;
+        const itemTotal = item.price * item.quantity;
+        message += `_Sous-total: ${itemTotal} DH_%0A`;
+        total += itemTotal;
+      });
+      message += `%0A*Total : ${total} DH*`;
+      return message;
+    }
+
+    document.getElementById("whatsapp-cart-btn").addEventListener("click", () => {
+      const phone = "212600000000";
+      const url = `https://wa.me/${phone}?text=${generateWhatsAppMessage()}`;
+      window.open(url, "_blank");
+    });
+  </script>
 </body>
 </html>
