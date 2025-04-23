@@ -11,7 +11,6 @@
       --secondary: #a27c27;
       --accent: #ffd500;
     }
-
     body {
       margin: 0;
       font-family: 'Quicksand', sans-serif;
@@ -19,17 +18,14 @@
       color: white;
       overflow-x: hidden;
     }
-
     header {
       text-align: center;
       padding: 1rem;
       background-color: var(--primary);
     }
-
     header img {
       width: 120px;
     }
-
     nav {
       display: flex;
       justify-content: center;
@@ -37,17 +33,14 @@
       background-color: var(--secondary);
       padding: 0.5rem;
     }
-
     nav a {
       color: white;
       text-decoration: none;
       font-weight: bold;
     }
-
     section {
       padding: 1rem;
     }
-
     .product {
       background-color: #1a1f2b;
       border-radius: 12px;
@@ -58,26 +51,21 @@
       align-items: center;
       cursor: pointer;
     }
-
     .product img {
       width: 100%;
       border-radius: 12px;
     }
-
     .product h3 {
       margin: 0.5rem 0;
     }
-
     .product p {
       font-size: 0.9rem;
       color: #ccc;
     }
-
     .price {
       color: var(--accent);
       font-weight: bold;
     }
-
     .cart-btn {
       position: fixed;
       bottom: 20px;
@@ -91,7 +79,6 @@
       cursor: pointer;
       z-index: 1000;
     }
-
     .modal {
       display: none;
       position: fixed;
@@ -104,7 +91,6 @@
       align-items: center;
       z-index: 999;
     }
-
     .modal-content {
       background-color: #1e2533;
       padding: 2rem;
@@ -116,11 +102,9 @@
       max-height: 90vh;
       overflow-y: auto;
     }
-
     .modal-content h3 {
       margin-top: 0;
     }
-
     .close-btn {
       background-color: red;
       color: white;
@@ -130,11 +114,9 @@
       cursor: pointer;
       border-radius: 8px;
     }
-
     .extra-category {
       margin-top: 1rem;
     }
-
     .extra-header {
       display: flex;
       align-items: center;
@@ -144,25 +126,21 @@
       cursor: pointer;
       border-radius: 8px;
     }
-
     .extra-content {
       display: none;
       padding: 0.5rem 1rem;
     }
-
     .extra-item {
       margin: 0.5rem 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-
     .quantity-btns {
       display: flex;
       align-items: center;
       gap: 0.3rem;
     }
-
     .quantity-btns button {
       background-color: var(--secondary);
       border: none;
@@ -171,7 +149,6 @@
       border-radius: 5px;
       cursor: pointer;
     }
-
     .quantity {
       min-width: 20px;
       text-align: center;
@@ -182,32 +159,27 @@
   <header>
     <img src="logo.png" alt="L'gordo Logo">
   </header>
-
   <nav>
     <a href="#pizza">🍕 Pizza</a>
     <a href="#saroukh">🌯 Saroukh</a>
     <a href="#pasta">🍝 Pasta</a>
     <a href="#deal">🎁 Deal</a>
   </nav>
-
   <section id="pizza">
     <h2>🍕 Pizza</h2>
     <div class="product" onclick="openModal('Pizza Carnivore', '75 DH', 'Bouchées savoureuses de viande hachée assaisonnée à la marocaine avec du fromage fondant.')">
-      <img src="pizza.jpg" alt="Pizza Example">
+      <img src="LaCarnivore.jpg" alt="Pizza Carnivore">
       <h3>Pizza Carnivore</h3>
       <p>Bouchées de viande assaisonnée et fromage fondant.</p>
       <span class="price">75 DH</span>
     </div>
   </section>
-
   <button class="cart-btn" onclick="toggleCart()">🛒 (0)</button>
-
   <div class="modal" id="productModal">
     <div class="modal-content">
       <h3 id="modalTitle"></h3>
       <p id="modalDescription"></p>
       <span id="modalPrice"></span>
-
       <div class="extra-category">
         <div class="extra-header" onclick="toggleExtras('sodas')">🥤 Sodas ▼</div>
         <div class="extra-content" id="sodas">
@@ -219,7 +191,6 @@
           <div class="extra-item">Oulmes – 10 DH <span class="quantity-btns"><button>-</button><span class="quantity">0</span><button>+</button></span></div>
         </div>
       </div>
-
       <div class="extra-category">
         <div class="extra-header" onclick="toggleExtras('extras')">🧀 Extras ▼</div>
         <div class="extra-content" id="extras">
@@ -230,7 +201,6 @@
           <div class="extra-item"><label><input type="checkbox"> Dinde fumée – 15 DH</label></div>
         </div>
       </div>
-
       <div class="extra-category">
         <div class="extra-header" onclick="toggleExtras('desserts')">🍪 Desserts ▼</div>
         <div class="extra-content" id="desserts">
@@ -238,27 +208,39 @@
           <div class="extra-item">Oreo – 25 DH <span class="quantity-btns"><button>-</button><span class="quantity">0</span><button>+</button></span></div>
         </div>
       </div>
-
       <button class="close-btn" onclick="closeModal()">Fermer</button>
     </div>
   </div>
-
   <script>
     function openModal(title, price, description) {
       document.getElementById('modalTitle').innerText = title;
       document.getElementById('modalPrice').innerText = price;
       document.getElementById('modalDescription').innerText = description;
       document.getElementById('productModal').style.display = 'flex';
-    }
 
+      document.querySelectorAll('.extra-item .quantity-btns').forEach(group => {
+        const minus = group.querySelector('button:first-child');
+        const plus = group.querySelector('button:last-child');
+        const quantity = group.querySelector('.quantity');
+
+        minus.onclick = (e) => {
+          e.stopPropagation();
+          let val = parseInt(quantity.innerText);
+          if (val > 0) quantity.innerText = val - 1;
+        };
+        plus.onclick = (e) => {
+          e.stopPropagation();
+          let val = parseInt(quantity.innerText);
+          quantity.innerText = val + 1;
+        };
+      });
+    }
     function closeModal() {
       document.getElementById('productModal').style.display = 'none';
     }
-
     function toggleCart() {
       alert('Fonctionnalité de panier à implémenter.');
     }
-
     function toggleExtras(id) {
       const el = document.getElementById(id);
       el.style.display = el.style.display === 'block' ? 'none' : 'block';
