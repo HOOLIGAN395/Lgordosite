@@ -217,6 +217,19 @@
     font-size: 0.85rem;
   }
 }
+.cart::before {
+  content: '🛒';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--secondary);
+  color: white;
+  font-size: 1.2rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 9999px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
 </style>
 </head>
 <body>
@@ -308,8 +321,10 @@
       <div class="product-list"></div>
     </div>
   </main>
-  <div class="cart" id="cart">
-    <div id="cart-items"></div>
+  <div class="cart" id="cart" style="transition: transform 0.3s ease-in-out;">
+    <div id="cart-items">
+      <p id="empty-cart-msg" style="text-align:center; color:#aaa; font-style:italic;">Votre panier est vide pour le moment 🛒</p>
+    </div>
     <div class="total" id="total-price">Total : 0 DH</div>
     <button class="btn-whatsapp">Commander via WhatsApp</button>
   </div>
@@ -319,7 +334,7 @@
       <img src="LaCarnivore.jpg" alt="Pizza Carnivore" style="width: 100%; border-radius: 1rem; margin-bottom: 1rem; object-fit: cover; max-height: 180px;">
       <p class="description" id="modal-description" style="margin-bottom: 1rem; text-align: center; color: #ccc;">Description ici</p>
       <button class="close-btn" onclick="closeModal()">×</button>
-      <h2>Ajouter des extras</h2>
+      <h2 style="text-align:center; color: var(--accent); font-size: 1.2rem;">Un supplément ?</h2>
 
       <div class="extra-category">
         <h3 onclick="toggleExtraList(this)">🥤 Sodas <span>▼</span></h3>
@@ -416,11 +431,16 @@
       closeModal();
     }
     function renderCart() {
+  const cartPanel = document.getElementById('cart');
   const whatsappBtn = document.querySelector('.btn-whatsapp');
+  cartPanel.style.transform = cart.length > 0 ? 'translateY(0)' : 'translateY(100%)';
   whatsappBtn.style.display = cart.length > 0 ? 'block' : 'none';
       const cartItems = document.getElementById('cart-items');
       const totalPrice = document.getElementById('total-price');
       cartItems.innerHTML = '';
+  if (cart.length === 0) {
+    cartItems.innerHTML = '<p id="empty-cart-msg" style="text-align:center; color:#aaa; font-style:italic;">Votre panier est vide pour le moment 🛒</p>';
+  }
       let total = 0;
       cart.forEach((item, index) => {
         const extrasText = item.extras && item.extras.length
