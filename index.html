@@ -342,15 +342,18 @@
   <div id="cart-toggle" onclick="toggleCartPanel()" style="position: fixed; bottom: 1rem; left: 1rem; background: var(--accent); color: black; border-radius: 9999px; padding: 0.8rem 1.4rem; font-size: 1rem; font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 0.5rem; cursor: pointer; z-index: 1001;">
   <img src="https://img.icons8.com/ios-filled/50/000000/restaurant.png" alt="Panier" style="width: 22px; height: 22px;"> Voir mon panier <span id="cart-count" style="background: black; color: var(--accent); font-size: 0.75rem; padding: 2px 6px; border-radius: 999px; margin-left: auto;">0</span>
 </div>
-<div class="cart" id="cart" style="transition: transform 0.3s ease-in-out; transform: translateY(100%);">
-  <div id="cart-items">
-    <p id="empty-cart-msg" style="text-align:center; color:#aaa; font-style:italic;">Votre panier est vide pour le moment 🛒</p>
+<div class="modal" id="cart-modal" style="display:none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.7); justify-content: center; align-items: center; z-index: 2000;">
+  <div class="modal-content" style="max-width: 500px; width: 90%;">
+    <button class="close-btn" onclick="toggleCartPanel()">×</button>
+    <h2 style="color: var(--accent); text-align: center; margin-bottom: 1rem;">Votre panier</h2>
+    <div id="cart-items">
+      <p id="empty-cart-msg" style="text-align:center; color:#aaa; font-style:italic;">Votre panier est vide pour le moment 🛒</p>
+    </div>
+    <div class="total" id="total-price">Total : 0 DH</div>
+    <button id="whatsapp-cart-btn" class="btn-whatsapp">Commander via WhatsApp</button>
   </div>
-  <div class="total" id="total-price">Total : 0 DH</div>
-  <button id="whatsapp-cart-btn" class="btn-whatsapp">Commander via WhatsApp</button>
-  
 </div>
-  <div class="modal" id="modal">
+<div class="modal" id="modal">
     <div class="modal-content">
       <h2 id="modal-title" style="color: var(--accent); text-align: center; font-size: 1.4rem; margin-bottom: 0.5rem;">Nom du produit</h2>
       <img src="LaCarnivore.jpg" alt="Pizza Carnivore" style="width: 100%; border-radius: 1rem; margin-bottom: 1rem; object-fit: cover; max-height: 180px;">
@@ -527,10 +530,8 @@ document.getElementById('whatsapp-cart-btn').addEventListener('click', () => {
   window.open(url, '_blank');
 });
 function toggleCartPanel() {
-  const cart = document.getElementById('cart');
-  const isOpen = cart.classList.contains('visible');
-  cart.classList.toggle('visible', !isOpen);
-  cart.style.transform = isOpen ? 'translateY(100%)' : 'translateY(0)';
+  const modal = document.getElementById('cart-modal');
+  modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
 }
 </script>
 </body>
