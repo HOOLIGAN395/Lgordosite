@@ -80,81 +80,117 @@
   <section id="pizza" style="padding: 1rem;">
   <h2 style="color: white;">🍕 Pizza</h2>
   <div class="product-grid" style="display: flex; flex-direction: column; gap: 1rem;">
-  
+  <div class="product" onclick="openModal('Poulet Alfredo', '64', 'Sauce blanche, poulet, oignon confit, poivrons confit, champignons, origan, olive noir, mozzarella')" style="display: flex; align-items: center; gap: 1rem; background: #1a1f2b; border-radius: 12px; padding: 0.8rem; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">
+    <img src="PouletAlfredo.jpg" alt="Poulet Alfredo" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+    <div style="flex: 1;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h3 style="margin: 0; color: #ffd500; font-size: 1rem;">Poulet Alfredo</h3>
+        <span style="font-weight: bold; color: white;">64 DH</span>
+      </div>
+      <p style="margin: 0.3rem 0 0; font-size: 0.9rem; color: #ccc;">Poulet, oignons, poivrons, mozza</p>
+    </div>
+  </div>
+  <div class="product" onclick="openModal('La Carnivore', '75', 'Sauce tomate, merguez de bœuf, viande hachée de bœuf, pepperoni, oignon, poivrons, champignons, tomates cerises, origan, olive noir, mozzarella')" style="display: flex; align-items: center; gap: 1rem; background: #1a1f2b; border-radius: 12px; padding: 0.8rem; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">
+    <img src="LaCarnivore.jpg" alt="La Carnivore" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+    <div style="flex: 1;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h3 style="margin: 0; color: #ffd500; font-size: 1rem;">La Carnivore</h3>
+        <span style="font-weight: bold; color: white;">75 DH</span>
+      </div>
+      <p style="margin: 0.3rem 0 0; font-size: 0.9rem; color: #ccc;">Merguez, viande hachée, pepperoni</p>
+    </div>
+  </div>
+  <div class="product" onclick="openModal('La Kefta', '64', 'Sauce tomate, viande hachée de bœuf, oignon, poivrons, champignons, origan, olive noir, mozzarella.')" style="display: flex; align-items: center; gap: 1rem; background: #1a1f2b; border-radius: 12px; padding: 0.8rem; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">
+    <img src="LAKEFTA.jpg" alt="La Kefta" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+    <div style="flex: 1;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h3 style="margin: 0; color: #ffd500; font-size: 1rem;">La Kefta</h3>
+        <span style="font-weight: bold; color: white;">64 DH</span>
+      </div>
+      <p style="margin: 0.3rem 0 0; font-size: 0.9rem; color: #ccc;">Viande hachée, légumes, mozza</p>
+    </div>
+  </div>
+  <div class="product" onclick="openModal('La Pepperoni', '64', 'Sauce tomate, pepperoni, oignon, champignons poivrons, origan, olive noir, mozzarella')" style="display: flex; align-items: center; gap: 1rem; background: #1a1f2b; border-radius: 12px; padding: 0.8rem; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">
+    <img src="laPepperoni.jpg" alt="La Pepperoni" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+    <div style="flex: 1;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h3 style="margin: 0; color: #ffd500; font-size: 1rem;">La Pepperoni</h3>
+        <span style="font-weight: bold; color: white;">64 DH</span>
+      </div>
+      <p style="margin: 0.3rem 0 0; font-size: 0.9rem; color: #ccc;">Pepperoni, oignons, poivrons</p>
+    </div>
+  </div>
+  <div class="product" onclick="openModal('La Tuna', '62', 'Sauce tomate, thon, origan, olive noir, mozzarella.')" style="display: flex; align-items: center; gap: 1rem; background: #1a1f2b; border-radius: 12px; padding: 0.8rem; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">
+    <img src="latuna.jpg" alt="La Tuna" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+    <div style="flex: 1;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h3 style="margin: 0; color: #ffd500; font-size: 1rem;">La Tuna</h3>
+        <span style="font-weight: bold; color: white;">62 DH</span>
+      </div>
+      <p style="margin: 0.3rem 0 0; font-size: 0.9rem; color: #ccc;">Thon, origan, mozza</p>
+    </div>
+  </div>
+<div class="product" onclick="openModal('La 4 Fromages', '65', 'Sauce tomate, mozzarella, fromage bleu, gouda, emmental, origan, olive.')" style="display: flex; align-items: center; gap: 1rem; background: #1a1f2b; border-radius: 12px; padding: 0.8rem; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">
+    <img src="la4FROMAGES.jpg" alt="La 4 Fromages" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+    <div style="flex: 1;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h3 style="margin: 0; color: #ffd500; font-size: 1rem;">La 4 Fromages</h3>
+        <span style="font-weight: bold; color: white;">65 DH</span>
+      </div>
+      <p style="margin: 0.3rem 0 0; font-size: 0.9rem; color: #ccc;">Mozzarella, bleu, gouda, emmental</p>
+    </div>
+  </div>
+  <div class="product" onclick="openModal('La Fumée', '64', 'Sauce blanche, dinde fumée, oignon confit, champignons, origan, olive noir, mozzarella')" style="display: flex; align-items: center; gap: 1rem; background: #1a1f2b; border-radius: 12px; padding: 0.8rem; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">
+    <img src="laFumée.jpg" alt="La Fumée" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+    <div style="flex: 1;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h3 style="margin: 0; color: #ffd500; font-size: 1rem;">La Fumée</h3>
+        <span style="font-weight: bold; color: white;">64 DH</span>
+      </div>
+      <p style="margin: 0.3rem 0 0; font-size: 0.9rem; color: #ccc;">Dinde fumée, oignons, champignons</p>
+    </div>
+  </div>
+  <div class="product" onclick="openModal('Poulet Barbecue', '65', 'Une base de sauce tomate onctueuse, garnie de poulet mariné tendre, d\'oignons croquants, de poivrons colorés et rehaussée d\'une sauce barbecue savoureuse. Une explosion de saveurs équilibrées et gourmandes !')" style="display: flex; align-items: center; gap: 1rem; background: #1a1f2b; border-radius: 12px; padding: 0.8rem; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">
+    <img src="POULETBERBECUE.jpg" alt="Poulet Barbecue" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+    <div style="flex: 1;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h3 style="margin: 0; color: #ffd500; font-size: 1rem;">Poulet Barbecue</h3>
+        <span style="font-weight: bold; color: white;">65 DH</span>
+      </div>
+      <p style="margin: 0.3rem 0 0; font-size: 0.9rem; color: #ccc;">Poulet, BBQ, oignons, poivrons</p>
+    </div>
+  </div>
+  <div class="product" onclick="openModal('La Merguez', '64', 'Sauce tomate, merguez de bœuf, oignon, poivrons, champignons, origan, olive noir, mozzarella.')" style="display: flex; align-items: center; gap: 1rem; background: #1a1f2b; border-radius: 12px; padding: 0.8rem; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">
+    <img src="LAMERGUEZ.jpg" alt="La Merguez" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+    <div style="flex: 1;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h3 style="margin: 0; color: #ffd500; font-size: 1rem;">La Merguez</h3>
+        <span style="font-weight: bold; color: white;">64 DH</span>
+      </div>
+      <p style="margin: 0.3rem 0 0; font-size: 0.9rem; color: #ccc;">Merguez, légumes, mozza</p>
+    </div>
+  </div>
+  <div class="product" onclick="openModal('Poulet Pesto', '105', 'Une base de sauce fromagère maison, garnie de poulet mariné tendre, d\'une généreuse couche d\'extra mozzarella, et sublimée par une délicieuse sauce pesto maison. Un équilibre parfait de saveurs gourmandes')" style="display: flex; align-items: center; gap: 1rem; background: #1a1f2b; border-radius: 12px; padding: 0.8rem; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">
+    <img src="Pouletpesto.jpg" alt="Poulet Pesto" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+    <div style="flex: 1;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h3 style="margin: 0; color: #ffd500; font-size: 1rem;">Poulet Pesto</h3>
+        <span style="font-weight: bold; color: white;">105 DH</span>
+      </div>
+      <p style="margin: 0.3rem 0 0; font-size: 0.9rem; color: #ccc;">Poulet, mozza, pesto maison</p>
+    </div>
+  </div>
+  <div class="product" onclick="openModal('Bianca Suprême', '105', 'Une base de sauce fromagère maison onctueuse, garnie de morceaux de poulet mariné savoureux, d\'une généreuse portion de fromage fondant et de tranches de pepperoni. Une création riche et irrésistible pour les vrais gourmands')" style="display: flex; align-items: center; gap: 1rem; background: #1a1f2b; border-radius: 12px; padding: 0.8rem; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">
+    <img src="BiancaSuprême.jpg" alt="Bianca Suprême" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+    <div style="flex: 1;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h3 style="margin: 0; color: #ffd500; font-size: 1rem;">Bianca Suprême</h3>
+        <span style="font-weight: bold; color: white;">105 DH</span>
+      </div>
+      <p style="margin: 0.3rem 0 0; font-size: 0.9rem; color: #ccc;">Poulet, fromage, pepperoni</p>
+    </div>
+  </div>
 </div>
-  <div class="product" onclick="openModal('La Carnivore', '75', 'Sauce tomate, merguez de bœuf, viande hachée de bœuf, pepperoni, oignon, poivrons, champignons, tomates cerises, origan, olive noir, mozzarella')" style="background: linear-gradient(145deg, #1a1f2b, #0f141e); padding: 1rem; border-radius: 16px; width: 100%; cursor: pointer; color: white; font-size: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.4);">
-    <img src="LaCarnivore.jpg" alt="Pizza La Carnivore" style="width: 100%; border-radius: 12px; aspect-ratio: 1 / 1; object-fit: cover; margin-bottom: 0.8rem;">
-    <h3 style="text-align: center; color: #ffd500;">La Carnivore</h3>
-    <p style="text-align: center; font-size: 0.95rem; color: #ddd;">Viandes, légumes, mozza</p>
-    <span style="display: block; text-align: center; font-weight: bold; color: white; background-color: #a27c27; padding: 0.4rem 0.8rem; border-radius: 12px; font-size: 0.9rem;">75 DH</span>
-  </div>
-  <div class="product" onclick="openModal('La Kefta', '64', 'Sauce tomate, viande hachée de bœuf, oignon, poivrons, champignons, origan, olive noir, mozzarella.')" style="background: linear-gradient(145deg, #1a1f2b, #0f141e); padding: 1rem; border-radius: 16px; width: 100%; cursor: pointer; color: white; font-size: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.4);">
-    <img src="LAKEFTA.jpg" alt="Pizza La Kefta" style="width: 100%; border-radius: 12px; max-height: 140px; object-fit: cover; margin-bottom: 0.8rem;">
-    <h3 style="text-align: center; color: #ffd500;">La Kefta</h3>
-    <p style="text-align: center; font-size: 0.95rem; color: #ddd;">Viande hachée, légumes, mozza</p>
-    <span style="display: block; text-align: center; font-weight: bold; color: white; background-color: #a27c27; padding: 0.4rem 0.8rem; border-radius: 12px; font-size: 0.9rem;">64 DH</span>
-  </div>
-  <div class="product" onclick="openModal('La Pepperoni', '64', 'Sauce tomate, pepperoni, oignon, champignons poivrons, origan, olive noir, mozzarella')" style="background: linear-gradient(145deg, #1a1f2b, #0f141e); padding: 1rem; border-radius: 16px; width: 100%; cursor: pointer; color: white; font-size: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.4);">
-    <img src="laPepperoni.jpg" alt="Pizza La Pepperoni" style="width: 100%; border-radius: 12px; max-height: 140px; object-fit: cover; margin-bottom: 0.8rem;">
-    <h3 style="text-align: center; color: #ffd500;">La Pepperoni</h3>
-    <p style="text-align: center; font-size: 0.95rem; color: #ddd;">Pepperoni, légumes, mozza</p>
-    <span style="display: block; text-align: center; font-weight: bold; color: white; background-color: #a27c27; padding: 0.4rem 0.8rem; border-radius: 12px; font-size: 0.9rem;">64 DH</span>
-  </div>
-  <div class="product" onclick="openModal('La Tuna', '62', 'Sauce tomate, thon, origan, olive noir, mozzarella.')" style="background: linear-gradient(145deg, #1a1f2b, #0f141e); padding: 1rem; border-radius: 16px; width: 100%; cursor: pointer; color: white; font-size: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.4);">
-    <img src="latuna.jpg" alt="Pizza La Tuna" style="width: 100%; border-radius: 12px; max-height: 140px; object-fit: cover; margin-bottom: 0.8rem;">
-    <h3 style="text-align: center; color: #ffd500;">La Tuna</h3>
-    <p style="text-align: center; font-size: 0.95rem; color: #ddd;">Thon, origan, mozza</p>
-    <span style="display: block; text-align: center; font-weight: bold; color: white; background-color: #a27c27; padding: 0.4rem 0.8rem; border-radius: 12px; font-size: 0.9rem;">62 DH</span>
-  </div>
-  <div class="product" onclick="openModal('La 4 Fromages', '65', 'Sauce tomate, mozzarella, fromage bleu, gouda, emmental, origan, olive.')" style="background: linear-gradient(145deg, #1a1f2b, #0f141e); padding: 1rem; border-radius: 16px; width: 100%; cursor: pointer; color: white; font-size: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.4);">
-    <img src="la4FROMAGES.jpg" alt="Pizza La 4 Fromages" style="width: 100%; border-radius: 12px; max-height: 140px; object-fit: cover; margin-bottom: 0.8rem;">
-    <h3 style="text-align: center; color: #ffd500;">La 4 Fromages</h3>
-    <p style="text-align: center; font-size: 0.95rem; color: #ddd;">4 fromages fondants</p>
-    <span style="display: block; text-align: center; font-weight: bold; color: white; background-color: #a27c27; padding: 0.4rem 0.8rem; border-radius: 12px; font-size: 0.9rem;">65 DH</span>
-  </div>
-  <div class="product" onclick="openModal('La Fumée', '64', 'Sauce blanche, dinde fumée, oignon confit, champignons, origan, olive noir, mozzarella')" style="background: linear-gradient(145deg, #1a1f2b, #0f141e); padding: 1rem; border-radius: 16px; width: 100%; cursor: pointer; color: white; font-size: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.4);">
-    <img src="laFumée.jpg" alt="Pizza La Fumée" style="width: 100%; border-radius: 12px; max-height: 140px; object-fit: cover; margin-bottom: 0.8rem;">
-    <h3 style="text-align: center; color: #ffd500;">La Fumée</h3>
-    <p style="text-align: center; font-size: 0.95rem; color: #ddd;">Dinde fumée, champignons</p>
-    <span style="display: block; text-align: center; font-weight: bold; color: white; background-color: #a27c27; padding: 0.4rem 0.8rem; border-radius: 12px; font-size: 0.9rem;">64 DH</span>
-  </div>
-  <div class="product" onclick="openModal('Poulet Barbecue', '65', 'Une base de sauce tomate onctueuse, garnie de poulet mariné tendre, d\'oignons croquants, de poivrons colorés et rehaussée d\'une sauce barbecue savoureuse. Une explosion de saveurs équilibrées et gourmandes !')" style="background: linear-gradient(145deg, #1a1f2b, #0f141e); padding: 1rem; border-radius: 16px; width: 100%; cursor: pointer; color: white; font-size: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.4);">
-    <img src="POULETBERBECUE.jpg" alt="Pizza Poulet Barbecue" style="width: 100%; border-radius: 12px; max-height: 140px; object-fit: cover; margin-bottom: 0.8rem;">
-    <h3 style="text-align: center; color: #ffd500;">Poulet Barbecue</h3>
-    <p style="text-align: center; font-size: 0.95rem; color: #ddd;">Poulet, BBQ, oignons</p>
-    <span style="display: block; text-align: center; font-weight: bold; color: white; background-color: #a27c27; padding: 0.4rem 0.8rem; border-radius: 12px; font-size: 0.9rem;">65 DH</span>
-  </div>
-  <div class="product" onclick="openModal('La Merguez', '64', 'Sauce tomate, merguez de bœuf, oignon, poivrons, champignons, origan, olive noir, mozzarella.')" style="background: linear-gradient(145deg, #1a1f2b, #0f141e); padding: 1rem; border-radius: 16px; width: 100%; cursor: pointer; color: white; font-size: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.4);">
-    <img src="LAMERGUEZ.jpg" alt="Pizza La Merguez" style="width: 100%; border-radius: 12px; max-height: 140px; object-fit: cover; margin-bottom: 0.8rem;">
-    <h3 style="text-align: center; color: #ffd500;">La Merguez</h3>
-    <p style="text-align: center; font-size: 0.95rem; color: #ddd;">Merguez, légumes, mozza</p>
-    <span style="display: block; text-align: center; font-weight: bold; color: white; background-color: #a27c27; padding: 0.4rem 0.8rem; border-radius: 12px; font-size: 0.9rem;">64 DH</span>
-  </div>
-  <div class="product" onclick="openModal('Poulet Pesto', '105', 'Une base de sauce fromagère maison, garnie de poulet mariné tendre, d\'une généreuse couche d\'extra mozzarella, et sublimée par une délicieuse sauce pesto maison. Un équilibre parfait de saveurs gourmandes')" style="background: linear-gradient(145deg, #1a1f2b, #0f141e); padding: 1rem; border-radius: 16px; width: 100%; cursor: pointer; color: white; font-size: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.4);">
-    <img src="Pouletpesto.jpg" alt="Pizza Poulet Pesto" style="width: 100%; border-radius: 12px; max-height: 140px; object-fit: cover; margin-bottom: 0.8rem;">
-    <h3 style="text-align: center; color: #ffd500;">Poulet Pesto</h3>
-    <p style="text-align: center; font-size: 0.95rem; color: #ddd;">Poulet, mozza, pesto</p>
-    <span style="display: block; text-align: center; font-weight: bold; color: white; background-color: #a27c27; padding: 0.4rem 0.8rem; border-radius: 12px; font-size: 0.9rem;">105 DH</span>
-  </div>
-  <div class="product" onclick="openModal('Bianca Suprême', '105', 'Une base de sauce fromagère maison onctueuse, garnie de morceaux de poulet mariné savoureux, d\'une généreuse portion de fromage fondant et de tranches de pepperoni. Une création riche et irrésistible pour les vrais gourmands')" style="background: linear-gradient(145deg, #1a1f2b, #0f141e); padding: 1rem; border-radius: 16px; width: 100%; cursor: pointer; color: white; font-size: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.4);">
-    <img src="BiancaSuprême.jpg" alt="Pizza Bianca Suprême" style="width: 100%; border-radius: 12px; max-height: 140px; object-fit: cover; margin-bottom: 0.8rem;">
-    <h3 style="text-align: center; color: #ffd500;">Bianca Suprême</h3>
-    <p style="text-align: center; font-size: 0.95rem; color: #ddd;">Poulet, fromage, pepperoni</p>
-    <span style="display: block; text-align: center; font-weight: bold; color: white; background-color: #a27c27; padding: 0.4rem 0.8rem; border-radius: 12px; font-size: 0.9rem;">105 DH</span>
-  </div>
-</div></div>
-
-
-
-
-
-
-
-
-
-
-</div>
-  </div>
 </section>
 <!-- fin des produits pizza -->
 <div id="productModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.8); justify-content: center; align-items: center; z-index: 999;">
