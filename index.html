@@ -270,6 +270,9 @@
       font-size: 1rem;
     }
   }
+  .hidden {
+    display: none !important;
+  }
 </style>
   
   
@@ -410,7 +413,7 @@
 
     <div class="extra-category">
       <div class="extra-header" onclick="toggleExtras('sodas')">🥤 Sodas ▼</div>
-      <div class="extra-content" id="sodas" style="display: none;">
+      <div class="extra-content" id="sodas" class="hidden">
         <div class="extra-item">Pepsi – 10 DH <span class="extra-qty"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
         <div class="extra-item">7up – 10 DH <span class="extra-qty"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
       </div>
@@ -418,7 +421,7 @@
 
     <div class="extra-category">
       <div class="extra-header" onclick="toggleExtras('extras')">🧀 Extras ▼</div>
-      <div class="extra-content" id="extras" style="display: none;">
+      <div class="extra-content" id="extras" class="hidden">
         <div class="extra-item"><label><input type="checkbox"> Fromage – 12 DH</label></div>
         <div class="extra-item"><label><input type="checkbox"> Merguez – 15 DH</label></div>
         <div class="extra-item"><label><input type="checkbox"> Pepperoni – 17 DH</label></div>
@@ -427,7 +430,7 @@
 
     <div class="extra-category">
       <div class="extra-header" onclick="toggleExtras('desserts')">🍪 Desserts ▼</div>
-      <div class="extra-content" id="desserts" style="display: none;">
+      <div class="extra-content" id="desserts" class="hidden">
         <div class="extra-item">Lotus – 25 DH <span class="extra-qty"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
         <div class="extra-item">Oreo – 25 DH <span class="extra-qty"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
       </div>
@@ -444,7 +447,7 @@
 </div>
 <div class="extra-category">
   <div class="extra-header" onclick="toggleExtras('extras')">🧀 Extras ▼</div>
-  <div class="extra-content" id="extras" style="display: none;">
+  <div class="extra-content" id="extras" class="hidden">
     <div class="extra-item">
   <span class="extra-name"><label><input type="checkbox"> Fromage </span>
   <span class="extra-price">12 DH</label></div>
@@ -468,7 +471,7 @@
 </div>
 <div class="extra-category">
   <div class="extra-header" onclick="toggleExtras('desserts')">🍪 Desserts ▼</div>
-  <div class="extra-content" id="desserts" style="display: none;">
+  <div class="extra-content" id="desserts" class="hidden">
   <div class="extra-item">Lotus – 25 DH</span>
   <span class="extra-qty"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span>
 </div>
@@ -657,6 +660,12 @@ function openModal(title, price, description) {
     title.includes('Poulet Alfredo') ? 'PouletAlfredo.jpg' :
     '';
   document.getElementById('productModal').style.display = 'flex';
+}
+function toggleExtras(id) {
+  const el = document.getElementById(id);
+  if (el) {
+    el.classList.toggle('hidden');
+  }
 }
 </script>
 </body>
