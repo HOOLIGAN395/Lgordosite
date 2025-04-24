@@ -399,62 +399,48 @@
   </div>
 </div>
 </section>
-<!-- fin des produits pizza -->
-<div id="productModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.8); justify-content: center; align-items: center; z-index: 999;">
+
+<!-- Nouvelle modale produit -->
+<div id="productModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.8); justify-content: center; align-items: center; z-index: 1002;">
   <div class="modal-content product-modal">
-    <span onclick="closeModal()" style="position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: white;">&times;</span>
-    <img id="modalImage" class="modal-image" alt="Image du produit">
-    <h3 id="modalTitle" style="font-size: 1.2rem;">Produit</h3>
-    <p id="modalPrice" style="font-size: 1.1rem; font-weight: bold; color: #ffd500;">75 DH</p>
-    <p id="modalDescription">Description</p>
-    
-<script>
-function toggleExtras(id) {
-  const extraContent = document.getElementById(id);
-  if (!extraContent) return;
-  extraContent.style.display = (extraContent.style.display === 'none' || !extraContent.style.display) ? 'block' : 'none';
-}
-function adjustQty(btn, delta) {
-  const quantitySpan = btn.parentElement.querySelector('.quantity');
-  let current = parseInt(quantitySpan.innerText);
-  let newVal = Math.max(0, current + delta);
-  quantitySpan.innerText = newVal;
-}
-</script>
-<div class="extra-category">
-  <div class="extra-header" onclick="toggleExtras('sodas')">🥤 Sodas ▼</div>
-  <div class="extra-content" id="sodas" style="display: none;">
-    <div class="extra-item">
-  <span class="extra-name">Pepsi </span>
-  <span class="extra-price">10 DH</span>
-  <span class="extra-qty"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span>
-</div>
-    <div class="extra-item">
-  <span class="extra-name">Mirinda Orange </span>
-  <span class="extra-price">10 DH</span>
-  <span class="extra-qty"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span>
-</div>
-    <div class="extra-item">
-  <span class="extra-name">Mirinda Pomme </span>
-  <span class="extra-price">10 DH</span>
-  <span class="extra-qty"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span>
-</div>
-    <div class="extra-item">
-  <span class="extra-name">Mirinda Citron </span>
-  <span class="extra-price">10 DH</span>
-  <span class="extra-qty"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span>
-</div>
-    <div class="extra-item">
-  <span class="extra-name">7up </span>
-  <span class="extra-price">10 DH</span>
-  <span class="extra-qty"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span>
-</div>
-    <div class="extra-item">
-  <span class="extra-name">Oulmes </span>
-  <span class="extra-price">10 DH</span>
-  <span class="extra-qty"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span>
-</div>
+    <img id="modalImage" class="modal-image" src="" alt="Image du produit">
+    <h3 id="modalTitle" class="product-title"></h3>
+    <p id="modalDescription" class="product-description"></p>
+    <p><strong><span id="modalPrice"></span></strong></p>
+
+    <div class="extra-category">
+      <div class="extra-header" onclick="toggleExtras('sodas')">🥤 Sodas ▼</div>
+      <div class="extra-content" id="sodas" style="display: none;">
+        <div class="extra-item">Pepsi – 10 DH <span class="extra-qty"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
+        <div class="extra-item">7up – 10 DH <span class="extra-qty"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
+      </div>
+    </div>
+
+    <div class="extra-category">
+      <div class="extra-header" onclick="toggleExtras('extras')">🧀 Extras ▼</div>
+      <div class="extra-content" id="extras" style="display: none;">
+        <div class="extra-item"><label><input type="checkbox"> Fromage – 12 DH</label></div>
+        <div class="extra-item"><label><input type="checkbox"> Merguez – 15 DH</label></div>
+        <div class="extra-item"><label><input type="checkbox"> Pepperoni – 17 DH</label></div>
+      </div>
+    </div>
+
+    <div class="extra-category">
+      <div class="extra-header" onclick="toggleExtras('desserts')">🍪 Desserts ▼</div>
+      <div class="extra-content" id="desserts" style="display: none;">
+        <div class="extra-item">Lotus – 25 DH <span class="extra-qty"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
+        <div class="extra-item">Oreo – 25 DH <span class="extra-qty"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
+      </div>
+    </div>
+
+    <div style="margin-top: auto; width: 100%; display: flex; flex-direction: column; gap: 0.5rem;">
+      <button onclick="closeModal()" style="background-color: #444; color: white; padding: 0.6rem; font-size: 0.85rem; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">Fermer</button>
+      <button onclick="addToCart()" style="background-color: #a27c27; color: white; padding: 0.6rem; font-size: 0.85rem; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">Ajouter au panier</button>
+    </div>
   </div>
+</div>
+<!-- fin des produits pizza -->
+
 </div>
 <div class="extra-category">
   <div class="extra-header" onclick="toggleExtras('extras')">🧀 Extras ▼</div>
