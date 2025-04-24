@@ -165,6 +165,33 @@
       width: 28px;
     }
   }
+  .extra-name {
+    font-weight: 500;
+    color: white;
+    flex: 1;
+  }
+  .extra-price {
+    font-weight: bold;
+    color: #ffd500;
+    min-width: 60px;
+    text-align: right;
+  }
+  .extra-qty {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  @media screen and (max-width: 600px) {
+    .extra-name {
+      font-size: 1.2rem;
+    }
+    .extra-price {
+      font-size: 1.1rem;
+    }
+    .extra-qty {
+      font-size: 1.2rem;
+    }
+  }
 </style>
   
   
@@ -183,7 +210,7 @@
   <h2 style="color: white;">🍕 Pizza</h2>
   <div class="product-grid" style="display: flex; flex-direction: column; gap: 1rem;">
   <div class="product">
-    <img src="PouletAlfredo.jpg" alt="Poulet Alfredo" style="width: 100px; height: 100px; object-fit: cover; border-radius: 10px;">
+    <img src="PouletAlfredo.jpg" alt="Poulet Alfredo" class="product-img">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
         <h3 class="product-title">Poulet Alfredo</h3>
@@ -193,110 +220,110 @@
     </div>
   </div>
   <div class="product">
-    <img src="LaCarnivore.jpg" alt="La Carnivore" style="width: 120px; height: 120px; object-fit: cover; border-radius: 8px;">
+    <img src="LaCarnivore.jpg" alt="La Carnivore" class="product-img">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h3 style="margin: 0; color: #ffd500; font-size: 1rem;">La Carnivore</h3>
+        <h3 class="product-title">La Carnivore</h3>
         <span style="font-weight: bold; color: white;">75 DH</span>
       </div>
-      <p style="margin: 0.3rem 0 0; font-size: 1.1rem; color: #ccc;">Merguez, viande hachée, pepperoni</p>
+      <p class="product-description">Merguez, viande hachée, pepperoni</p>
     </div>
   </div>
   <div class="product">
-    <img src="LAKEFTA.jpg" alt="La Kefta" style="width: 120px; height: 120px; object-fit: cover; border-radius: 10px;">
+    <img src="LAKEFTA.jpg" alt="La Kefta" class="product-img">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h3 style="margin: 0; color: #ffd500; font-size: 1rem;">La Kefta</h3>
+        <h3 class="product-title">La Kefta</h3>
         <span style="font-weight: bold; color: white;">64 DH</span>
       </div>
-      <p style="margin: 0.3rem 0 0; font-size: 1.2rem; color: #ccc;">Viande hachée, légumes, mozza</p>
+      <p class="product-description">Viande hachée, légumes, mozza</p>
     </div>
   </div>
   <div class="product">
-    <img src="laPepperoni.jpg" alt="La Pepperoni" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+    <img src="laPepperoni.jpg" alt="La Pepperoni" class="product-img">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h3 style="margin: 0; color: #ffd500; font-size: 1rem;">La Pepperoni</h3>
+        <h3 class="product-title">La Pepperoni</h3>
         <span style="font-weight: bold; color: white;">64 DH</span>
       </div>
-      <p style="margin: 0.3rem 0 0; font-size: 0.9rem; color: #ccc;">Pepperoni, oignons, poivrons</p>
+      <p class="product-description">Pepperoni, oignons, poivrons</p>
     </div>
   </div>
   <div class="product">
-    <img src="latuna.jpg" alt="La Tuna" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+    <img src="latuna.jpg" alt="La Tuna" class="product-img">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h3 style="margin: 0; color: #ffd500; font-size: 1rem;">La Tuna</h3>
+        <h3 class="product-title">La Tuna</h3>
         <span style="font-weight: bold; color: white;">62 DH</span>
       </div>
-      <p style="margin: 0.3rem 0 0; font-size: 0.9rem; color: #ccc;">Thon, origan, mozza</p>
+      <p class="product-description">Thon, origan, mozza</p>
     </div>
   </div>
 <div class="product">
-    <img src="la4FROMAGES.jpg" alt="La 4 Fromages" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+    <img src="la4FROMAGES.jpg" alt="La 4 Fromages" class="product-img">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h3 style="margin: 0; color: #ffd500; font-size: 1rem;">La 4 Fromages</h3>
+        <h3 class="product-title">La 4 Fromages</h3>
         <span style="font-weight: bold; color: white;">65 DH</span>
       </div>
-      <p style="margin: 0.3rem 0 0; font-size: 0.9rem; color: #ccc;">Mozzarella, bleu, gouda, emmental</p>
+      <p class="product-description">Mozzarella, bleu, gouda, emmental</p>
     </div>
   </div>
   <div class="product">
-    <img src="laFumée.jpg" alt="La Fumée" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+    <img src="laFumée.jpg" alt="La Fumée" class="product-img">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h3 style="margin: 0; color: #ffd500; font-size: 1rem;">La Fumée</h3>
+        <h3 class="product-title">La Fumée</h3>
         <span style="font-weight: bold; color: white;">64 DH</span>
       </div>
-      <p style="margin: 0.3rem 0 0; font-size: 0.9rem; color: #ccc;">Dinde fumée, oignons, champignons</p>
+      <p class="product-description">Dinde fumée, oignons, champignons</p>
     </div>
   </div>
   <div class="product">
-    <img src="POULETBERBECUE.jpg" alt="Poulet Barbecue" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+    <img src="POULETBERBECUE.jpg" alt="Poulet Barbecue" class="product-img">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h3 style="margin: 0; color: #ffd500; font-size: 1rem;">Poulet Barbecue</h3>
+        <h3 class="product-title">Poulet Barbecue</h3>
         <span style="font-weight: bold; color: white;">65 DH</span>
       </div>
-      <p style="margin: 0.3rem 0 0; font-size: 0.9rem; color: #ccc;">Poulet, BBQ, oignons, poivrons</p>
+      <p class="product-description">Poulet, BBQ, oignons, poivrons</p>
     </div>
   </div>
   <div class="product">
-    <img src="LAMERGUEZ.jpg" alt="La Merguez" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+    <img src="LAMERGUEZ.jpg" alt="La Merguez" class="product-img">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h3 style="margin: 0; color: #ffd500; font-size: 1rem;">La Merguez</h3>
+        <h3 class="product-title">La Merguez</h3>
         <span style="font-weight: bold; color: white;">64 DH</span>
       </div>
-      <p style="margin: 0.3rem 0 0; font-size: 0.9rem; color: #ccc;">Merguez, légumes, mozza</p>
+      <p class="product-description">Merguez, légumes, mozza</p>
     </div>
   </div>
   <div class="product">
-    <img src="Pouletpesto.jpg" alt="Poulet Pesto" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+    <img src="Pouletpesto.jpg" alt="Poulet Pesto" class="product-img">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h3 style="margin: 0; color: #ffd500; font-size: 1rem;">Poulet Pesto</h3>
+        <h3 class="product-title">Poulet Pesto</h3>
         <span style="font-weight: bold; color: white;">105 DH</span>
       </div>
-      <p style="margin: 0.3rem 0 0; font-size: 0.9rem; color: #ccc;">Poulet, mozza, pesto maison</p>
+      <p class="product-description">Poulet, mozza, pesto maison</p>
     </div>
   </div>
   <div class="product">
-    <img src="BiancaSuprême.jpg" alt="Bianca Suprême" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+    <img src="BiancaSuprême.jpg" alt="Bianca Suprême" class="product-img">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h3 style="margin: 0; color: #ffd500; font-size: 1rem;">Bianca Suprême</h3>
+        <h3 class="product-title">Bianca Suprême</h3>
         <span style="font-weight: bold; color: white;">105 DH</span>
       </div>
-      <p style="margin: 0.3rem 0 0; font-size: 0.9rem; color: #ccc;">Poulet, fromage, pepperoni</p>
+      <p class="product-description">Poulet, fromage, pepperoni</p>
     </div>
   </div>
 </div>
 </section>
 <!-- fin des produits pizza -->
 <div id="productModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.8); justify-content: center; align-items: center; z-index: 999;">
-  <div class="modal-content" style="background-color: #1e2533; padding: 1rem; border-radius: 16px; max-width: 96vw; width: 96%; color: white; text-align: left; max-height: 90vh; overflow-y: auto; font-size: 1rem; display: flex; flex-direction: column;">
+  <div class="modal-content">
     <span onclick="closeModal()" style="position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: white;">&times;</span>
     <img id="modalImage" src="" alt="Image du produit" style="width: 100%; height: auto; max-height: 180px; object-fit: cover; border-radius: 12px; margin-bottom: 0.5rem; box-shadow: 0 1px 4px rgba(0,0,0,0.15);">
     <h3 id="modalTitle" style="font-size: 1.2rem;">Produit</h3>
@@ -319,29 +346,73 @@ function adjustQty(btn, delta) {
 <div class="extra-category">
   <div class="extra-header" onclick="toggleExtras('sodas')">🥤 Sodas ▼</div>
   <div class="extra-content" id="sodas" style="display: none;">
-    <div class="extra-item">Pepsi – 10 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
-    <div class="extra-item">Mirinda Orange – 10 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
-    <div class="extra-item">Mirinda Pomme – 10 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
-    <div class="extra-item">Mirinda Citron – 10 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
-    <div class="extra-item">7up – 10 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
-    <div class="extra-item">Oulmes – 10 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
+    <div class="extra-item">
+  <span class="extra-name">Pepsi </span>
+  <span class="extra-price">10 DH</span>
+  <span class="extra-qty"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span>
+</div>
+    <div class="extra-item">
+  <span class="extra-name">Mirinda Orange </span>
+  <span class="extra-price">10 DH</span>
+  <span class="extra-qty"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span>
+</div>
+    <div class="extra-item">
+  <span class="extra-name">Mirinda Pomme </span>
+  <span class="extra-price">10 DH</span>
+  <span class="extra-qty"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span>
+</div>
+    <div class="extra-item">
+  <span class="extra-name">Mirinda Citron </span>
+  <span class="extra-price">10 DH</span>
+  <span class="extra-qty"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span>
+</div>
+    <div class="extra-item">
+  <span class="extra-name">7up </span>
+  <span class="extra-price">10 DH</span>
+  <span class="extra-qty"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span>
+</div>
+    <div class="extra-item">
+  <span class="extra-name">Oulmes </span>
+  <span class="extra-price">10 DH</span>
+  <span class="extra-qty"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span>
+</div>
   </div>
 </div>
 <div class="extra-category">
   <div class="extra-header" onclick="toggleExtras('extras')">🧀 Extras ▼</div>
   <div class="extra-content" id="extras" style="display: none;">
-    <div class="extra-item"><label><input type="checkbox"> Fromage – 12 DH</label></div>
-    <div class="extra-item"><label><input type="checkbox"> Viande hachée – 15 DH</label></div>
-    <div class="extra-item"><label><input type="checkbox"> Merguez – 15 DH</label></div>
-    <div class="extra-item"><label><input type="checkbox"> Pepperoni – 17 DH</label></div>
-    <div class="extra-item"><label><input type="checkbox"> Dinde fumée – 15 DH</label></div>
+    <div class="extra-item">
+  <span class="extra-name"><label><input type="checkbox"> Fromage </span>
+  <span class="extra-price">12 DH</label></div>
+    <div class="extra-item">
+  <label class="extra-name"><input type="checkbox"> Viande hachée</label>
+  <span class="extra-price">15 DH</span>
+</div>
+    <div class="extra-item">
+  <label class="extra-name"><input type="checkbox"> Merguez</label>
+  <span class="extra-price">15 DH</span>
+</div>
+    <div class="extra-item">
+  <label class="extra-name"><input type="checkbox"> Pepperoni</label>
+  <span class="extra-price">17 DH</span>
+</div>
+    <div class="extra-item">
+  <label class="extra-name"><input type="checkbox"> Dinde fumée</label>
+  <span class="extra-price">15 DH</span>
+</div>
   </div>
 </div>
 <div class="extra-category">
   <div class="extra-header" onclick="toggleExtras('desserts')">🍪 Desserts ▼</div>
   <div class="extra-content" id="desserts" style="display: none;">
-  <div class="extra-item">Lotus – 25 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
-  <div class="extra-item">Oreo – 25 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
+  <div class="extra-item">Lotus – 25 DH</span>
+  <span class="extra-qty"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span>
+</div>
+  <div class="extra-item">
+  <span class="extra-name">Oreo </span>
+  <span class="extra-price">25 DH</span>
+  <span class="extra-qty"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span>
+</div>
 </div>
 </div>
 <div style="margin-top: auto; width: 100%; display: flex; flex-direction: column; gap: 0.5rem; padding: 1rem 0;">
