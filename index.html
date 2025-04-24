@@ -242,6 +242,30 @@
     font-size: 0.85rem;
   }
   }
+  .modal-image {
+    width: 100%;
+    height: auto;
+    max-height: 140px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+  }
+  .extra-category {
+    padding: 0.5rem;
+  }
+  .extra-item {
+    font-size: 0.9rem;
+    padding: 0.3rem 0;
+  }
+  @media screen and (max-width: 600px) {
+    .modal-image {
+      max-height: 120px;
+    }
+    .extra-item {
+      font-size: 1rem;
+    }
+  }
 </style>
   
   
@@ -375,7 +399,7 @@
 <div id="productModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.8); justify-content: center; align-items: center; z-index: 999;">
   <div class="modal-content product-modal">
     <span onclick="closeModal()" style="position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: white;">&times;</span>
-    <img id="modalImage" src="" alt="Image du produit" style="width: 100%; height: auto; max-height: 180px; object-fit: cover; border-radius: 12px; margin-bottom: 0.5rem; box-shadow: 0 1px 4px rgba(0,0,0,0.15);">
+    <img id="modalImage" class="modal-image" alt="Image du produit">
     <h3 id="modalTitle" style="font-size: 1.2rem;">Produit</h3>
     <p id="modalPrice" style="font-size: 1.1rem; font-weight: bold; color: #ffd500;">75 DH</p>
     <p id="modalDescription">Description</p>
