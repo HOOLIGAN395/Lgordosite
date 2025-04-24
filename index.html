@@ -206,6 +206,42 @@
       gap: 1.5rem;
     }
   }
+  .cart-modal {
+    background-color: #1e2533;
+    padding: 1.2rem;
+    border-radius: 16px;
+    max-width: 95vw;
+    width: 95%;
+    color: white;
+    text-align: left;
+    max-height: 90vh;
+    overflow-y: auto;
+    font-size: 0.95rem;
+  }
+  @media screen and (max-width: 600px) {
+    .cart-modal {
+      padding: 1.5rem 1.2rem;
+      font-size: 1.1rem;
+    }
+  }
+  .product-modal {
+    background-color: #1e2533;
+    padding: 1.2rem;
+    border-radius: 16px;
+    max-width: 95vw;
+    width: 95%;
+    color: white;
+    text-align: left;
+    max-height: 90vh;
+    overflow-y: auto;
+    font-size: 0.95rem;
+  }
+  @media screen and (max-width: 600px) {
+    .product-modal {
+      padding: 1.5rem 1.2rem;
+      font-size: 1.1rem;
+    }
+  }
 </style>
   
   
@@ -223,7 +259,7 @@
   <section id="pizza" style="padding: 1rem;">
   <h2 style="color: white;">🍕 Pizza</h2>
   <div class="product-grid">
-  <div class="product">
+  <div class="product" onclick="openModal(this.querySelector('h3').textContent, this.querySelector('span').textContent, this.querySelector('p').textContent)">
     <img src="PouletAlfredo.jpg" alt="Poulet Alfredo" class="product-img">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -233,7 +269,7 @@
       <p class="product-description">Poulet, oignons, poivrons, mozza</p>
     </div>
   </div>
-  <div class="product">
+  <div class="product" onclick="openModal(this.querySelector('h3').textContent, this.querySelector('span').textContent, this.querySelector('p').textContent)">
     <img src="LaCarnivore.jpg" alt="La Carnivore" class="product-img">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -243,7 +279,7 @@
       <p class="product-description">Merguez, viande hachée, pepperoni</p>
     </div>
   </div>
-  <div class="product">
+  <div class="product" onclick="openModal(this.querySelector('h3').textContent, this.querySelector('span').textContent, this.querySelector('p').textContent)">
     <img src="LAKEFTA.jpg" alt="La Kefta" class="product-img">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -253,7 +289,7 @@
       <p class="product-description">Viande hachée, légumes, mozza</p>
     </div>
   </div>
-  <div class="product">
+  <div class="product" onclick="openModal(this.querySelector('h3').textContent, this.querySelector('span').textContent, this.querySelector('p').textContent)">
     <img src="laPepperoni.jpg" alt="La Pepperoni" class="product-img">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -263,7 +299,7 @@
       <p class="product-description">Pepperoni, oignons, poivrons</p>
     </div>
   </div>
-  <div class="product">
+  <div class="product" onclick="openModal(this.querySelector('h3').textContent, this.querySelector('span').textContent, this.querySelector('p').textContent)">
     <img src="latuna.jpg" alt="La Tuna" class="product-img">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -273,7 +309,7 @@
       <p class="product-description">Thon, origan, mozza</p>
     </div>
   </div>
-<div class="product">
+<div class="product" onclick="openModal(this.querySelector('h3').textContent, this.querySelector('span').textContent, this.querySelector('p').textContent)">
     <img src="la4FROMAGES.jpg" alt="La 4 Fromages" class="product-img">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -283,7 +319,7 @@
       <p class="product-description">Mozzarella, bleu, gouda, emmental</p>
     </div>
   </div>
-  <div class="product">
+  <div class="product" onclick="openModal(this.querySelector('h3').textContent, this.querySelector('span').textContent, this.querySelector('p').textContent)">
     <img src="laFumée.jpg" alt="La Fumée" class="product-img">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -293,7 +329,7 @@
       <p class="product-description">Dinde fumée, oignons, champignons</p>
     </div>
   </div>
-  <div class="product">
+  <div class="product" onclick="openModal(this.querySelector('h3').textContent, this.querySelector('span').textContent, this.querySelector('p').textContent)">
     <img src="POULETBERBECUE.jpg" alt="Poulet Barbecue" class="product-img">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -303,7 +339,7 @@
       <p class="product-description">Poulet, BBQ, oignons, poivrons</p>
     </div>
   </div>
-  <div class="product">
+  <div class="product" onclick="openModal(this.querySelector('h3').textContent, this.querySelector('span').textContent, this.querySelector('p').textContent)">
     <img src="LAMERGUEZ.jpg" alt="La Merguez" class="product-img">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -313,7 +349,7 @@
       <p class="product-description">Merguez, légumes, mozza</p>
     </div>
   </div>
-  <div class="product">
+  <div class="product" onclick="openModal(this.querySelector('h3').textContent, this.querySelector('span').textContent, this.querySelector('p').textContent)">
     <img src="Pouletpesto.jpg" alt="Poulet Pesto" class="product-img">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -323,7 +359,7 @@
       <p class="product-description">Poulet, mozza, pesto maison</p>
     </div>
   </div>
-  <div class="product">
+  <div class="product" onclick="openModal(this.querySelector('h3').textContent, this.querySelector('span').textContent, this.querySelector('p').textContent)">
     <img src="BiancaSuprême.jpg" alt="Bianca Suprême" class="product-img">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -337,7 +373,7 @@
 </section>
 <!-- fin des produits pizza -->
 <div id="productModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.8); justify-content: center; align-items: center; z-index: 999;">
-  <div class="modal-content">
+  <div class="modal-content product-modal">
     <span onclick="closeModal()" style="position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: white;">&times;</span>
     <img id="modalImage" src="" alt="Image du produit" style="width: 100%; height: auto; max-height: 180px; object-fit: cover; border-radius: 12px; margin-bottom: 0.5rem; box-shadow: 0 1px 4px rgba(0,0,0,0.15);">
     <h3 id="modalTitle" style="font-size: 1.2rem;">Produit</h3>
@@ -444,7 +480,7 @@ function adjustQty(btn, delta) {
   </div>
 
   <div id=\"cartModal\" class=\"modal\" style=\"display: none; z-index: 1002; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.8); justify-content: center; align-items: center;\">
-  <div class=\"modal-content\" style=\"background-color: #1e2533; padding: 1.2rem; border-radius: 16px; max-width: 95vw; width: 95%; color: white; text-align: left; max-height: 90vh; overflow-y: auto; font-size: 0.95rem;\">
+  <div class=\"modal-content cart-modal\">
       <span onclick="closeCartModal()" style="position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: white;">&times;</span>
       <h3 style="margin-top: 0;">🛒 Mon Panier</h3>
       <ul id="cartItems" style="list-style: none; padding-left: 0; margin-bottom: 1rem; max-height: 200px; overflow-y: auto;"></ul>
