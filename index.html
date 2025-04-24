@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     .extra-content.visible {
       display: block;
@@ -192,6 +193,19 @@
       font-size: 1.2rem;
     }
   }
+  .product-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 100%;
+    padding: 0.5rem;
+  }
+  @media screen and (max-width: 600px) {
+    .product-grid {
+      padding: 1rem;
+      gap: 1.5rem;
+    }
+  }
 </style>
   
   
@@ -208,7 +222,7 @@
   </nav>
   <section id="pizza" style="padding: 1rem;">
   <h2 style="color: white;">🍕 Pizza</h2>
-  <div class="product-grid" style="display: flex; flex-direction: column; gap: 1rem;">
+  <div class="product-grid">
   <div class="product">
     <img src="PouletAlfredo.jpg" alt="Poulet Alfredo" class="product-img">
     <div style="flex: 1;">
