@@ -1,125 +1,17 @@
-<!-- Code entièrement restauré à l'état antérieur validé avec extras dynamiques et design propre -->
+<!-- Code complet avec corrections pour éviter les erreurs null et ajout des éléments manquants -->
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>L'gordo - Commande</title>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --primary: #0d1723;
-      --secondary: #a27c27;
-      --accent: #ff914d;
-    }
-    body {
-      margin: 0;
-      font-family: 'Quicksand', sans-serif;
-      background-color: var(--primary);
-      color: white;
-      overflow-x: hidden;
-      overflow-y: auto;
-    }
-    header img {
-      width: 120px;
-    }
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.5rem;
-      background-color: var(--secondary);
-      padding: 1rem;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    section {
-      padding: 1rem;
-    }
-    .product-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: space-between;
-    }
-    .product {
-      background-color: #1a1f2b;
-      border-radius: 12px;
-      padding: 0.75rem;
-      width: calc(50% - 0.5rem);
-      max-width: 48%;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      cursor: pointer;
-    }
-    .product img {
-      width: 100%;
-      border-radius: 12px;
-    }
-    .product h3 {
-      margin: 0.5rem 0;
-    }
-    .product p {
-      font-size: 0.9rem;
-      color: #ccc;
-      text-align: center;
-    }
-    .price {
-      color: var(--accent);
-      font-weight: bold;
-    }
-    .cart-btn {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      background-color: var(--accent); color: black;
-      color: black;
-      font-weight: bold;
-      border: none;
-      border-radius: 50px;
-      padding: 0.8rem 1.2rem;
-      cursor: pointer;
-      z-index: 1000;
-    }
-    .modal {
+    .extra-content {
       display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: rgba(0, 0, 0, 0.8);
-      justify-content: center;
-      align-items: center;
-      z-index: 999;
     }
-    .modal-content {
-      position: relative;
-      background-color: #1e2533;
-      padding: 2rem;
-      border-radius: 15px;
-      max-width: 400px;
-      width: 90%;
-      color: white;
-      text-align: left;
-      max-height: 90vh;
-      overflow-y: auto;
-      scrollbar-width: none;
+    .extra-content.visible {
+      display: block;
     }
-    .modal-content button {
-      background-color: var(--secondary);
-      color: white;
-      border: none;
-      padding: 0.4rem 0.8rem;
-      margin-top: 1rem;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      cursor: pointer;
+    .extra-category {
+      margin-top: 1.2rem;
     }
     .extra-header {
       background-color: #2a2f3d;
@@ -130,10 +22,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 1rem;
     }
     .extra-content {
-      display: none;
       padding: 0.5rem 1rem;
     }
     .extra-item {
@@ -154,7 +44,7 @@
       box-shadow: 0 0 4px rgba(0,0,0,0.2);
     }
     .quantity-btns button {
-      background-color: var(--secondary);
+      background-color: #a27c27;
       border: none;
       color: white;
       font-size: 1rem;
@@ -176,181 +66,363 @@
       font-weight: bold;
       color: white;
     }
-      body::-webkit-scrollbar {
-      display: none;
-    }
-      .modal-content::-webkit-scrollbar {
-      display: none;
-    }
-      @media (min-width: 600px) {
-      .product {
-        width: calc(48% - 1rem);
-        max-width: 48%;
-        padding: 0.75rem;
-      }
-    }
   </style>
-</head>
-<body>
+  
+  
+
+<body style="margin: 0; font-family: 'Quicksand', sans-serif; background-color: #0d1723; color: white; overflow-x: hidden;">
   <header style="text-align: center; padding: 2rem 0;">
-  <img src="logo.png" alt="L'gordo Logo" style="width: 180px; max-width: 80%; display: block; margin: 0 auto;">
-</header>
-  <nav style="display: flex; justify-content: center; gap: 1.5rem; padding: 1rem; background: none;">
-  <a href="#pizza" style="border: 2px solid rgba(255,255,255,0.2); padding: 0.5rem 1.2rem; border-radius: 12px; background-color: var(--secondary); color: white;">🍕 Pizza</a>
-  <a href="#saroukh" style="border: 2px solid rgba(255,255,255,0.2); padding: 0.5rem 1.2rem; border-radius: 12px; background-color: var(--secondary); color: white;">🌯 Saroukh</a>
-  <a href="#pasta" style="border: 2px solid rgba(255,255,255,0.2); padding: 0.5rem 1.2rem; border-radius: 12px; background-color: var(--secondary); color: white;">🍝 Pasta</a>
-  <a href="#deal" style="border: 2px solid rgba(255,255,255,0.2); padding: 0.5rem 1.2rem; border-radius: 12px; background-color: var(--secondary); color: white;">🎁 Deal</a>
-</nav>
-  <section id="pizza" style="background: none; border: 2px solid rgba(255,255,255,0.1); border-radius: 16px; margin: 1rem; padding: 1rem;">
-    <h2>🍕 Pizza</h2>
-    <div class="product-grid">
-<div class="product" onclick="openModal('La Carnivore', '75 DH', 'Sauce tomate, merguez de bœuf, viande hachée de bœuf, pepperoni, oignon, poivrons, champignons, tomates cerises, origan, olive noir, mozzarella')">
-  <img src="LaCarnivore.jpg" alt="Pizza La Carnivore">
-  <h3>La Carnivore</h3>
-  <p>Merguez, viande hachée, pepperoni.</p>
-  <span class="price">75 DH</span>
-</div>
-<div class="product" onclick="openModal('Poulet Alfredo', '64 DH', 'Sauce blanche, poulet, oignon confit, poivrons confit, champignons, origan, olive noir, mozzarella')">
-  <img src="PouletAlfredo.jpg" alt="Pizza Poulet Alfredo">
-  <h3>Poulet Alfredo</h3>
-  <p>Poulet, oignons, poivrons, mozza.</p>
-  <span class="price">64 DH</span>
-</div>
-<div class="product" onclick="openModal('Poulet Barbecue', '65 DH', 'Une base de sauce tomate onctueuse, garnie de poulet mariné tendre, d\'oignons croquants, de poivrons colorés et rehaussée d\'une sauce barbecue savoureuse. Une explosion de saveurs équilibrées et gourmandes !')">
-  <img src="POULETBERBECUE.jpg" alt="Pizza Poulet Barbecue">
-  <h3>Poulet Barbecue</h3>
-  <p>Poulet, BBQ, oignons, poivrons.</p>
-  <span class="price">65 DH</span>
-</div>
-<div class="product" onclick="openModal('La Pepperoni', '64 DH', 'Sauce tomate, pepperoni, oignon, champignons poivrons, origan, olive noir, mozzarella')">
-  <img src="laPepperoni.jpg" alt="Pizza La Pepperoni">
-  <h3>La Pepperoni</h3>
-  <p>Pepperoni, légumes, mozzarella.</p>
-  <span class="price">64 DH</span>
-</div>
-<div class="product" onclick="openModal('La Merguez', '64 DH', 'Sauce tomate, merguez de bœuf, oignon, poivrons, champignons, origan, olive noir, mozzarella.')">
-  <img src="LAMERGUEZ.jpg" alt="Pizza La Merguez">
-  <h3>La Merguez</h3>
-  <p>Merguez, légumes, mozzarella.</p>
-  <span class="price">64 DH</span>
-</div>
-<div class="product" onclick="openModal('La 4 Fromages', '65 DH', 'Sauce tomate, mozzarella, fromage bleu, gouda, emmental, origan, olive.')">
-  <img src="la4FROMAGES.jpg" alt="Pizza 4 Fromages">
-  <h3>4 Fromages</h3>
-  <p>4 fromages fondants.</p>
-  <span class="price">65 DH</span>
-</div>
-<div class="product" onclick="openModal('La Tuna', '62 DH', 'Sauce tomate, thon, origan, olive noir, mozzarella.')">
-  <img src="latuna.jpg" alt="Pizza La Tuna">
-  <h3>La Tuna</h3>
-  <p>Thon, origan, mozzarella.</p>
-  <span class="price">62 DH</span>
-</div>
-<div class="product" onclick="openModal('La Fumée', '64 DH', 'Sauce blanche, dinde fumée, oignon confit, champignons, origan, olive noir, mozzarella')">
-  <img src="laFumée.jpg" alt="Pizza La Fumée">
-  <h3>La Fumée</h3>
-  <p>Dinde fumée, champignons, mozzarella.</p>
-  <span class="price">64 DH</span>
-</div>
-<div class="product" onclick="openModal('Poulet Pesto', '105 DH', 'Une base de sauce fromagère maison, garnie de poulet mariné tendre, d\'une généreuse couche d\'extra mozzarella, et sublimée par une délicieuse sauce pesto maison. Un équilibre parfait de saveurs gourmandes')">
-  <img src="Pouletpesto.jpg" alt="Pizza Poulet Pesto">
-  <h3>Poulet Pesto</h3>
-  <p>Poulet, mozza, pesto maison.</p>
-  <span class="price">105 DH</span>
-</div>
-<div class="product" onclick="openModal('Bianca Suprême', '105 DH', 'Une base de sauce fromagère maison onctueuse, garnie de morceaux de poulet mariné savoureux, d\'une généreuse portion de fromage fondant et de tranches de pepperoni. Une création riche et irrésistible pour les vrais gourmands')">
-  <img src="BiancaSuprême.jpg" alt="Pizza Bianca Suprême">
-  <h3>Bianca Suprême</h3>
-  <p>Poulet, fromage, pepperoni.</p>
-  <span class="price">105 DH</span>
-</div>
-</div>
+    <img src="logo.png" alt="L'gordo Logo" style="width: 180px; max-width: 80%; display: block; margin: 0 auto;">
+  </header>
+  <nav style="display: flex; justify-content: center; gap: 1.5rem; padding: 1rem; background-color: #a27c27;">
+    <a href="#pizza" style="color: white; text-decoration: none; font-weight: bold;">🍕 Pizza</a>
+    <a href="#saroukh" style="color: white; text-decoration: none; font-weight: bold;">🌯 Saroukh</a>
+    <a href="#pasta" style="color: white; text-decoration: none; font-weight: bold;">🍝 Pasta</a>
+    <a href="#deal" style="color: white; text-decoration: none; font-weight: bold;">🎁 Deal</a>
+  </nav>
+  <section id="pizza" style="padding: 1rem;">
+  <h2 style="color: white;">🍕 Pizza</h2>
+  <div class="product-grid" style="display: flex; flex-wrap: wrap; gap: 1rem;">
+    <div class="product" onclick="openModal('La Carnivore', '75', 'Sauce tomate, merguez, viande hachée, pepperoni')" style="background: #1a1f2b; padding: 1rem; border-radius: 12px; width: 45%; cursor: pointer; color: white;">
+      <img src="LaCarnivore.jpg" alt="Pizza La Carnivore" style="width: 100%; border-radius: 8px;">
+      <h3>La Carnivore</h3>
+      <p>75 DH</p>
+    </div>
+    <div class="product" onclick="openModal('La Pepperoni', '64', 'Sauce tomate, pepperoni, oignon, champignons poivrons, origan, olive noir, mozzarella')" style="background: #1a1f2b; padding: 1rem; border-radius: 12px; width: 45%; cursor: pointer; color: white;">
+      <img src="laPepperoni.jpg" alt="Pizza La Pepperoni" style="width: 100%; border-radius: 8px;">
+      <h3>La Pepperoni</h3>
+      <p>64 DH</p>
+    </div>
+    <div class="product" onclick="openModal('La Tuna', '62', 'Sauce tomate, thon, origan, olive noir, mozzarella.')" style="background: #1a1f2b; padding: 1rem; border-radius: 12px; width: 45%; cursor: pointer; color: white;">
+        <img src="latuna.jpg" alt="Pizza La Tuna" style="width: 100%; border-radius: 8px;">
+        <h3>La Tuna</h3>
+        <p>62 DH</p>
+      </div>
+      <div class="product" onclick="openModal('La 4 Fromages', '65', 'Sauce tomate, mozzarella, fromage bleu, gouda, emmental, origan, olive.')" style="background: #1a1f2b; padding: 1rem; border-radius: 12px; width: 45%; cursor: pointer; color: white;">
+        <img src="la4FROMAGES.jpg" alt="Pizza La 4 Fromages" style="width: 100%; border-radius: 8px;">
+        <h3>La 4 Fromages</h3>
+        <p>65 DH</p>
+      </div>
+      <div class="product" onclick="openModal('La Fumée', '64', 'Sauce blanche, dinde fumée, oignon confit, champignons, origan, olive noir, mozzarella')" style="background: #1a1f2b; padding: 1rem; border-radius: 12px; width: 45%; cursor: pointer; color: white;">
+        <img src="laFumée.jpg" alt="Pizza La Fumée" style="width: 100%; border-radius: 8px;">
+        <h3>La Fumée</h3>
+        <p>64 DH</p>
+      </div>
+      <div class="product" onclick="openModal('Poulet Barbecue', '65', 'Une base de sauce tomate onctueuse, garnie de poulet mariné tendre, d\'oignons croquants, de poivrons colorés et rehaussée d\'une sauce barbecue savoureuse.')" style="background: #1a1f2b; padding: 1rem; border-radius: 12px; width: 45%; cursor: pointer; color: white;">
+        <img src="POULETBERBECUE.jpg" alt="Pizza Poulet Barbecue" style="width: 100%; border-radius: 8px;">
+        <h3>Poulet Barbecue</h3>
+        <p>65 DH</p>
+      </div>
+      <div class="product" onclick="openModal('La Merguez', '64', 'Sauce tomate, merguez de bœuf, oignon, poivrons, champignons, origan, olive noir, mozzarella.')" style="background: #1a1f2b; padding: 1rem; border-radius: 12px; width: 45%; cursor: pointer; color: white;">
+        <img src="LAMERGUEZ.jpg" alt="Pizza La Merguez" style="width: 100%; border-radius: 8px;">
+        <h3>La Merguez</h3>
+        <p>64 DH</p>
+      </div>
+      <div class="product" onclick="openModal('Poulet Pesto', '105', 'Une base de sauce fromagère maison, garnie de poulet mariné tendre, d\'une généreuse couche d\'extra mozzarella, et sublimée par une délicieuse sauce pesto maison.')" style="background: #1a1f2b; padding: 1rem; border-radius: 12px; width: 45%; cursor: pointer; color: white;">
+        <img src="Pouletpesto.jpg" alt="Pizza Poulet Pesto" style="width: 100%; border-radius: 8px;">
+        <h3>Poulet Pesto</h3>
+        <p>105 DH</p>
+      </div>
+      <div class="product" onclick="openModal('Bianca Suprême', '105', 'Une base de sauce fromagère maison onctueuse, garnie de morceaux de poulet mariné savoureux, d\'une généreuse portion de fromage fondant et de tranches de pepperoni.')" style="background: #1a1f2b; padding: 1rem; border-radius: 12px; width: 45%; cursor: pointer; color: white;">
+        <img src="BiancaSuprême.jpg" alt="Pizza Bianca Suprême" style="width: 100%; border-radius: 8px;">
+        <h3>Bianca Suprême</h3>
+        <p>105 DH</p>
+      </div>
+    </div>
+      </div>
 </section>
-<button class="cart-btn" onclick="toggleCart()">🛒 (0)</button>
+  <div id="productModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.8); justify-content: center; align-items: center; z-index: 999;">
+  <div class="modal-content" style="background-color: #1e2533; padding: 2rem; border-radius: 15px; max-width: 400px; width: 90%; color: white; text-align: left; max-height: 90vh; overflow-y: auto;">
+    <span onclick="closeModal()" style="position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: white;">&times;</span>
+    <img id="modalImage" src="" alt="Image du produit" style="width: 100%; height: auto; max-height: 180px; object-fit: cover; border-radius: 12px; margin-bottom: 1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+    <h3 id="modalTitle">Produit</h3>
+    <p id="modalPrice">$1 DH</p>
+    <p id="modalDescription">Description</p>
+    <style>
+  .extra-category {
+    margin-top: 1.2rem;
+  }
+  .extra-header {
+    background-color: #2a2f3d;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .extra-content {
+    display: none;
+    padding: 0.5rem 1rem;
+  }
+  .extra-item {
+    margin: 0.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .quantity-btns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1a1f2b;
+    border-radius: 8px;
+    padding: 0.2rem 0.5rem;
+    min-width: 90px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  }
+  .quantity-btns button {
+    background-color: #a27c27;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  .quantity {
+    width: 24px;
+    height: 26px;
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 26px;
+    font-weight: bold;
+    color: white;
+  }
+.extra-content {
+  display: none;
+}
+.extra-content.visible {
+  display: block;
+}
+</style>
+<script>
+function toggleExtras(id) {
+  const extraContent = document.getElementById(id);
+  if (!extraContent) return;
+  extraContent.classList.toggle('visible');
+}
+function adjustQty(btn, delta) {
+  const quantitySpan = btn.parentElement.querySelector('.quantity');
+  let current = parseInt(quantitySpan.innerText);
+  let newVal = Math.max(0, current + delta);
+  quantitySpan.innerText = newVal;
+}
+</script>
+<div class="extra-category">
+  <div class="extra-header" onclick="toggleExtras('sodas')">🥤 Sodas ▼</div>
+  <div class="extra-content" id="sodas">
+    <div class="extra-item">Pepsi – 10 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
+    <div class="extra-item">Mirinda Orange – 10 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
+    <div class="extra-item">Mirinda Pomme – 10 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
+    <div class="extra-item">Mirinda Citron – 10 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
+    <div class="extra-item">7up – 10 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
+    <div class="extra-item">Oulmes – 10 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
+  </div>
+</div>
+<div class="extra-category">
+  <div class="extra-header" onclick="toggleExtras('extras')">🧀 Extras ▼</div>
+  <div class="extra-content" id="extras">
+    <div class="extra-item"><label><input type="checkbox"> Fromage – 12 DH</label></div>
+    <div class="extra-item"><label><input type="checkbox"> Viande hachée – 15 DH</label></div>
+    <div class="extra-item"><label><input type="checkbox"> Merguez – 15 DH</label></div>
+    <div class="extra-item"><label><input type="checkbox"> Pepperoni – 17 DH</label></div>
+    <div class="extra-item"><label><input type="checkbox"> Dinde fumée – 15 DH</label></div>
+  </div>
+</div>
+<div class="extra-category">
+  <div class="extra-header" onclick="toggleExtras('desserts')">🍪 Desserts ▼</div>
+  <div class="extra-content" id="desserts">
+  <div class="extra-item">Lotus – 25 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
+  <div class="extra-item">Oreo – 25 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
+</div>
+</div>
+<div style="width: 100%; display: flex; flex-direction: column; gap: 0.5rem; padding: 1rem 0;">
+  <button onclick="closeModal()" style="background-color: #444; color: white; padding: 0.6rem; font-size: 0.85rem; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">Fermer</button>
+  <button onclick="addToCart()" style="background-color: #a27c27; color: white; padding: 0.6rem; font-size: 0.85rem; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">Ajouter au panier</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="cart" style="position: fixed; bottom: 1rem; left: 1rem; background-color: #a27c27; padding: 0.5rem 0.8rem; border-radius: 16px; box-shadow: 0 6px 12px rgba(0,0,0,0.3); width: auto; z-index: 1001; display: flex; align-items: center; gap: 0.4rem; cursor: pointer; font-size: 0.85rem;" onclick="openCartModal()">
+    <span style="font-size: 1.3rem;">🍴</span>
+    <span style="font-weight: 600; color: white;">Mon Panier :</span>
+    <span id="cartTotal" style="font-weight: bold; color: white;">0 DH</span>
+  </div>
 
-  <div id="productModal" class="modal">
-    <div class="modal-content">
-      <span onclick="closeModal()" style="position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: white;">&times;</span>
-      <img id="modalImage" src="" alt="Image du produit" style="width: 100%; height: auto; max-height: 180px; object-fit: cover; border-radius: 12px; margin-bottom: 1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
-      <h3 id="modalTitle"></h3>
-      <p id="modalDescription"></p>
-      <span id="modalPrice"></span>
-
-      <div class="extra-category">
-        <div class="extra-header" onclick="toggleExtras('sodas')">🥤 Sodas ▼</div>
-        <div class="extra-content" id="sodas">
-          <div class="extra-item">Pepsi – 10 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
-          <div class="extra-item">Mirinda Orange – 10 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
-          <div class="extra-item">Mirinda Pomme – 10 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
-          <div class="extra-item">Mirinda Citron – 10 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
-          <div class="extra-item">7up – 10 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
-          <div class="extra-item">Oulmes – 10 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
-        </div>
+  <div id="cartModal" class="modal" style="display: none; z-index: 1002; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.8); justify-content: center; align-items: center;">
+    <div class="modal-content" style="background-color: #1e2533; padding: 2rem; border-radius: 15px; max-width: 400px; width: 90%; color: white; text-align: left; max-height: 90vh; overflow-y: auto;">
+      <span onclick="closeCartModal()" style="position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: white;">&times;</span>
+      <h3 style="margin-top: 0;">🛒 Mon Panier</h3>
+      <ul id="cartItems" style="list-style: none; padding-left: 0; margin-bottom: 1rem; max-height: 200px; overflow-y: auto;"></ul>
+      <p><strong>Total:</strong> <span id="cartModalTotal">0 DH</span></p>
+      <div style="display: flex; justify-content: space-between; gap: 1rem; margin-top: 1.5rem;">
+        <button onclick="closeCartModal()" style="flex: 1; background-color: #444; color: white; padding: 0.6rem; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">Fermer</button>
+        <a href="#" id="whatsappLink" target="_blank" style="flex: 1; background-color: #25D366; color: white; padding: 0.6rem; border-radius: 8px; text-align: center; text-decoration: none; font-weight: bold; display: inline-block;">WhatsApp</a>
       </div>
-
-      <div class="extra-category">
-        <div class="extra-header" onclick="toggleExtras('extras')">🧀 Extras ▼</div>
-        <div class="extra-content" id="extras">
-          <div class="extra-item"><label><input type="checkbox"> Fromage – 12 DH</label></div>
-          <div class="extra-item"><label><input type="checkbox"> Viande hachée – 15 DH</label></div>
-          <div class="extra-item"><label><input type="checkbox"> Merguez – 15 DH</label></div>
-          <div class="extra-item"><label><input type="checkbox"> Pepperoni – 17 DH</label></div>
-          <div class="extra-item"><label><input type="checkbox"> Dinde fumée – 15 DH</label></div>
-        </div>
-      </div>
-
-      <div class="extra-category">
-        <div class="extra-header" onclick="toggleExtras('desserts')">🍪 Desserts ▼</div>
-        <div class="extra-content" id="desserts">
-          <div class="extra-item">Lotus – 25 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
-          <div class="extra-item">Oreo – 25 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
-        </div>
-      </div>
-
-      <button onclick="addToCart()" style="background-color: var(--secondary); color: white; margin: 1.5rem auto 0 auto; display: block; padding: 0.7rem 1.5rem; font-weight: bold; border-radius: 10px; font-size: 1rem; box-shadow: 0 2px 6px rgba(0,0,0,0.3); transition: background-color 0.3s ease;">Ajouter au panier</button>
-      
     </div>
   </div>
 
-  <script>
-    function openModal(title, price, description) {
-      document.getElementById('modalTitle').innerText = title;
-      document.getElementById('modalDescription').innerText = description;
-      document.getElementById('modalPrice').innerText = price;
-      document.getElementById('modalImage').src =
-        title.includes('Carnivore') ? 'LaCarnivore.jpg' :
-        title.includes('Kefta') ? 'LAKEFTA.jpg' :
-        title.includes('Pepperoni') ? 'laPepperoni.jpg' :
-        title.includes('Tuna') ? 'latuna.jpg' :
-        title.includes('4 Fromages') ? 'la4FROMAGES.jpg' :
-        title.includes('Fumée') ? 'laFumée.jpg' :
-        title.includes('Poulet Barbecue') ? 'POULETBERBECUE.jpg' :
-        title.includes('Merguez') ? 'LAMERGUEZ.jpg' :
-        title.includes('Poulet Pesto') ? 'Pouletpesto.jpg' :
-        title.includes('Bianca Suprême') ? 'BiancaSuprême.jpg' :
-        title.includes('Poulet Alfredo') ? 'PouletAlfredo.jpg' :
-        '';
-      document.getElementById('productModal').style.display = 'flex';
+<script>
+let cart = [];
+function getSelectedExtras() {
+  const extras = [];
+  const sodaEls = document.querySelectorAll('#sodas .extra-item');
+  sodaEls.forEach(el => {
+    const label = el.textContent.split('–')[0].trim();
+    const price = parseInt(el.textContent.split('–')[1]);
+    const qty = parseInt(el.querySelector('.quantity').textContent);
+    if (qty > 0) extras.push({ name: `🥤 ${label}`, qty, price });
+  });
+  const dessertEls = document.querySelectorAll('#desserts .extra-item');
+  dessertEls.forEach(el => {
+    const label = el.textContent.split('–')[0].trim();
+    const price = parseInt(el.textContent.split('–')[1]);
+    const qty = parseInt(el.querySelector('.quantity').textContent);
+    if (qty > 0) extras.push({ name: `🍪 ${label}`, qty, price });
+  });
+  const extraCheckEls = document.querySelectorAll('#extras input[type=checkbox]');
+  extraCheckEls.forEach(el => {
+    if (el.checked) {
+      const label = el.parentElement.textContent.split('–')[0].trim();
+      const price = parseInt(el.parentElement.textContent.split('–')[1]);
+      extras.push({ name: `🧀 ${label}`, qty: 1, price });
     }
-    function closeModal() {
-      document.getElementById('productModal').style.display = 'none';
+  });
+  return extras;
+}
+function addToCart() {
+  const product = document.getElementById('modalTitle').textContent;
+  const price = parseInt(document.getElementById('modalPrice').textContent);
+  const existing = cart.find(item => item.name === product);
+  if (existing) {
+    existing.qty++;
+  } else {
+    cart.push({ name: product, price, qty: 1, extras: getSelectedExtras() });
+  }
+  updateCart();
+  closeModal();
+}
+function updateCart() {
+  const cartItems = document.getElementById('cartItems');
+  const cartTotal = document.getElementById('cartTotal');
+  const modalTotal = document.getElementById('cartModalTotal');
+  const whatsappLink = document.getElementById('whatsappLink');
+  if (!cartItems || !cartTotal || !modalTotal || !whatsappLink) return;
+  cartItems.innerHTML = '';
+  let total = 0;
+  cart.forEach((item, index) => {
+    let itemTotal = item.price * item.qty;
+    if (item.extras && item.extras.length > 0) {
+      item.extras.forEach(extra => {
+        itemTotal += extra.price * extra.qty;
+      });
     }
-    function toggleCart() {
-      alert('Panier non implémenté pour le moment.');
+    total += itemTotal;
+    const li = document.createElement('li');
+    const container = document.createElement('div');
+    container.style.display = 'flex';
+    container.style.justifyContent = 'space-between';
+    container.style.alignItems = 'center';
+    container.style.marginBottom = '0.5rem';
+
+    const label = document.createElement('span');
+    label.textContent = `${item.name} - ${itemTotal} DH`;
+    if (item.extras && item.extras.length > 0) {
+      const extrasText = document.createElement('div');
+      extrasText.style.fontSize = '0.8rem';
+      extrasText.style.color = '#ccc';
+      extrasText.textContent = item.extras.map(ex => `${ex.name} x${ex.qty}`).join(', ');
+      label.appendChild(document.createElement('br'));
+      label.appendChild(extrasText);
     }
-    function addToCart() {
-      alert('Produit ajouté au panier ! (simulation)');
-    }
-    function toggleExtras(id) {
-      const el = document.getElementById(id);
-      el.style.display = el.style.display === 'block' ? 'none' : 'block';
-    }
-    function adjustQty(btn, delta) {
-      const quantitySpan = btn.parentElement.querySelector('.quantity');
-      let current = parseInt(quantitySpan.innerText);
-      let newVal = Math.max(0, current + delta);
-      quantitySpan.innerText = newVal;
-    }
-  </script>
+
+    const controls = document.createElement('div');
+    controls.style.display = 'flex';
+    controls.style.alignItems = 'center';
+    controls.style.gap = '0.3rem';
+
+    const minusBtn = document.createElement('button');
+    minusBtn.textContent = '-';
+    minusBtn.style.cssText = 'padding: 0.2rem 0.5rem; background-color: #a27c27; border: none; border-radius: 6px; color: white; font-weight: bold;';
+    minusBtn.onclick = () => {
+      if (item.qty > 1) item.qty--;
+      else cart.splice(index, 1);
+      updateCart();
+    };
+
+    const qtyDisplay = document.createElement('span');
+    qtyDisplay.textContent = item.qty;
+    qtyDisplay.style.minWidth = '20px';
+    qtyDisplay.style.textAlign = 'center';
+
+    const plusBtn = document.createElement('button');
+    plusBtn.textContent = '+';
+    plusBtn.style.cssText = 'padding: 0.2rem 0.5rem; background-color: #a27c27; border: none; border-radius: 6px; color: white; font-weight: bold;';
+    plusBtn.onclick = () => {
+      item.qty++;
+      updateCart();
+    };
+
+    controls.appendChild(minusBtn);
+    controls.appendChild(qtyDisplay);
+    controls.appendChild(plusBtn);
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = '🗑️';
+    deleteBtn.title = 'Supprimer';
+    deleteBtn.style.cssText = 'margin-left: 0.5rem; background-color: #ff4444; color: white; border: none; border-radius: 6px; padding: 0.2rem 0.5rem; font-weight: bold; cursor: pointer;';
+    deleteBtn.onclick = () => {
+      cart.splice(index, 1);
+      updateCart();
+    };
+
+    controls.appendChild(deleteBtn);
+    container.appendChild(label);
+    container.appendChild(controls);
+    li.appendChild(container);
+    cartItems.appendChild(li);
+  });
+  cartTotal.textContent = total + ' DH';
+  modalTotal.textContent = total + ' DH';
+  whatsappLink.href = `https://wa.me/?text=Commande:%20${encodeURIComponent(cart.map(i => `${i.name} x${i.qty}${i.extras && i.extras.length ? ' (' + i.extras.map(ex => `${ex.name} x${ex.qty}`).join(', ') + ')' : ''}`).join(', '))}%20-%20Total:%20${total}DH`;
+}
+function openCartModal() {
+  document.getElementById('cartModal').style.display = 'flex';
+}
+function closeCartModal() {
+  document.getElementById('cartModal').style.display = 'none';
+}
+function closeModal() {
+  document.getElementById('productModal').style.display = 'none';
+}
+function openModal(title, price, description) {
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalPrice').textContent = price;
+  document.getElementById('modalDescription').textContent = description;
+  document.getElementById('modalImage').src =
+    title.includes('Carnivore') ? 'LaCarnivore.jpg' :
+    title.includes('Kefta') ? 'LAKEFTA.jpg' :
+    title.includes('Pepperoni') ? 'laPepperoni.jpg' :
+    title.includes('Tuna') ? 'latuna.jpg' :
+    title.includes('4 Fromages') ? 'la4FROMAGES.jpg' :
+    title.includes('Fumée') ? 'laFumée.jpg' :
+    title.includes('Poulet Barbecue') ? 'POULETBERBECUE.jpg' :
+    title.includes('Merguez') ? 'LAMERGUEZ.jpg' :
+    title.includes('Poulet Pesto') ? 'Pouletpesto.jpg' :
+    title.includes('Bianca Suprême') ? 'BiancaSuprême.jpg' :
+    title.includes('Poulet Alfredo') ? 'PouletAlfredo.jpg' :
+    '';
+  document.getElementById('productModal').style.display = 'flex';
+}
+</script>
 </body>
 </html>
