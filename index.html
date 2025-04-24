@@ -74,7 +74,7 @@
   <header style="text-align: center; padding: 2rem 0;">
     <img src="logo.png" alt="L'gordo Logo" style="width: 180px; max-width: 80%; display: block; margin: 0 auto;">
   </header>
-  <nav style="display: flex; justify-content: center; gap: 1.5rem; padding: 1rem; background-color: #a27c27;">
+  <nav style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; padding: 1rem; background-color: #a27c27; font-size: 0.9rem;">
     <a href="#pizza" style="color: white; text-decoration: none; font-weight: bold;">🍕 Pizza</a>
     <a href="#saroukh" style="color: white; text-decoration: none; font-weight: bold;">🌯 Saroukh</a>
     <a href="#pasta" style="color: white; text-decoration: none; font-weight: bold;">🍝 Pasta</a>
@@ -83,8 +83,8 @@
   <section id="pizza" style="padding: 1rem;">
   <h2 style="color: white;">🍕 Pizza</h2>
   <div class="product-grid" style="display: flex; flex-wrap: wrap; gap: 1rem;">
-    <div class="product" onclick="openModal('La Carnivore', '75', 'Sauce tomate, merguez, viande hachée, pepperoni')" style="background: #1a1f2b; padding: 1rem; border-radius: 12px; width: 45%; cursor: pointer; color: white;">
-      <img src="LaCarnivore.jpg" alt="Pizza La Carnivore" style="width: 100%; border-radius: 8px;">
+    <div class="product" onclick="openModal('La Carnivore', '75', 'Sauce tomate, merguez, viande hachée, pepperoni')" style="background: #1a1f2b; padding: 0.8rem; border-radius: 10px; width: 48%; cursor: pointer; color: white; font-size: 0.85rem;">
+      <img src="LaCarnivore.jpg" alt="Pizza La Carnivore" style="width: 100%; border-radius: 6px; max-height: 100px; object-fit: cover;">
       <h3>La Carnivore</h3>
       <p>75 DH</p>
     </div>
@@ -132,11 +132,11 @@
       </div>
 </section>
   <div id="productModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.8); justify-content: center; align-items: center; z-index: 999;">
-  <div class="modal-content" style="background-color: #1e2533; padding: 2rem; border-radius: 15px; max-width: 400px; width: 90%; color: white; text-align: left; max-height: 90vh; overflow-y: auto;">
+  <div class="modal-content" style="background-color: #1e2533; padding: 1.2rem; border-radius: 15px; max-width: 95vw; width: 95%; color: white; text-align: left; max-height: 90vh; overflow-y: auto; font-size: 0.95rem;">
     <span onclick="closeModal()" style="position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: white;">&times;</span>
-    <img id="modalImage" src="" alt="Image du produit" style="width: 100%; height: auto; max-height: 180px; object-fit: cover; border-radius: 12px; margin-bottom: 1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
-    <h3 id="modalTitle">Produit</h3>
-    <p id="modalPrice">$1 DH</p>
+    <img id="modalImage" src="" alt="Image du produit" style="width: 100%; height: auto; max-height: 120px; object-fit: cover; border-radius: 10px; margin-bottom: 0.8rem; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+    <h3 id="modalTitle" style="font-size: 1.2rem;">Produit</h3>
+    <p id="modalPrice" style="font-size: 1.1rem; font-weight: bold; color: #ffd500;">75 DH</p>
     <p id="modalDescription">Description</p>
     <style>
   .extra-category {
@@ -252,7 +252,7 @@ function adjustQty(btn, delta) {
 </div>
 </div>
 </div>
-<div id="cart" style="position: fixed; bottom: 1rem; left: 1rem; background-color: #a27c27; padding: 0.5rem 0.8rem; border-radius: 16px; box-shadow: 0 6px 12px rgba(0,0,0,0.3); width: auto; z-index: 1001; display: flex; align-items: center; gap: 0.4rem; cursor: pointer; font-size: 0.85rem;" onclick="openCartModal()">
+<div id="cart" style="position: fixed; bottom: 1rem; left: 1rem; background-color: #a27c27; padding: 0.4rem 0.7rem; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); font-size: 0.8rem; display: flex; align-items: center; gap: 0.4rem; cursor: pointer; z-index: 1001;" onclick="openCartModal()">
     <span style="font-size: 1.3rem;">🍴</span>
     <span style="font-weight: 600; color: white;">Mon Panier :</span>
     <span id="cartTotal" style="font-weight: bold; color: white;">0 DH</span>
