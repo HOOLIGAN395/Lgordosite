@@ -79,13 +79,99 @@
       font-size: 1.1rem !important;
     }
   }
+  .product {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    background: #1a1f2b;
+    border-radius: 16px;
+    padding: 1.6rem 1.2rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .product-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  .product-title {
+    margin: 0;
+    color: #ffd500;
+    font-size: 1.2rem;
+  }
+  .product-description {
+    margin: 0.3rem 0 0;
+    font-size: 1rem;
+    color: #ccc;
+  }
+  @media screen and (max-width: 600px) {
+    .product {
+      flex-direction: row;
+      padding: 1.6rem 1.2rem;
+    }
+    .product-img {
+      width: 120px;
+      height: 120px;
+    }
+    .product-title {
+      font-size: 1.4rem;
+    }
+    .product-description {
+      font-size: 1.2rem;
+    }
+  }
+  .extra-category {
+    padding: 1rem;
+    border-radius: 12px;
+    background-color: #1a1f2b;
+    margin-bottom: 1.2rem;
+  }
+  .extra-header {
+    font-size: 1.1rem;
+    color: white;
+    background-color: #2a2f3d;
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+  .extra-item {
+    padding: 0.4rem 0;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+  }
+  @media screen and (max-width: 600px) {
+    .extra-header {
+      font-size: 1.3rem;
+      padding: 0.8rem 1.2rem;
+    }
+    .extra-item {
+      font-size: 1.1rem;
+    }
+    .quantity-btns button {
+      font-size: 1.4rem;
+      width: 30px;
+      height: 30px;
+    }
+    .quantity {
+      font-size: 1.1rem;
+      width: 28px;
+    }
+  }
 </style>
   
   
 
 <body style="margin: 0; font-family: 'Quicksand', sans-serif; background-color: #0d1723; color: white; overflow-x: hidden;">
   <header style="text-align: center; padding: 2rem 0;">
-    <img src="logo.png" alt="L'gordo Logo" style="width: 180px; max-width: 80%; display: block; margin: 0 auto;">
+    <img class="product-img" src="logo.png" alt="L'gordo Logo">
   </header>
   <nav style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; padding: 1rem; background-color: #a27c27; font-size: 1.2rem;">
     <a href="#pizza" style="color: white; text-decoration: none; font-weight: bold;">🍕 Pizza</a>
@@ -96,17 +182,17 @@
   <section id="pizza" style="padding: 1rem;">
   <h2 style="color: white;">🍕 Pizza</h2>
   <div class="product-grid" style="display: flex; flex-direction: column; gap: 1rem;">
-  <div class="product" style="display: flex; align-items: center; gap: 1.2rem; background: #1a1f2b; border-radius: 16px; padding: 1.6rem 1.2rem; box-shadow: 0 2px 6px rgba(0,0,0,0.3); width: 100%; box-sizing: border-box;">
+  <div class="product">
     <img src="PouletAlfredo.jpg" alt="Poulet Alfredo" style="width: 100px; height: 100px; object-fit: cover; border-radius: 10px;">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h3 style="margin: 0; color: #ffd500; font-size: 1.4rem;">Poulet Alfredo</h3>
+        <h3 class="product-title">Poulet Alfredo</h3>
         <span style="font-weight: bold; color: white;">64 DH</span>
       </div>
-      <p style="margin: 0.3rem 0 0; font-size: 1rem; color: #ccc;">Poulet, oignons, poivrons, mozza</p>
+      <p class="product-description">Poulet, oignons, poivrons, mozza</p>
     </div>
   </div>
-  <div class="product" style="display: flex; align-items: center; gap: 1.2rem; background: #1a1f2b; border-radius: 16px; padding: 1.6rem 1.2rem; box-shadow: 0 2px 6px rgba(0,0,0,0.3); width: 100%; box-sizing: border-box;">
+  <div class="product">
     <img src="LaCarnivore.jpg" alt="La Carnivore" style="width: 120px; height: 120px; object-fit: cover; border-radius: 8px;">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -116,7 +202,7 @@
       <p style="margin: 0.3rem 0 0; font-size: 1.1rem; color: #ccc;">Merguez, viande hachée, pepperoni</p>
     </div>
   </div>
-  <div class="product" style="display: flex; align-items: center; gap: 1.2rem; background: #1a1f2b; border-radius: 16px; padding: 1.6rem 1.2rem; box-shadow: 0 2px 6px rgba(0,0,0,0.3); width: 100%; box-sizing: border-box;">
+  <div class="product">
     <img src="LAKEFTA.jpg" alt="La Kefta" style="width: 120px; height: 120px; object-fit: cover; border-radius: 10px;">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -126,7 +212,7 @@
       <p style="margin: 0.3rem 0 0; font-size: 1.2rem; color: #ccc;">Viande hachée, légumes, mozza</p>
     </div>
   </div>
-  <div class="product" style="display: flex; align-items: center; gap: 1.2rem; background: #1a1f2b; border-radius: 16px; padding: 1.6rem 1.2rem; box-shadow: 0 2px 6px rgba(0,0,0,0.3); width: 100%; box-sizing: border-box;">
+  <div class="product">
     <img src="laPepperoni.jpg" alt="La Pepperoni" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -136,7 +222,7 @@
       <p style="margin: 0.3rem 0 0; font-size: 0.9rem; color: #ccc;">Pepperoni, oignons, poivrons</p>
     </div>
   </div>
-  <div class="product" style="display: flex; align-items: center; gap: 1.2rem; background: #1a1f2b; border-radius: 16px; padding: 1.6rem 1.2rem; box-shadow: 0 2px 6px rgba(0,0,0,0.3); width: 100%; box-sizing: border-box;">
+  <div class="product">
     <img src="latuna.jpg" alt="La Tuna" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -146,7 +232,7 @@
       <p style="margin: 0.3rem 0 0; font-size: 0.9rem; color: #ccc;">Thon, origan, mozza</p>
     </div>
   </div>
-<div class="product" style="display: flex; align-items: center; gap: 1.2rem; background: #1a1f2b; border-radius: 16px; padding: 1.6rem 1.2rem; box-shadow: 0 2px 6px rgba(0,0,0,0.3); width: 100%; box-sizing: border-box;">
+<div class="product">
     <img src="la4FROMAGES.jpg" alt="La 4 Fromages" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -156,7 +242,7 @@
       <p style="margin: 0.3rem 0 0; font-size: 0.9rem; color: #ccc;">Mozzarella, bleu, gouda, emmental</p>
     </div>
   </div>
-  <div class="product" style="display: flex; align-items: center; gap: 1.2rem; background: #1a1f2b; border-radius: 16px; padding: 1.6rem 1.2rem; box-shadow: 0 2px 6px rgba(0,0,0,0.3); width: 100%; box-sizing: border-box;">
+  <div class="product">
     <img src="laFumée.jpg" alt="La Fumée" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -166,7 +252,7 @@
       <p style="margin: 0.3rem 0 0; font-size: 0.9rem; color: #ccc;">Dinde fumée, oignons, champignons</p>
     </div>
   </div>
-  <div class="product" style="display: flex; align-items: center; gap: 1.2rem; background: #1a1f2b; border-radius: 16px; padding: 1.6rem 1.2rem; box-shadow: 0 2px 6px rgba(0,0,0,0.3); width: 100%; box-sizing: border-box;">
+  <div class="product">
     <img src="POULETBERBECUE.jpg" alt="Poulet Barbecue" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -176,7 +262,7 @@
       <p style="margin: 0.3rem 0 0; font-size: 0.9rem; color: #ccc;">Poulet, BBQ, oignons, poivrons</p>
     </div>
   </div>
-  <div class="product" style="display: flex; align-items: center; gap: 1.2rem; background: #1a1f2b; border-radius: 16px; padding: 1.6rem 1.2rem; box-shadow: 0 2px 6px rgba(0,0,0,0.3); width: 100%; box-sizing: border-box;">
+  <div class="product">
     <img src="LAMERGUEZ.jpg" alt="La Merguez" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -186,7 +272,7 @@
       <p style="margin: 0.3rem 0 0; font-size: 0.9rem; color: #ccc;">Merguez, légumes, mozza</p>
     </div>
   </div>
-  <div class="product" style="display: flex; align-items: center; gap: 1.2rem; background: #1a1f2b; border-radius: 16px; padding: 1.6rem 1.2rem; box-shadow: 0 2px 6px rgba(0,0,0,0.3); width: 100%; box-sizing: border-box;">
+  <div class="product">
     <img src="Pouletpesto.jpg" alt="Poulet Pesto" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -196,7 +282,7 @@
       <p style="margin: 0.3rem 0 0; font-size: 0.9rem; color: #ccc;">Poulet, mozza, pesto maison</p>
     </div>
   </div>
-  <div class="product" style="display: flex; align-items: center; gap: 1.2rem; background: #1a1f2b; border-radius: 16px; padding: 1.6rem 1.2rem; box-shadow: 0 2px 6px rgba(0,0,0,0.3); width: 100%; box-sizing: border-box;">
+  <div class="product">
     <img src="BiancaSuprême.jpg" alt="Bianca Suprême" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
     <div style="flex: 1;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
