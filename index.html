@@ -1,436 +1,328 @@
-<!-- Code complet avec corrections pour éviter les erreurs null et ajout des éléments manquants -->
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    .extra-content.visible {
-      display: block;
-    }
-    .extra-category {
-  padding: 0.3rem;
-  border-radius: 8px;
-  background-color: #1a1f2b;
-  margin-bottom: 0.4rem;
-}
-    .extra-header {
-  background-color: #2a2f3d;
-  padding: 0.3rem 0.6rem;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 500;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.75rem;
-}
-    .extra-content {
-      padding: 0.5rem 1rem;
-    }
-    .extra-item {
-  padding: 0.2rem 0;
-  font-size: 0.7rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  background-color: #0d1723;
   color: white;
+  overflow-x: hidden;
 }
-    .quantity-btns {
+
+header {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #a27c27;
+  font-size: 1.2rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+section {
+  padding: 1rem;
+}
+
+.product-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.product {
   display: flex;
   align-items: center;
-  gap: 0.3rem;
-  background-color: #1a1f2b;
-  border-radius: 6px;
-  padding: 0.1rem 0.4rem;
-  min-width: 70px;
-  box-shadow: 0 0 3px rgba(0,0,0,0.2);
+  gap: 1.2rem;
+  background: #1a1f2b;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  cursor: pointer;
 }
-    .quantity-btns button {
-  background-color: #a27c27;
-  border: none;
+
+.product-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.product-details {
+  flex: 1;
+}
+
+.product-title {
+  font-size: 1.2rem;
+  color: #ffd500;
+  margin: 0;
+}
+
+.product-price {
+  font-weight: bold;
   color: white;
   font-size: 1rem;
-  width: 22px;
-  height: 22px;
-  display: flex;
-  align-items: center;
+}
+
+.product-description {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.8);
   justify-content: center;
-  border-radius: 4px;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #1e2533;
+  padding: 1rem;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 400px;
+  color: white;
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+.modal-content img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.extra-category {
+  background-color: #2a2f3d;
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+}
+
+.extra-header {
+  padding: 0.5rem 1rem;
   cursor: pointer;
   font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-    .quantity {
-  width: 22px;
-  height: 22px;
-  text-align: center;
-  font-size: 0.85rem;
-  line-height: 22px;
-  font-weight: bold;
-  color: white;
+
+.extra-content {
+  display: none;
+  padding: 0.5rem 1rem;
 }
-    @media screen and (max-width: 600px) {
-    .product {
-      flex-direction: row;
-      padding: 1.5rem 1.2rem !important;
-    }
-    .product img {
-      width: 120px !important;
-      height: 120px !important;
-    }
-    .product h3 {
-      font-size: 1.4rem !important;
-    }
-    .product p {
-      font-size: 1.1rem !important;
-    }
-  }
-  .product {
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-    background: #1a1f2b;
-    border-radius: 16px;
-    padding: 1.6rem 1.2rem;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    width: 100%;
-    box-sizing: border-box;
-  }
-  .product-img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 10px;
-  }
-  .product-title {
-    margin: 0;
-    color: #ffd500;
-    font-size: 1.2rem;
-  }
-  .product-description {
-    margin: 0.3rem 0 0;
-    font-size: 1rem;
-    color: #ccc;
-  }
-  @media screen and (max-width: 600px) {
-    .product {
-      flex-direction: row;
-      padding: 1.6rem 1.2rem;
-    }
-    .product-img {
-      width: 120px;
-      height: 120px;
-    }
-    .product-title {
-      font-size: 1.4rem;
-    }
-    .product-description {
-      font-size: 1.2rem;
-    }
-  }
-  .extra-category {
-    padding: 1rem;
-    border-radius: 12px;
-    background-color: #1a1f2b;
-    margin-bottom: 1.2rem;
-  }
-  .extra-header {
-    font-size: 1.1rem;
-    color: white;
-    background-color: #2a2f3d;
-    border-radius: 8px;
-    padding: 0.6rem 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-  }
-  .extra-item {
-    padding: 0.4rem 0;
-    font-size: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-  }
-  @media screen and (max-width: 600px) {
-  .extra-header {
-    font-size: 0.8rem;
-    padding: 0.4rem 0.6rem;
-  }
-    .extra-item {
-      font-size: 1.1rem;
-    }
-    .quantity-btns button {
-      font-size: 1.4rem;
-      width: 30px;
-      height: 30px;
-    }
-    .quantity {
-      font-size: 1.1rem;
-      width: 28px;
-    }
-  }
-  .extra-name {
-    font-weight: 500;
-    color: white;
-    flex: 1;
-  }
-  .extra-price {
-    font-weight: bold;
-    color: #ffd500;
-    min-width: 60px;
-    text-align: right;
-  }
-  .extra-qty {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-  }
-  @media screen and (max-width: 600px) {
-    .extra-name {
-      font-size: 1.2rem;
-    }
-    .extra-price {
-      font-size: 1.1rem;
-    }
-    .extra-qty {
-      font-size: 1.2rem;
-    }
-  }
-  .product-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-    width: 100%;
-    padding: 0.5rem;
-  }
-  @media screen and (max-width: 600px) {
-    .product-grid {
-      padding: 1rem;
-      gap: 1.5rem;
-    }
-  }
-  .cart-modal {
-    background-color: #1e2533;
-    padding: 1.2rem;
-    border-radius: 16px;
-    max-width: 95vw;
-    width: 95%;
-    color: white;
-    text-align: left;
-    max-height: 90vh;
-    overflow-y: auto;
-    font-size: 0.95rem;
-  }
-  @media screen and (max-width: 600px) {
-    .cart-modal {
-      padding: 1.5rem 1.2rem;
-      font-size: 1.1rem;
-    }
-  }
-  .product-modal {
-  background-color: #1e2533;
-  padding: 0.3rem;
-  border-radius: 10px;
-  max-width: 320px;
-  width: auto;
-  color: white;
-  text-align: left;
-  max-height: 90vh;
-  overflow-y: auto;
-  font-size: 0.6rem;
-  line-height: 1rem;
+
+.extra-content.visible {
+  display: block;
+}
+
+.extra-item {
+  margin: 0.4rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-buttons {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  margin-top: 1rem;
 }
-  @media screen and (max-width: 600px) {
-  .product-modal {
-    padding: 0.5rem;
-    font-size: 0.85rem;
-  }
-  }
-  .modal-image {
-    width: 100%;
-    height: auto;
-    max-height: 140px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 0.5rem;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
-  }
-  .extra-category {
-    padding: 0.5rem;
-  }
-  .extra-item {
-    font-size: 0.9rem;
-    padding: 0.3rem 0;
-  }
-  @media screen and (max-width: 600px) {
-    .modal-image {
-      max-height: 120px;
-    }
-    .extra-item {
-      font-size: 1rem;
-    }
-  }
-  .hidden {
-    display: none !important;
-  }
-</style>
-  
-  
 
-<body style="margin: 0; font-family: 'Quicksand', sans-serif; background-color: #0d1723; color: white; overflow-x: hidden;">
-  <header style="text-align: center; padding: 2rem 0;">
-    <img class="product-img" src="logo.png" alt="L'gordo Logo">
-  </header>
-  <nav style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; padding: 1rem; background-color: #a27c27; font-size: 1.2rem;">
-    <a href="#pizza" style="color: white; text-decoration: none; font-weight: bold;">🍕 Pizza</a>
-    <a href="#saroukh" style="color: white; text-decoration: none; font-weight: bold;">🌯 Saroukh</a>
-    <a href="#pasta" style="color: white; text-decoration: none; font-weight: bold;">🍝 Pasta</a>
-    <a href="#deal" style="color: white; text-decoration: none; font-weight: bold;">🎁 Deal</a>
-  </nav>
-  <section id="pizza" style="padding: 1rem;">
-  <h2 style="color: white;">🍕 Pizza</h2>
-  <div class="product-grid">
-  <div class="product" onclick="openModal(this.querySelector('h3').textContent, this.querySelector('span').textContent, this.querySelector('p').textContent)">
-    <img src="PouletAlfredo.jpg" alt="Poulet Alfredo" class="product-img">
-    <div style="flex: 1;">
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h3 class="product-title">Poulet Alfredo</h3>
-        <span style="font-weight: bold; color: white;">64 DH</span>
-      </div>
-      <p class="product-description">Poulet, oignons, poivrons, mozza</p>
-    </div>
+.close-btn, .add-btn {
+  padding: 0.7rem;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-btn {
+  background-color: #444;
+  color: white;
+}
+
+.add-btn {
+  background-color: #a27c27;
+  color: white;
+}
+
+
+/* Style amélioré pour les boutons + et - des extras */
+.extra-item button {
+  background-color: #a27c27;
+  color: white;
+  border: none;
+  padding: 0.2rem 0.5rem;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.extra-item button:hover {
+  opacity: 0.8;
+}
+
+.extra-item .qty {
+  display: inline-block;
+  min-width: 24px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+
+</style>
+</head>
+<body>
+<header>
+<img class="product-img" src="logo.png" alt="L'gordo Logo">
+</header>
+<nav>
+<a href="#pizza">🍕 Pizza</a>
+<a href="#saroukh">🌯 Saroukh</a>
+<a href="#pasta">🍝 Pasta</a>
+<a href="#deal">🎁 Deal</a>
+</nav>
+<section id="pizza">
+<h2>🍕 Pizza</h2>
+<div class="product-grid">
+<div class="product" onclick="openModal('Poulet Alfredo', '64 DH', 'Poulet, oignons, poivrons, mozza', 'PouletAlfredo.jpg')">
+  <img src="PouletAlfredo.jpg" alt="Poulet Alfredo" class="product-img">
+  <div class="product-details">
+    <h3 class="product-title">Poulet Alfredo</h3>
+    <div class="product-price">64 DH</div>
+    <p class="product-description">Poulet, oignons, poivrons, mozza</p>
   </div>
-  <div class="product" onclick="openModal(this.querySelector('h3').textContent, this.querySelector('span').textContent, this.querySelector('p').textContent)">
-    <img src="LaCarnivore.jpg" alt="La Carnivore" class="product-img">
-    <div style="flex: 1;">
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h3 class="product-title">La Carnivore</h3>
-        <span style="font-weight: bold; color: white;">75 DH</span>
-      </div>
-      <p class="product-description">Merguez, viande hachée, pepperoni</p>
-    </div>
+</div>
+<div class="product" onclick="openModal('La Carnivore', '75 DH', 'Merguez, viande hachée, pepperoni', 'LaCarnivore.jpg')">
+  <img src="LaCarnivore.jpg" alt="La Carnivore" class="product-img">
+  <div class="product-details">
+    <h3 class="product-title">La Carnivore</h3>
+    <div class="product-price">75 DH</div>
+    <p class="product-description">Merguez, viande hachée, pepperoni</p>
   </div>
-  <div class="product" onclick="openModal(this.querySelector('h3').textContent, this.querySelector('span').textContent, this.querySelector('p').textContent)">
-    <img src="LAKEFTA.jpg" alt="La Kefta" class="product-img">
-    <div style="flex: 1;">
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h3 class="product-title">La Kefta</h3>
-        <span style="font-weight: bold; color: white;">64 DH</span>
-      </div>
-      <p class="product-description">Viande hachée, légumes, mozza</p>
-    </div>
+</div>
+<div class="product" onclick="openModal('La Kefta', '64 DH', 'Viande hachée, légumes, mozza', 'LAKEFTA.jpg')">
+  <img src="LAKEFTA.jpg" alt="La Kefta" class="product-img">
+  <div class="product-details">
+    <h3 class="product-title">La Kefta</h3>
+    <div class="product-price">64 DH</div>
+    <p class="product-description">Viande hachée, légumes, mozza</p>
   </div>
-  <div class="product" onclick="openModal(this.querySelector('h3').textContent, this.querySelector('span').textContent, this.querySelector('p').textContent)">
-    <img src="laPepperoni.jpg" alt="La Pepperoni" class="product-img">
-    <div style="flex: 1;">
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h3 class="product-title">La Pepperoni</h3>
-        <span style="font-weight: bold; color: white;">64 DH</span>
-      </div>
-      <p class="product-description">Pepperoni, oignons, poivrons</p>
-    </div>
+</div>
+<div class="product" onclick="openModal('La Pepperoni', '64 DH', 'Pepperoni, oignons, poivrons', 'laPepperoni.jpg')">
+  <img src="laPepperoni.jpg" alt="La Pepperoni" class="product-img">
+  <div class="product-details">
+    <h3 class="product-title">La Pepperoni</h3>
+    <div class="product-price">64 DH</div>
+    <p class="product-description">Pepperoni, oignons, poivrons</p>
   </div>
-  <div class="product" onclick="openModal(this.querySelector('h3').textContent, this.querySelector('span').textContent, this.querySelector('p').textContent)">
-    <img src="latuna.jpg" alt="La Tuna" class="product-img">
-    <div style="flex: 1;">
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h3 class="product-title">La Tuna</h3>
-        <span style="font-weight: bold; color: white;">62 DH</span>
-      </div>
-      <p class="product-description">Thon, origan, mozza</p>
-    </div>
+</div>
+<div class="product" onclick="openModal('La Tuna', '62 DH', 'Thon, origan, mozza', 'latuna.jpg')">
+  <img src="latuna.jpg" alt="La Tuna" class="product-img">
+  <div class="product-details">
+    <h3 class="product-title">La Tuna</h3>
+    <div class="product-price">62 DH</div>
+    <p class="product-description">Thon, origan, mozza</p>
   </div>
-<div class="product" onclick="openModal(this.querySelector('h3').textContent, this.querySelector('span').textContent, this.querySelector('p').textContent)">
-    <img src="la4FROMAGES.jpg" alt="La 4 Fromages" class="product-img">
-    <div style="flex: 1;">
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h3 class="product-title">La 4 Fromages</h3>
-        <span style="font-weight: bold; color: white;">65 DH</span>
-      </div>
-      <p class="product-description">Mozzarella, bleu, gouda, emmental</p>
-    </div>
+</div>
+<div class="product" onclick="openModal('La 4 Fromages', '65 DH', 'Mozzarella, bleu, gouda, emmental', 'la4FROMAGES.jpg')">
+  <img src="la4FROMAGES.jpg" alt="La 4 Fromages" class="product-img">
+  <div class="product-details">
+    <h3 class="product-title">La 4 Fromages</h3>
+    <div class="product-price">65 DH</div>
+    <p class="product-description">Mozzarella, bleu, gouda, emmental</p>
   </div>
-  <div class="product" onclick="openModal(this.querySelector('h3').textContent, this.querySelector('span').textContent, this.querySelector('p').textContent)">
-    <img src="laFumée.jpg" alt="La Fumée" class="product-img">
-    <div style="flex: 1;">
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h3 class="product-title">La Fumée</h3>
-        <span style="font-weight: bold; color: white;">64 DH</span>
-      </div>
-      <p class="product-description">Dinde fumée, oignons, champignons</p>
-    </div>
+</div>
+<div class="product" onclick="openModal('La Fumée', '64 DH', 'Dinde fumée, oignons, champignons', 'laFumée.jpg')">
+  <img src="laFumée.jpg" alt="La Fumée" class="product-img">
+  <div class="product-details">
+    <h3 class="product-title">La Fumée</h3>
+    <div class="product-price">64 DH</div>
+    <p class="product-description">Dinde fumée, oignons, champignons</p>
   </div>
-  <div class="product" onclick="openModal(this.querySelector('h3').textContent, this.querySelector('span').textContent, this.querySelector('p').textContent)">
-    <img src="POULETBERBECUE.jpg" alt="Poulet Barbecue" class="product-img">
-    <div style="flex: 1;">
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h3 class="product-title">Poulet Barbecue</h3>
-        <span style="font-weight: bold; color: white;">65 DH</span>
-      </div>
-      <p class="product-description">Poulet, BBQ, oignons, poivrons</p>
-    </div>
+</div>
+<div class="product" onclick="openModal('Poulet Barbecue', '65 DH', 'Poulet, BBQ, oignons, poivrons', 'POULETBERBECUE.jpg')">
+  <img src="POULETBERBECUE.jpg" alt="Poulet Barbecue" class="product-img">
+  <div class="product-details">
+    <h3 class="product-title">Poulet Barbecue</h3>
+    <div class="product-price">65 DH</div>
+    <p class="product-description">Poulet, BBQ, oignons, poivrons</p>
   </div>
-  <div class="product" onclick="openModal(this.querySelector('h3').textContent, this.querySelector('span').textContent, this.querySelector('p').textContent)">
-    <img src="LAMERGUEZ.jpg" alt="La Merguez" class="product-img">
-    <div style="flex: 1;">
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h3 class="product-title">La Merguez</h3>
-        <span style="font-weight: bold; color: white;">64 DH</span>
-      </div>
-      <p class="product-description">Merguez, légumes, mozza</p>
-    </div>
+</div>
+<div class="product" onclick="openModal('La Merguez', '64 DH', 'Merguez, légumes, mozza', 'LAMERGUEZ.jpg')">
+  <img src="LAMERGUEZ.jpg" alt="La Merguez" class="product-img">
+  <div class="product-details">
+    <h3 class="product-title">La Merguez</h3>
+    <div class="product-price">64 DH</div>
+    <p class="product-description">Merguez, légumes, mozza</p>
   </div>
-  <div class="product" onclick="openModal(this.querySelector('h3').textContent, this.querySelector('span').textContent, this.querySelector('p').textContent)">
-    <img src="Pouletpesto.jpg" alt="Poulet Pesto" class="product-img">
-    <div style="flex: 1;">
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h3 class="product-title">Poulet Pesto</h3>
-        <span style="font-weight: bold; color: white;">105 DH</span>
-      </div>
-      <p class="product-description">Poulet, mozza, pesto maison</p>
-    </div>
+</div>
+<div class="product" onclick="openModal('Poulet Pesto', '105 DH', 'Poulet, mozza, pesto maison', 'Pouletpesto.jpg')">
+  <img src="Pouletpesto.jpg" alt="Poulet Pesto" class="product-img">
+  <div class="product-details">
+    <h3 class="product-title">Poulet Pesto</h3>
+    <div class="product-price">105 DH</div>
+    <p class="product-description">Poulet, mozza, pesto maison</p>
   </div>
-  <div class="product" onclick="openModal(this.querySelector('h3').textContent, this.querySelector('span').textContent, this.querySelector('p').textContent)">
-    <img src="BiancaSuprême.jpg" alt="Bianca Suprême" class="product-img">
-    <div style="flex: 1;">
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h3 class="product-title">Bianca Suprême</h3>
-        <span style="font-weight: bold; color: white;">105 DH</span>
-      </div>
-      <p class="product-description">Poulet, fromage, pepperoni</p>
-    </div>
+</div>
+<div class="product" onclick="openModal('Bianca Suprême', '105 DH', 'Poulet, fromage, pepperoni', 'BiancaSuprême.jpg')">
+  <img src="BiancaSuprême.jpg" alt="Bianca Suprême" class="product-img">
+  <div class="product-details">
+    <h3 class="product-title">Bianca Suprême</h3>
+    <div class="product-price">105 DH</div>
+    <p class="product-description">Poulet, fromage, pepperoni</p>
   </div>
+</div>
 </div>
 </section>
 
-<!-- Nouvelle modale produit propre -->
-<div id="productModal" class="modal hidden" style="z-index: 1002; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.85); justify-content: center; align-items: center;">
-  <div class="modal-content product-modal">
-    <img id="modalImage" class="modal-image" src="" alt="Image du produit">
-    <h3 id="modalTitle" class="product-title"></h3>
-    <p id="modalDescription" class="product-description"></p>
-    <p style="margin-bottom: 0.8rem; font-weight: bold; font-size: 0.9rem;"><span id="modalPrice"></span></p>
+<!-- Nouvelle Modale Produit -->
+<div id="productModal" class="modal">
+  <div class="modal-content">
+    <img id="modalImage" src="" alt="Image Produit">
+    <h3 id="modalTitle"></h3>
+    <p id="modalDescription"></p>
+    <p id="modalPrice"></p>
 
     <div class="extra-category">
       <div class="extra-header" onclick="toggleExtras('sodas')">🥤 Sodas ▼</div>
-      <div class="extra-content hidden" id="sodas">
-        <div class="extra-item">Pepsi – 10 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
-        <div class="extra-item">7up – 10 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
-        <div class="extra-item">Mirinda Orange – 10 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
-        <div class="extra-item">Mirinda Pomme – 10 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
-        <div class="extra-item">Mirinda Citron – 10 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
-        <div class="extra-item">Oulmes – 10 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
+      <div class="extra-content" id="sodas">
+        <div class="extra-item">Pepsi – 10 DH <span><button onclick="adjustQty(this, -1)">-</button><span class="qty">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
+        <div class="extra-item">7up – 10 DH <span><button onclick="adjustQty(this, -1)">-</button><span class="qty">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
+        <div class="extra-item">Mirinda Orange – 10 DH <span><button onclick="adjustQty(this, -1)">-</button><span class="qty">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
+        <div class="extra-item">Mirinda Citron – 10 DH <span><button onclick="adjustQty(this, -1)">-</button><span class="qty">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
+        <div class="extra-item">Oulmes – 10 DH <span><button onclick="adjustQty(this, -1)">-</button><span class="qty">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
       </div>
     </div>
 
     <div class="extra-category">
       <div class="extra-header" onclick="toggleExtras('extras')">🧀 Extras ▼</div>
-      <div class="extra-content hidden" id="extras">
+      <div class="extra-content" id="extras">
         <div class="extra-item"><label><input type="checkbox"> Fromage – 12 DH</label></div>
         <div class="extra-item"><label><input type="checkbox"> Viande hachée – 15 DH</label></div>
         <div class="extra-item"><label><input type="checkbox"> Merguez – 15 DH</label></div>
@@ -441,198 +333,47 @@
 
     <div class="extra-category">
       <div class="extra-header" onclick="toggleExtras('desserts')">🍪 Desserts ▼</div>
-      <div class="extra-content hidden" id="desserts">
-        <div class="extra-item">Lotus – 25 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
-        <div class="extra-item">Oreo – 25 DH <span class="quantity-btns"><button onclick="adjustQty(this, -1)">-</button><span class="quantity">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
+      <div class="extra-content" id="desserts">
+        <div class="extra-item">Lotus – 25 DH <span><button onclick="adjustQty(this, -1)">-</button><span class="qty">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
+        <div class="extra-item">Oreo – 25 DH <span><button onclick="adjustQty(this, -1)">-</button><span class="qty">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
       </div>
     </div>
 
-    <div style="margin-top: auto; display: flex; flex-direction: column; gap: 0.5rem;">
-      <button onclick="closeModal()" style="background-color: #444; color: white; padding: 0.6rem; font-size: 0.85rem; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">Fermer</button>
-      <button onclick="addToCart()" style="background-color: #a27c27; color: white; padding: 0.6rem; font-size: 0.85rem; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">Ajouter au panier</button>
+    <div class="modal-buttons">
+      <button class="close-btn" onclick="closeModal()">Fermer</button>
+      <button class="add-btn">Ajouter au panier</button>
     </div>
   </div>
 </div>
 
-<div id="cart" style="position: fixed; bottom: 1rem; left: 1rem; background-color: #a27c27; padding: 0.6rem 0.9rem; border-radius: 16px; box-shadow: 0 4px 8px rgba(0,0,0,0.35); font-size: 1rem; display: flex; align-items: center; gap: 0.6rem; cursor: pointer; z-index: 1001;" onclick="openCartModal()">
-    <span style="font-size: 1.3rem;">🍴</span>
-    <span style="font-weight: 600; color: white;">Mon Panier :</span>
-    <span id="cartTotal" style="font-weight: bold; color: white;">0 DH</span>
-  </div>
-
-  <div id=\"cartModal\" class=\"modal\" style=\"display: none; z-index: 1002; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.8); justify-content: center; align-items: center;\">
-  <div class=\"modal-content cart-modal\">
-      <span onclick="closeCartModal()" style="position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: white;">&times;</span>
-      <h3 style="margin-top: 0;">🛒 Mon Panier</h3>
-      <ul id="cartItems" style="list-style: none; padding-left: 0; margin-bottom: 1rem; max-height: 200px; overflow-y: auto;"></ul>
-      <p><strong>Total:</strong> <span id="cartModalTotal">0 DH</span></p>
-      <div style="display: flex; justify-content: space-between; gap: 1rem; margin-top: 1.5rem;">
-        <button onclick="closeCartModal()" style="flex: 1; background-color: #444; color: white; padding: 0.6rem; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">Fermer</button>
-        <a href="#" id="whatsappLink" target="_blank" style="flex: 1; background-color: #25D366; color: white; padding: 0.6rem; border-radius: 8px; text-align: center; text-decoration: none; font-weight: bold; display: inline-block;">WhatsApp</a>
-      </div>
-    </div>
-  </div>
-
 <script>
-let cart = [];
-function getSelectedExtras() {
-  const extras = [];
-  const sodaEls = document.querySelectorAll('#sodas .extra-item');
-  sodaEls.forEach(el => {
-    const label = el.textContent.split('–')[0].trim();
-    const price = parseInt(el.textContent.split('–')[1]);
-    const qty = parseInt(el.querySelector('.quantity').textContent);
-    if (qty > 0) extras.push({ name: `🥤 ${label}`, qty, price });
-  });
-  const dessertEls = document.querySelectorAll('#desserts .extra-item');
-  dessertEls.forEach(el => {
-    const label = el.textContent.split('–')[0].trim();
-    const price = parseInt(el.textContent.split('–')[1]);
-    const qty = parseInt(el.querySelector('.quantity').textContent);
-    if (qty > 0) extras.push({ name: `🍪 ${label}`, qty, price });
-  });
-  const extraCheckEls = document.querySelectorAll('#extras input[type=checkbox]');
-  extraCheckEls.forEach(el => {
-    if (el.checked) {
-      const label = el.parentElement.textContent.split('–')[0].trim();
-      const price = parseInt(el.parentElement.textContent.split('–')[1]);
-      extras.push({ name: `🧀 ${label}`, qty: 1, price });
-    }
-  });
-  return extras;
-}
-function addToCart() {
-  const product = document.getElementById('modalTitle').textContent;
-  const price = parseInt(document.getElementById('modalPrice').textContent);
-  const existing = cart.find(item => item.name === product);
-  if (existing) {
-    existing.qty++;
-  } else {
-    cart.push({ name: product, price, qty: 1, extras: getSelectedExtras() });
-  }
-  updateCart();
-  closeModal();
-}
-function updateCart() {
-  const cartItems = document.getElementById('cartItems');
-  const cartTotal = document.getElementById('cartTotal');
-  const modalTotal = document.getElementById('cartModalTotal');
-  const whatsappLink = document.getElementById('whatsappLink');
-  if (!cartItems || !cartTotal || !modalTotal || !whatsappLink) return;
-  cartItems.innerHTML = '';
-  let total = 0;
-  cart.forEach((item, index) => {
-    let itemTotal = item.price * item.qty;
-    if (item.extras && item.extras.length > 0) {
-      item.extras.forEach(extra => {
-        itemTotal += extra.price * extra.qty;
-      });
-    }
-    total += itemTotal;
-    const li = document.createElement('li');
-    const container = document.createElement('div');
-    container.style.display = 'flex';
-    container.style.justifyContent = 'space-between';
-    container.style.alignItems = 'center';
-    container.style.marginBottom = '0.5rem';
-
-    const label = document.createElement('span');
-    label.textContent = `${item.name} - ${itemTotal} DH`;
-    if (item.extras && item.extras.length > 0) {
-      const extrasText = document.createElement('div');
-      extrasText.style.fontSize = '0.8rem';
-      extrasText.style.color = '#ccc';
-      extrasText.textContent = item.extras.map(ex => `${ex.name} x${ex.qty}`).join(', ');
-      label.appendChild(document.createElement('br'));
-      label.appendChild(extrasText);
-    }
-
-    const controls = document.createElement('div');
-    controls.style.display = 'flex';
-    controls.style.alignItems = 'center';
-    controls.style.gap = '0.3rem';
-
-    const minusBtn = document.createElement('button');
-    minusBtn.textContent = '-';
-    minusBtn.style.cssText = 'padding: 0.2rem 0.5rem; background-color: #a27c27; border: none; border-radius: 6px; color: white; font-weight: bold;';
-    minusBtn.onclick = () => {
-      if (item.qty > 1) item.qty--;
-      else cart.splice(index, 1);
-      updateCart();
-    };
-
-    const qtyDisplay = document.createElement('span');
-    qtyDisplay.textContent = item.qty;
-    qtyDisplay.style.minWidth = '20px';
-    qtyDisplay.style.textAlign = 'center';
-
-    const plusBtn = document.createElement('button');
-    plusBtn.textContent = '+';
-    plusBtn.style.cssText = 'padding: 0.2rem 0.5rem; background-color: #a27c27; border: none; border-radius: 6px; color: white; font-weight: bold;';
-    plusBtn.onclick = () => {
-      item.qty++;
-      updateCart();
-    };
-
-    controls.appendChild(minusBtn);
-    controls.appendChild(qtyDisplay);
-    controls.appendChild(plusBtn);
-
-    const deleteBtn = document.createElement('button');
-    deleteBtn.textContent = '🗑️';
-    deleteBtn.title = 'Supprimer';
-    deleteBtn.style.cssText = 'margin-left: 0.5rem; background-color: #ff4444; color: white; border: none; border-radius: 6px; padding: 0.2rem 0.5rem; font-weight: bold; cursor: pointer;';
-    deleteBtn.onclick = () => {
-      cart.splice(index, 1);
-      updateCart();
-    };
-
-    controls.appendChild(deleteBtn);
-    container.appendChild(label);
-    container.appendChild(controls);
-    li.appendChild(container);
-    cartItems.appendChild(li);
-  });
-  cartTotal.textContent = total + ' DH';
-  modalTotal.textContent = total + ' DH';
-  whatsappLink.href = `https://wa.me/?text=Commande:%20${encodeURIComponent(cart.map(i => `${i.name} x${i.qty}${i.extras && i.extras.length ? ' (' + i.extras.map(ex => `${ex.name} x${ex.qty}`).join(', ') + ')' : ''}`).join(', '))}%20-%20Total:%20${total}DH`;
-}
-function openCartModal() {
-  document.getElementById('cartModal').style.display = 'flex';
-}
-function closeCartModal() {
-  document.getElementById('cartModal').style.display = 'none';
-}
-function closeModal() {
-  document.getElementById('productModal').style.display = 'none';
-}
-function openModal(title, price, description) {
+function openModal(title, price, description, image) {
   document.getElementById('modalTitle').textContent = title;
   document.getElementById('modalPrice').textContent = price;
   document.getElementById('modalDescription').textContent = description;
-  document.getElementById('modalImage').src =
-    title.includes('Carnivore') ? 'LaCarnivore.jpg' :
-    title.includes('Kefta') ? 'LAKEFTA.jpg' :
-    title.includes('Pepperoni') ? 'laPepperoni.jpg' :
-    title.includes('Tuna') ? 'latuna.jpg' :
-    title.includes('4 Fromages') ? 'la4FROMAGES.jpg' :
-    title.includes('Fumée') ? 'laFumée.jpg' :
-    title.includes('Poulet Barbecue') ? 'POULETBERBECUE.jpg' :
-    title.includes('Merguez') ? 'LAMERGUEZ.jpg' :
-    title.includes('Poulet Pesto') ? 'Pouletpesto.jpg' :
-    title.includes('Bianca Suprême') ? 'BiancaSuprême.jpg' :
-    title.includes('Poulet Alfredo') ? 'PouletAlfredo.jpg' :
-    '';
-  const modal = document.getElementById('productModal');
-  modal.classList.remove('hidden');
-  modal.style.display = 'flex';
+  document.getElementById('modalImage').src = image;
+  document.getElementById('productModal').style.display = 'flex';
 }
+
+function closeModal() {
+  document.getElementById('productModal').style.display = 'none';
+}
+
 function toggleExtras(id) {
-  const el = document.getElementById(id);
-  if (el) {
-    el.classList.toggle('hidden');
+  const element = document.getElementById(id);
+  if (element) {
+    element.classList.toggle('visible');
   }
 }
+
+function adjustQty(button, delta) {
+  const qtySpan = button.parentElement.querySelector('.qty');
+  let qty = parseInt(qtySpan.textContent);
+  qty += delta;
+  if (qty < 0) qty = 0;
+  qtySpan.textContent = qty;
+}
 </script>
+
 </body>
 </html>
