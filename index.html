@@ -517,8 +517,6 @@ function updateCart() {
   modalTotal.textContent = total + ' DH';
   whatsappLink.href = `https://wa.me/?text=Commande:%20${encodeURIComponent(cart.map(i => `${i.name} x${i.qty}${i.extras && i.extras.length ? ' (' + i.extras.map(e => `${e.name} x${e.qty}`).join(', ') + ')' : ''}`).join(', '))}%20-%20Total:%20${total}DH`;
 }
-}
-
 function removeItem(index) {
   cart.splice(index, 1);
   updateCart();
