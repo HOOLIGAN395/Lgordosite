@@ -423,6 +423,9 @@ function openModal(title, price, description, image) {
   document.getElementById('modalDescription').textContent = description;
   document.getElementById('modalImage').src = image;
   document.getElementById('productModal').style.display = 'flex';
+
+  const addBtn = document.querySelector('.add-btn');
+  if (addBtn) addBtn.onclick = addToCart;
 }
 
 function closeModal() {
@@ -443,6 +446,130 @@ function adjustQty(button, delta) {
   if (qty < 0) qty = 0;
   qtySpan.textContent = qty;
 }
+</script>
+
+<div id="cart" style="position: fixed; bottom: 1rem; left: 1rem; background-color: #a27c27; padding: 0.6rem 1rem; border-radius: 16px; box-shadow: 0 4px 8px rgba(0,0,0,0.35); font-size: 1rem; display: flex; align-items: center; gap: 0.6rem; cursor: pointer; z-index: 1001;" onclick="openCartModal()">
+  <span style="font-size: 1.3rem;">🍴</span>
+  <span style="font-weight: 600; color: white;">Mon Panier :</span>
+  <span id="cartTotal" style="font-weight: bold; color: white;">0 DH</span>
+</div>
+
+<div id="cartModal" class="modal" style="display: none; z-index: 1002; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.8); justify-content: center; align-items: center;">
+  <div class="modal-content" style="max-width: 95vw; width: 95%; max-height: 90vh; overflow-y: auto;">
+    <span onclick="closeCartModal()" style="position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: white;">&times;</span>
+    <h3 style="margin-top: 0;">🛒 Mon Panier</h3>
+    <ul id="cartItems" style="list-style: none; padding-left: 0; margin-bottom: 1rem; max-height: 200px; overflow-y: auto;"></ul>
+    <p><strong>Total:</strong> <span id="cartModalTotal">0 DH</span></p>
+    <div style="display: flex; justify-content: space-between; gap: 1rem; margin-top: 1.5rem;">
+      <button onclick="closeCartModal()" style="flex: 1; background-color: #444; color: white; padding: 0.6rem; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">Fermer</button>
+      <a href="#" id="whatsappLink" target="_blank" style="flex: 1; background-color: #25D366; color: white; padding: 0.6rem; border-radius: 8px; text-align: center; text-decoration: none; font-weight: bold; display: inline-block;">WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<script>
+let cart = [];
+
+function getSelectedExtras() {
+  const extras = [];
+
+  document.querySelectorAll('#sodas .extra-item').forEach(item => {
+    const qty = parseInt(item.querySelector('.qty').textContent);
+    if (qty > 0) {
+      const label = item.textContent.split('–')[0].trim();
+      const price = 10;
+      extras.push({ name: `🥤 ${label}`, qty, price });
+    }
+  });
+
+  document.querySelectorAll('#desserts .extra-item').forEach(item => {
+    const qty = parseInt(item.querySelector('.qty').textContent);
+    if (qty > 0) {
+      const label = item.textContent.split('–')[0].trim();
+      const price = 25;
+      extras.push({ name: `🍪 ${label}`, qty, price });
+    }
+  });
+
+  document.querySelectorAll('#extras input[type="checkbox"]').forEach(input => {
+    if (input.checked) {
+      const label = input.parentElement.textContent.split('–')[0].trim();
+      const priceText = input.parentElement.textContent.split('–')[1].trim();
+      const price = parseInt(priceText.split(' ')[0]);
+      extras.push({ name: `🧀 ${label}`, qty: 1, price });
+    }
+  });
+
+  return extras;
+}
+
+function addToCart() {
+  const title = document.getElementById('modalTitle').textContent;
+  const priceText = document.getElementById('modalPrice').textContent;
+  const price = parseInt(priceText);
+  const selectedExtras = getSelectedExtras();
+
+  cart.push({ name: title, price: price, qty: 1, extras: selectedExtras });
+
+  updateCart();
+  closeModal();
+}
+
+function updateCart() {
+  const cartItems = document.getElementById('cartItems');
+  const cartTotal = document.getElementById('cartTotal');
+  const modalTotal = document.getElementById('cartModalTotal');
+  const whatsappLink = document.getElementById('whatsappLink');
+
+  if (!cartItems || !cartTotal || !modalTotal || !whatsappLink) return;
+
+  cartItems.innerHTML = '';
+  let total = 0;
+
+  cart.forEach((item, index) => {
+    let itemTotal = item.price * item.qty;
+
+    if (item.extras && item.extras.length > 0) {
+      item.extras.forEach(extra => {
+        itemTotal += extra.price * extra.qty;
+      });
+    }
+
+    total += itemTotal;
+
+    const li = document.createElement('li');
+    li.style.marginBottom = '0.5rem';
+
+    let extrasText = '';
+    if (item.extras && item.extras.length > 0) {
+      extrasText = '<br><span style="font-size: 0.85rem; color: #ccc;">' +
+        item.extras.map(extra => `${extra.name} x${extra.qty}`).join(', ') +
+        '</span>';
+    }
+
+    li.innerHTML = `${item.name} x${item.qty} - ${itemTotal} DH${extrasText} <button onclick="removeItem(${index})" style="margin-left: 1rem; background-color: #ff4444; color: white; border: none; border-radius: 4px; padding: 0.2rem 0.5rem; cursor: pointer;">Supprimer</button>`;
+    cartItems.appendChild(li);
+  });
+
+  cartTotal.textContent = total + ' DH';
+  modalTotal.textContent = total + ' DH';
+  whatsappLink.href = `https://wa.me/?text=Commande:%20${encodeURIComponent(cart.map(item => `${item.name} x${item.qty}${item.extras && item.extras.length ? ' (' + item.extras.map(extra => `${extra.name} x${extra.qty}`).join(', ') + ')' : ''}`).join(', '))}%20-%20Total:%20${total}DH`;
+}
+
+function removeItem(index) {
+  cart.splice(index, 1);
+  updateCart();
+}
+
+function openCartModal() {
+  document.getElementById('cartModal').style.display = 'flex';
+}
+
+function closeCartModal() {
+  document.getElementById('cartModal').style.display = 'none';
+}
+
+
 </script>
 
 </body>
