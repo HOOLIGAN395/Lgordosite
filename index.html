@@ -226,9 +226,18 @@ section {
 
   .modal-content {
     width: 95%;
-    max-width: 500px;
+    max-width: 350px;
     padding: 1rem;
     border-radius: 16px;
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+
+  .modal-content img {
+    max-height: 120px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 1rem;
   }
 
   .extra-item button {
@@ -240,6 +249,15 @@ section {
   .extra-item .qty {
     font-size: 1.1rem;
     min-width: 26px;
+  }
+
+  .extra-header {
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
+
+  .extra-item {
+    font-size: 0.9rem;
   }
 }
 #cart {
