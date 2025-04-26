@@ -452,10 +452,12 @@ function openModal(title, price, description, imageSrc) {
   document.getElementById('modalDescription').textContent = description;
   document.getElementById('modalImage').src = imageSrc;
   document.getElementById('productModal').style.display = 'flex';
+  document.getElementById('cart').style.display = 'none'; // cacher le bouton panier
 }
 
 function closeModal() {
   document.getElementById('productModal').style.display = 'none';
+  document.getElementById('cart').style.display = 'flex'; // réafficher le bouton panier
 }
 
 function toggleExtras(id) {
