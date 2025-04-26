@@ -5,6 +5,10 @@
 <style>
 html {
   scroll-behavior: smooth;
+#cart:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 18px rgba(0,0,0,0.5);
+}
 }
 
 body {
@@ -262,12 +266,12 @@ section {
 }
 #cart {
   position: fixed;
-  bottom: 1rem;
-  left: 1rem;
-  background-color: #a27c27;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  background: linear-gradient(135deg, #a27c27, #ffd500);
   padding: 0.8rem 1.2rem;
-  border-radius: 16px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.35);
+  border-radius: 50px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.4);
   font-size: 1.2rem;
   font-weight: bold;
   color: white;
@@ -276,6 +280,8 @@ section {
   align-items: center;
   gap: 0.5rem;
   z-index: 1001;
+  transition: all 0.3s ease;
+}
 }
 </style>
 </head>
