@@ -6,7 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 body {
-  scroll-padding-top: 100px; /* Empêche le saut au chargement */
+  scroll-padding-top: 100px;
+}
+body.loading {
+  overflow: hidden;
+  height: 100vh;
 }
 html {
   scroll-behavior: smooth;
@@ -285,7 +289,7 @@ section {
 }
 </style>
 </head>
-<body>
+<body class="loading">
 <header style="text-align: center; padding: 2rem 0;">
   <img class="product-img" src="logo.png" alt="L'gordo Logo">
 </header>
@@ -642,6 +646,7 @@ function closeCartModal() {
 window.addEventListener('load', function() {
   setTimeout(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    document.body.classList.remove('loading');
     document.getElementById('cart').style.visibility = 'visible';
   }, 50);
 });
