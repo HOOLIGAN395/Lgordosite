@@ -1,24 +1,17 @@
 
 
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-body {
-  scroll-padding-top: 100px;
-}
-body.loading {
-  overflow: hidden;
-  height: 100vh;
-}
 html {
   scroll-behavior: smooth;
-}
-
 #cart:hover {
   transform: scale(1.05);
   box-shadow: 0 10px 18px rgba(0,0,0,0.5);
+}
 }
 
 body {
@@ -228,7 +221,9 @@ section {
   section#pizza {
     margin-top: 2rem;
   }
-  
+  section#pizza {
+    margin-top: 6rem;
+  }
   .modal-content {
     width: 90%;
     max-width: 400px;
@@ -266,8 +261,6 @@ section {
   }
 }
 #cart {
-  visibility: hidden;
-
   position: fixed;
   bottom: 1.5rem;
   left: 1.5rem;
@@ -284,12 +277,11 @@ section {
   gap: 0.5rem;
   z-index: 1001;
   transition: all 0.3s ease;
-
 }
 }
 </style>
 </head>
-<body class="loading">
+<body>
 <header style="text-align: center; padding: 2rem 0;">
   <img class="product-img" src="logo.png" alt="L'gordo Logo">
 </header>
@@ -641,15 +633,6 @@ function openCartModal() {
 function closeCartModal() {
   document.getElementById('cartModal').style.display = 'none';
 }
-</script>
-<script>
-window.addEventListener('load', function() {
-  setTimeout(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-    document.body.classList.remove('loading');
-    document.getElementById('cart').style.visibility = 'visible';
-  }, 50);
-});
 </script>
 </body>
 </html>
