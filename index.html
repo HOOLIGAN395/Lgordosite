@@ -509,15 +509,7 @@ section {
 let cart = [];
 
 function openModal(title, price, description, imageSrc) {
-  // Remettre toutes les quantités extras à zéro
-  document.querySelectorAll('.extra-item .qty').forEach(qty => {
-    qty.textContent = '0';
-  });
-
-  // Décocher toutes les cases d'extras cochables
-  document.querySelectorAll('#extras input[type="checkbox"]').forEach(checkbox => {
-    checkbox.checked = false;
-  });
+  
 
   // Fermer toutes les catégories extras ouvertes
   document.querySelectorAll('.extra-content').forEach(content => {
