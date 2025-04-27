@@ -262,6 +262,8 @@ section {
   }
 }
 #cart {
+  visibility: hidden;
+
   position: fixed;
   bottom: 1.5rem;
   left: 1.5rem;
@@ -278,6 +280,7 @@ section {
   gap: 0.5rem;
   z-index: 1001;
   transition: all 0.3s ease;
+
 }
 }
 </style>
@@ -639,6 +642,7 @@ function closeCartModal() {
 window.addEventListener('load', function() {
   setTimeout(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    document.getElementById('cart').style.visibility = 'visible';
   }, 50);
 });
 </script>
