@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -552,7 +553,16 @@ function updateCart() {
 
   cartTotal.textContent = total + ' DH';
   modalTotal.textContent = total + ' DH';
-  whatsappLink.href = `https://wa.me/?text=Commande:%20${encodeURIComponent(cart.map(i => `${i.name} x${i.qty}${i.extras && i.extras.length ? ' (' + i.extras.map(e => `${e.name} x${e.qty}`).join(', ') + ')' : ''}`).join(', '))}%20-%20Total:%20${total}DH`;
+  let message = "🧾 Commande L'gordo :%0A";
+  cart.forEach(item => {
+    message += `- 🍕 ${item.name} x${item.qty}%0A`;
+    if (item.extras && item.extras.length > 0) {
+      message += item.extras.map(extra => `   ➔ ${extra.name} x${extra.qty}`).join('%0A') + '%0A';
+    }
+  });
+  message += `%0ATotal: ${total} DH`;
+
+  whatsappLink.href = `https://wa.me/?text=${message}`;
 }
 
 function removeItem(index) {
