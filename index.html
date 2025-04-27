@@ -636,9 +636,11 @@ function closeCartModal() {
 }
 </script>
 <script>
-  window.onload = function() {
-    window.scrollTo(0, 0);
-  };
+window.addEventListener('load', function() {
+  setTimeout(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, 50);
+});
 </script>
 </body>
 </html>
