@@ -555,9 +555,15 @@ function updateCart() {
   modalTotal.textContent = total + ' DH';
   let message = "🧾 Commande L'gordo :%0A";
   cart.forEach(item => {
-    message += `- 🍕 ${item.name} x${item.qty}%0A`;
+    let itemTotal = item.price * item.qty;
     if (item.extras && item.extras.length > 0) {
-      message += item.extras.map(extra => `   ➔ ${extra.name} x${extra.qty}`).join('%0A') + '%0A';
+      item.extras.forEach(extra => {
+        itemTotal += extra.price * extra.qty;
+      });
+    }
+    message += `- 🍕 ${item.name} x${item.qty} - ${itemTotal} DH%0A`;
+    if (item.extras && item.extras.length > 0) {
+      message += item.extras.map(extra => `   ➔ ${extra.name} x${extra.qty} - ${extra.price * extra.qty} DH`).join('%0A') + '%0A';
     }
   });
   message += `%0ATotal: ${total} DH`;
