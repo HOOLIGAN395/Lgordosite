@@ -101,17 +101,16 @@ section {
 
 .modal {
   display: none;
-  position: absolute;
-  inset: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(0,0,0,0.8);
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: 5vh;
 }
-
 
 .modal-content {
   background-color: #1e2533;
@@ -163,8 +162,10 @@ section {
 }
 
 .modal-buttons {
-  position: sticky;
+  position: fixed;
   bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 90%;
   max-width: 400px;
   background: #1e2533;
@@ -175,7 +176,6 @@ section {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  z-index: 100;
 }
 
 .close-btn, .add-btn {
