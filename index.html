@@ -41,20 +41,36 @@ header img.product-img {
 
 nav {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  overflow-x: auto;
   gap: 1rem;
   padding: 1rem;
-  background-color: #a27c27;
-  font-size: 1.2rem;
+  background-color: #0d1723;
+  scrollbar-width: none; /* cacher scrollbar Firefox */
+  -ms-overflow-style: none; /* cacher scrollbar IE */
+}
+
+nav::-webkit-scrollbar {
+  display: none; /* cacher scrollbar Chrome/Safari */
 }
 
 nav a {
-  color: white;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  border: 1px solid #ffd500;
+  color: #ffd500;
   text-decoration: none;
   font-weight: bold;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  font-size: 1rem;
 }
 
+nav a:hover {
+  transform: scale(1.1);
+  background-color: #ffd500;
+  color: #0d1723;
+}
 section {
   padding: 1rem;
 }
