@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -115,6 +116,7 @@ section {
 .modal-content {
   background-color: #1e2533;
   padding: 1rem;
+  padding-bottom: 5rem;     /* espace tampon pour les boutons */
   border-radius: 16px;
   width: 90%;
   max-width: 400px;
@@ -122,6 +124,7 @@ section {
   overflow-y: auto;
   max-height: 90vh;
   box-sizing: border-box;
+  position: relative;       /* référence pour .modal-buttons en absolute */
 }
 
 .modal-content img {
