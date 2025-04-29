@@ -40,6 +40,7 @@ header img.product-img {
   }
 
 nav {
+  position: relative;
   display: flex;
   overflow-x: auto;
   gap: 1rem;
@@ -50,12 +51,23 @@ nav {
 }
 
 nav::-webkit-scrollbar {
-  display: none; /* cacher scrollbar Chrome/Safari */
+  display: none;
+}
+
+nav::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 30px;
+  height: 100%;
+  background: linear-gradient(to right, transparent, #0d1723);
+  pointer-events: none;
 }
 
 nav a {
   background: rgba(255, 255, 255, 0.1);
-  padding: 0.6rem 1.2rem;
+  padding: 0.4rem 0.8rem;
   border-radius: 20px;
   border: 1px solid #ffd500;
   color: #ffd500;
