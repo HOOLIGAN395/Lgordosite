@@ -351,28 +351,6 @@ section {
   text-align: center;
   text-transform: none;
 }
-
-
-.floating-banner {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-  background: linear-gradient(135deg, #ffd500, #a27c27);
-  color: #0d1723;
-  padding: 0.6rem 1rem;
-  border-radius: 25px;
-  font-size: 0.85rem;
-  font-weight: bold;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  z-index: 1002;
-  animation: fadeSlideIn 1.2s ease-out forwards;
-  opacity: 0;
-}
-
-@keyframes fadeSlideIn {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Monoton&family=Fredericka+the+Great&family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet" media="all">
 </head>
@@ -791,6 +769,5 @@ window.addEventListener('load', function() {
   window.scrollTo(0, 0);
 });
 </script>
-<div class="floating-banner">🚚 Livraison offerte</div>
 </body>
 </html>
