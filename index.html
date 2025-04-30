@@ -37,9 +37,11 @@ header {
 }
 
 header img.product-img {
-    width: 110px;
-    height: auto;
-  }
+  width: 110px;
+  height: auto;
+  display: block;
+  margin: 0 auto -4px;
+}
 
 nav {
   position: relative;
@@ -301,13 +303,14 @@ section {
   font-family: 'Fredericka the Great', cursive;
   font-size: 1.1rem;
   color: #ffd500;
-  margin-top: 0.2rem;
+  margin-top: 0;
   letter-spacing: 0.8px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
   animation: fadeInUp 1.4s ease-out forwards;
   opacity: 0;
   text-align: center;
   text-transform: none;
+  line-height: 1;
 }
 
 @media (max-width: 600px) {
