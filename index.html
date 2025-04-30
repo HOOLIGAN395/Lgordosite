@@ -315,11 +315,46 @@ section {
   z-index: 1001;
   transition: all 0.3s ease;
 }
+.slogan {
+  font-family: 'Fredericka the Great', cursive;
+  font-size: 1.1rem;
+  color: #ffd500;
+  margin-top: 0.6rem;
+  letter-spacing: 0.8px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  animation: fadeInUp 1.4s ease-out forwards;
+  opacity: 0;
+  text-align: center;
+  text-transform: none;
+}
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Monoton&family=Fredericka+the+Great&family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
 </head>
 <body>
 <header>
   <img class="product-img" src="logo.webp" alt="L'gordo Logo" width="110" height="110">
+  <div class="slogan">Déconseillé aux petits mangeurs</div>
+<style>
+  header div[style*="déconseillé"] {
+    font-family: 'Rock Salt', cursive;
+    font-size: 1.05rem;
+    color: #ffd500;
+    margin-top: 0.5rem;
+    letter-spacing: 0.6px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+    animation: fadeInUp 1.2s ease-out forwards;
+    opacity: 0;
+  }
+</style>
+<style>
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(10px) scale(0.95) rotate(-2deg); }
+  60% { opacity: 1; transform: translateY(-2px) scale(1.02) rotate(1deg); }
+  100% { opacity: 1; transform: translateY(0) scale(1) rotate(0); }
+}
+  100% { opacity: 1; transform: translateY(0); }
+}
+</style>
 </header>
 <nav>
   <a href="#pizza">🍕 Pizza</a>
