@@ -1,773 +1,316 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  document.documentElement.style.scrollBehavior = "auto";
-  setTimeout(() => {
-    document.documentElement.style.scrollBehavior = "smooth";
-  }, 1000);
-});
-</script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/webp" href="logo.webp">
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap" as="style" onload="this.rel='stylesheet'">
-<link rel="preload" as="image" href="logo.webp">
-<style>
-html {
-  scroll-behavior: smooth;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>L'gordo - Menu</title>
+  <meta name="description" content="Menu digital L'gordo" />
+  <style>
+    :root {
+      --bg: #0d1723;
+      --card: #152233;
+      --card2: #1b2b40;
+      --gold: #a27c27;
+      --yellow: #ffd500;
+      --text: #ffffff;
+      --muted: #c6d0dc;
+      --line: rgba(255,255,255,0.08);
+    }
 
-#cart:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 18px rgba(0,0,0,0.5);
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body {
-  margin: 0;
-  font-family: 'Quicksand', sans-serif;
-  background-color: #0d1723;
-  color: white;
-  overflow-x: hidden;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-header {
-  text-align: center;
-  padding: 0.2rem 0;
-}
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #0d1723 0%, #101c2a 100%);
+      color: var(--text);
+    }
 
-header img.product-img {
-  width: 110px;
-  height: auto;
-  display: block;
-  margin: 0 auto -4px;
-}
+    .container {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 16px 14px 40px;
+    }
 
-nav {
-  position: relative;
-  display: flex;
-  padding: 1rem 2rem 1rem 1rem;
-  overflow-x: auto;
-  gap: 1rem;
-  padding: 1rem;
-  background-color: #0d1723;
-  scrollbar-width: none; /* cacher scrollbar Firefox */
-  -ms-overflow-style: none; /* cacher scrollbar IE */
-}
+    .hero {
+      text-align: center;
+      padding: 22px 16px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(162,124,39,0.20), rgba(255,213,0,0.06));
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+    }
 
-nav::-webkit-scrollbar {
-  display: none;
-}
+    .hero h1 {
+      font-size: 2rem;
+      margin-bottom: 8px;
+      color: var(--yellow);
+    }
 
+    .hero p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
 
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 10px 0 14px;
+      background: rgba(13,23,35,0.92);
+      backdrop-filter: blur(8px);
+      scrollbar-width: none;
+    }
 
-nav a {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 0.4rem 0.8rem;
-  border-radius: 20px;
-  border: 1px solid #ffd500;
-  color: #ffd500;
-  text-decoration: none;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-  font-size: 1rem;
-}
+    .nav::-webkit-scrollbar {
+      display: none;
+    }
 
-nav a:hover {
-  transform: scale(1.1);
-  background-color: #ffd500;
-  color: #0d1723;
-}
-section {
-  padding: 0.5rem 1rem 1rem 1rem;
-}
+    .nav a {
+      text-decoration: none;
+      color: #fff;
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      border-radius: 999px;
+      white-space: nowrap;
+      font-size: 0.92rem;
+      font-weight: bold;
+    }
 
-.product-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 1rem;
-}
+    .section {
+      margin-top: 10px;
+      margin-bottom: 28px;
+    }
 
-.product {
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-  background: #1a1f2b;
-  border-radius: 16px;
-  padding: 1rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-  cursor: pointer;
-}
+    .section-title {
+      font-size: 1.3rem;
+      margin-bottom: 14px;
+      color: var(--yellow);
+      padding-left: 4px;
+    }
 
-.product-img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 10px;
-}
+    .cards {
+      display: grid;
+      gap: 14px;
+    }
 
-.product-details {
-  flex: 1;
-}
+    .card {
+      background: linear-gradient(180deg, var(--card) 0%, var(--card2) 100%);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+    }
 
-.product-title {
-  font-size: 1.2rem;
-  color: #ffd500;
-  margin: 0;
-}
+    .card img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      display: block;
+      background: #223248;
+    }
 
-.product-price {
-  font-weight: bold;
-  color: white;
-  font-size: 1rem;
-}
+    .card-content {
+      padding: 14px;
+    }
 
-.product-description {
-  font-size: 0.9rem;
-  color: #ccc;
-}
+    .row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
 
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0,0,0,0.8);
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
+    .name {
+      font-size: 1.05rem;
+      font-weight: 800;
+      line-height: 1.3;
+    }
 
-.modal-content {
-  background-color: #1e2533;
-  padding: 1rem;
-  border-radius: 16px;
-  width: 90%;
-  max-width: 400px;
-  color: white;
-  overflow-y: auto;
-  max-height: 90vh;
-  box-sizing: border-box;
-}
+    .price {
+      color: var(--yellow);
+      font-weight: 800;
+      white-space: nowrap;
+    }
 
-.modal-content img {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 1rem;
-}
+    .desc {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.45;
+    }
 
-.extra-category {
-  background-color: #2a2f3d;
-  border-radius: 8px;
-  margin-bottom: 0.8rem;
-}
+    .list {
+      display: grid;
+      gap: 10px;
+    }
 
-.extra-header {
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  font-weight: bold;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+    .list-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(180deg, var(--card) 0%, var(--card2) 100%);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+    }
 
-.extra-content {
-  display: none;
-  padding: 0.5rem 1rem;
-}
+    .list-item span:first-child {
+      font-weight: 700;
+    }
 
-.extra-content.visible {
-  display: block;
-}
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 10px;
+      line-height: 1.5;
+    }
 
-.extra-item {
-  margin: 0.4rem 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.modal-buttons {
-  position: sticky;
-  bottom: 0;
-  background: #1e2533;
-  padding: 1rem 1rem calc(env(safe-area-inset-bottom) + 1rem) 1rem;
-  border-radius: 12px 12px 0 0;
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.5);
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  z-index: 10;
-}
-
-.close-btn, .add-btn {
-  padding: 0.5rem 0.8rem;
-  font-size: 0.9rem;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.close-btn {
-  background-color: #444;
-  color: white;
-}
-
-.add-btn {
-  background-color: #a27c27;
-  color: white;
-}
-
-.extra-item button {
-  background-color: #a27c27;
-  color: white;
-  border: none;
-  padding: 0.4rem 0.6rem;
-  border-radius: 8px;
-  font-weight: bold;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.extra-item button:hover {
-  opacity: 0.8;
-}
-
-.extra-item .qty {
-  display: inline-block;
-  min-width: 26px;
-  text-align: center;
-  font-size: 1.1rem;
-  font-weight: bold;
-}
-
-@media (max-width: 600px) {
-  header {
-    padding: 0.2rem 0;
-  }
-
-  header img.product-img {
-    width: 160px;
-    height: auto;
-  }
-
-  nav {
-    padding: 2rem 1rem;
-  }
-
-  section#pizza {
-  margin-top: 0.2rem;
-  padding-top: 0;
-}
-  .modal-content {
-    width: 90%;
-    max-width: 400px;
-    padding: 1rem;
-    border-radius: 16px;
-    max-height: 90vh;
-    overflow-y: auto;
-  }
-
-  .modal-content img {
-    max-height: 120px;
-    object-fit: cover;
-    border-radius: 12px;
-    margin-bottom: 1rem;
-  }
-
-  .extra-item button {
-    font-size: 1.2rem;
-    width: 30px;
-    height: 30px;
-  }
-
-  .extra-item .qty {
-    font-size: 1.1rem;
-    min-width: 26px;
-  }
-
-  .extra-header {
-    font-size: 1rem;
-    padding: 0.5rem;
-  }
-
-  .extra-item {
-    font-size: 0.9rem;
-  }
-}
-.slogan {
-  font-family: 'Fredericka the Great', cursive;
-  font-size: 1.1rem;
-  color: #ffd500;
-  margin-top: 0;
-  letter-spacing: 0.8px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-  animation: fadeInUp 1.4s ease-out forwards;
-  opacity: 1;
-  text-align: center;
-  text-transform: none;
-  line-height: 1;
-}
-
-@media (max-width: 600px) {
-  .slogan {
-    margin-top: 0.05rem;
-  }
-}
-
-#cart {
-  position: fixed;
-  bottom: 1.5rem;
-  left: 1.5rem;
-  background: linear-gradient(135deg, #a27c27, #ffd500);
-  padding: 0.8rem 1.2rem;
-  border-radius: 50px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.4);
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: white;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  z-index: 1001;
-  transition: all 0.3s ease;
-}
-.slogan {
-  font-family: 'Fredericka the Great', cursive;
-  font-size: 1.1rem;
-  color: #ffd500;
-  margin-top: 0.2rem;
-  letter-spacing: 0.8px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-  animation: fadeInUp 1.4s ease-out forwards;
-  opacity: 0;
-  text-align: center;
-  text-transform: none;
-}
-</style>
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Monoton&family=Fredericka+the+Great&family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet" media="all">
+    @media (min-width: 700px) {
+      .card img {
+        height: 240px;
+      }
+    }
+  </style>
 </head>
 <body>
-<header style="position: relative; display: flex; flex-direction: column; align-items: center;">
-  <div class="slogan" style="position: absolute; bottom: 10px; left: 0; right: 0; text-align: center; background-color: rgba(13, 23, 35, 0.7); padding: 2px 6px; border-radius: 4px; pointer-events: none;">Déconseillé aux petits mangeurs</div>
-  <img class="product-img" src="logo.webp" alt="L'gordo Logo" width="110" height="110">
+  <div class="container">
 
-<style>
-@keyframes fadeInUp {
-  0% { opacity: 0; transform: translateY(10px) scale(0.95) rotate(-2deg); }
-  60% { opacity: 1; transform: translateY(-2px) scale(1.02) rotate(1deg); }
-  100% { opacity: 1; transform: translateY(0) scale(1) rotate(0); }
-}
-  100% { opacity: 1; transform: translateY(0); }
-}
-</style>
-</header>
-<nav>
-  <a href="#pizza">🍕 Pizza</a>
-  <a href="#saroukh">🌯 Saroukh</a>
-  <a href="#pasta">🍝 Pasta</a>
-  <a href="#deal">🎁 Deal</a>
-</nav>
-<section id="pizza" style="margin-top: 0.2rem;">
-  <h2>🍕 Pizza</h2>
-  <div class="product-grid">
-    <!-- Tous les produits -->
-<div class="product" onclick="openModal('Poulet Alfredo', '64', 'Sauce blanche, poulet, oignon confit, poivrons confit, champignons, origan, olive noir', 'PouletAlfredo.webp')">
-  <img src="PouletAlfredo.webp" alt="Poulet Alfredo" class="product-img" width="100" height="100">
-  <div class="product-details">
-    <h3 class="product-title">Poulet Alfredo</h3>
-    <div class="product-price">66 DH</div>
-    <p class="product-description">Sauce blanche, poulet, oignon confit, poivrons confit, champignons, origan, olive noir</p>
-  </div>
-</div>
-<div class="product" onclick="openModal('La Carnivore', '75', 'Sauce tomate, merguez de bœuf, viande hachée de bœuf, pepperoni, oignon, poivrons, champignons, tomates cerises, origan, olive noir, mozzarella', 'LaCarnivore.webp')">
-  <img src="LaCarnivore.webp" alt="La Carnivore" class="product-img">
-  <div class="product-details">
-    <h3 class="product-title">La Carnivore</h3>
-    <div class="product-price">75 DH</div>
-    <p class="product-description">Sauce tomate, merguez de bœuf, viande hachée de bœuf, pepperoni, oignon, poivrons, champignons, tomates cerises, origan, olive noir, mozzarella</p>
-  </div>
-</div>
-<div class="product" onclick="openModal('La Kefta', '64', 'Sauce tomate, viande hachée de bœuf, oignon, poivrons, champignons, origan, olive noir, mozzarella.', 'LAKEFTA.webp')">
-  <img src="LAKEFTA.webp" alt="La Kefta" class="product-img">
-  <div class="product-details">
-    <h3 class="product-title">La Kefta</h3>
-    <div class="product-price">66 DH</div>
-    <p class="product-description">Sauce tomate, viande hachée de bœuf, oignon, poivrons, champignons, origan, olive noir, mozzarella</p>
-  </div>
-</div>
-<div class="product" onclick="openModal('La Pepperoni', '64', 'Sauce tomate, pepperoni, oignon, champignons poivrons, origan, olive noir, mozzarella', 'Lapepperoni.webp')">
-  <img src="Lapepperoni.webp" alt="La Pepperoni" class="product-img">
-  <div class="product-details">
-    <h3 class="product-title">La Pepperoni</h3>
-    <div class="product-price">66 DH</div>
-    <p class="product-description">Sauce tomate, pepperoni, oignon, champignons, poivrons, origan, olive noir, mozzarella</p>
-  </div>
-</div>
-<div class="product" onclick="openModal('La Tuna', '62', 'Sauce tomate, thon, origan, olive noir, mozzarella.', 'latuna.webp')">
-  <img src="latuna.webp" alt="La Tuna" class="product-img">
-  <div class="product-details">
-    <h3 class="product-title">La Tuna</h3>
-    <div class="product-price">64 DH</div>
-    <p class="product-description">Sauce tomate, thon, origan, olive noir, mozzarella</p>
-  </div>
-</div>
-<div class="product" onclick="openModal('La 4 Fromages', '65', 'Sauce tomate, mozzarella, fromage bleu, gouda, emmental, origan, olive.', 'La4fromages.webp')">
-  <img src="La4fromages.webp" alt="La 4 Fromages" class="product-img">
-  <div class="product-details">
-    <h3 class="product-title">La 4 Fromages</h3>
-    <div class="product-price">67 DH</div>
-    <p class="product-description">Sauce tomate, mozzarella, fromage bleu, gouda, emmental, origan, olive</p>
-  </div>
-</div>
-<div class="product" onclick="openModal('La Fumée', '64', 'Sauce blanche, dinde fumée, oignon confit, champignons, origan, olive noir, mozzarella', 'Lafumée.webp')">
-  <img src="Lafumée.webp" alt="La Fumée" class="product-img" loading="lazy">
-  <div class="product-details">
-    <h3 class="product-title">La Fumée</h3>
-    <div class="product-price">64 DH</div>
-    <p class="product-description">Sauce blanche, dinde fumée, oignon confit, champignons, origan, olive noir, mozzarella</p>
-  </div>
-</div>
-<div class="product" onclick="openModal('Poulet Barbecue', '65', 'Une base de sauce tomate onctueuse, garnie de poulet mariné tendre, d\'oignons croquants, de poivrons colorés et rehaussée d\'une sauce barbecue savoureuse. Une explosion de saveurs équilibrées et gourmandes !', 'POULETBERBECUE.webp')">
-  <img src="POULETBERBECUE.webp" alt="Poulet Barbecue" class="product-img">
-  <div class="product-details">
-    <h3 class="product-title">Poulet Barbecue</h3>
-    <div class="product-price">67 DH</div>
-    <p class="product-description">Une base de sauce tomate onctueuse, garnie de poulet mariné tendre, d'oignons croquants, de poivrons colorés et rehaussée d'une sauce barbecue savoureuse. Une explosion de saveurs équilibrées et gourmandes !</p>
-  </div>
-</div>
-<div class="product" onclick="openModal('La Merguez', '64', 'Sauce tomate, merguez de bœuf, oignon, poivrons, champignons, origan, olive noir, mozzarella.', 'LAMERGUEZ.webp')">
-  <img src="LAMERGUEZ.webp" alt="La Merguez" class="product-img">
-  <div class="product-details">
-    <h3 class="product-title">La Merguez</h3>
-    <div class="product-price">66 DH</div>
-    <p class="product-description">Sauce tomate, merguez de bœuf, oignon, poivrons, champignons, origan, olive noir, mozzarella</p>
-  </div>
-</div>
-<div class="product" onclick="openModal('Poulet Pesto', '105', 'Une base de sauce fromagère maison, garnie de poulet mariné tendre, d\'une généreuse couche d\'extra mozzarella, et sublimée par une délicieuse sauce pesto maison. Un équilibre parfait de saveurs gourmandes', 'Pouletpesto.webp')">
-  <img src="Pouletpesto.webp" alt="Poulet Pesto" class="product-img">
-  <div class="product-details">
-    <h3 class="product-title">Poulet Pesto</h3>
-    <div class="product-price">105 DH</div>
-    <p class="product-description">Une base de sauce fromagère maison, garnie de poulet mariné tendre, d'une généreuse couche d'extra mozzarella, et sublimée par une délicieuse sauce pesto maison. Un équilibre parfait de saveurs gourmandes</p>
-  </div>
-</div>
-<div class="product" onclick="openModal('Bianca Suprême', '105', 'Une base de sauce fromagère maison onctueuse, garnie de morceaux de poulet mariné savoureux, d\'une généreuse portion de fromage fondant et de tranches de pepperoni. Une création riche et irrésistible pour les vrais gourmands', 'BiancaSuprême.webp')">
-  <img src="BiancaSuprême.webp" alt="Bianca Suprême" class="product-img">
-  <div class="product-details">
-    <h3 class="product-title">Bianca Suprême</h3>
-    <div class="product-price">105 DH</div>
-    <p class="product-description">Une base de sauce fromagère maison onctueuse, garnie de morceaux de poulet mariné savoureux, d'une généreuse portion de fromage fondant et de tranches de pepperoni. Une création riche et irrésistible pour les vrais gourmands</p>
-  </div>
-</div>
-<!-- Fin des produits -->
-  </div>
-</section>
+    <div class="hero">
+      <h1>L'gordo</h1>
+      <p>Menu digital<br>Pizzas, Sandwichs et Boissons</p>
+    </div>
 
-<section id="saroukh">
-  <h2>🌯 Saroukh</h2>
-  <div class="product-grid">
-<div class="product" onclick="openModal('Saroukh XL Poulet', '59', 'Pâte fraîche, poulet mariné, sauce fromagère maison, oignon, sauce au choix, cuit au four à la demande', 'saroukhxlpoulet.webp')">
-  <img src="saroukhxlpoulet.webp" alt="Saroukh XL Poulet" class="product-img">
-  <div class="product-details">
-    <h3 class="product-title">Saroukh XL Poulet</h3>
-    <div class="product-price">59 DH</div>
-    <p class="product-description">Pâte fraîche, poulet mariné, sauce fromagère maison, oignon, sauce au choix, cuit au four à la demande</p>
-  </div>
-</div>
-<div class="product" onclick="openModal('Saroukh XL MIXTE', '75', 'Pâte fraîche, poulet mariné, viande hachée 100% boeuf, sauce fromagère maison, ognion, sauce au choix, cuit au four à la demande', 'saroukhXLmixt.webp')">
-  <img src="saroukhXLmixt.webp" alt="Saroukh XL MIXTE" class="product-img">
-  <div class="product-details">
-    <h3 class="product-title">Saroukh XL MIXTE</h3>
-    <div class="product-price">75 DH</div>
-    <p class="product-description">Pâte fraîche, poulet mariné, viande hachée 100% boeuf, sauce fromagère maison, ognion, sauce au choix, cuit au four à la demande</p>
-  </div>
-</div>
-<div class="product" onclick="openModal('Saroukh XL poulet Alfredo', '65', 'Pâte fraîche, poulet mariné, sauce Alfredo, ognion et poivrons confits, mozzarella, cuit au four à la demande', 'saroukhxlapffredo.webp')">
-  <img src="saroukhxlapffredo.webp" alt="Saroukh XL poulet Alfredo" class="product-img">
-  <div class="product-details">
-    <h3 class="product-title">Saroukh XL poulet Alfredo</h3>
-    <div class="product-price">65 DH</div>
-    <p class="product-description">Pâte fraîche, poulet mariné, sauce Alfredo, ognion et poivrons confits, mozzarella, cuit au four à la demande</p>
-  </div>
-</div>
-<div class="product" onclick="openModal('Saroukh XL poulet PESTO', '69', 'Pâte fraîche, poulet mariné, sauce Pesto, Sauce fomagère maison, mozzarella, cuit au four à la demande', 'saroukhpesto.webp')">
-  <img src="saroukhpesto.webp" alt="Saroukh XL poulet PESTO" class="product-img">
-  <div class="product-details">
-    <h3 class="product-title">Saroukh XL poulet PESTO</h3>
-    <div class="product-price">69 DH</div>
-    <p class="product-description">Pâte fraîche, poulet mariné, sauce Pesto, Sauce fomagère maison, mozzarella, cuit au four à la demande</p>
-  </div>
-</div>
-<div class="product" onclick="openModal('Saroukh XL Mostro', '85', 'Pâte fraîche, poulet mariné, viande hachée 100% boeuf, Pepperoni, sauce fromagère maison, ognion, Sweet Garlic Sauce, cuit au four à la demande', 'saroukhmostro.webp')">
-  <img src="saroukhmostro.webp" alt="Saroukh XL Mostro" class="product-img">
-  <div class="product-details">
-    <h3 class="product-title">Saroukh XL Mostro</h3>
-    <div class="product-price">85 DH</div>
-    <p class="product-description">Pâte fraîche, poulet mariné, viande hachée 100% boeuf, Pepperoni, sauce fromagère maison, ognion, Sweet Garlic Sauce, cuit au four à la demande</p>
-  </div>
-</div>
-<div class="product" onclick="openModal('Saroukh XL QUESO LOCO', '65', 'Pâte fraîche, poulet mariné, ognion, sauce cheesy, Mozzarella, cuit au four à la demande', 'saroukhquessoloco.webp')">
-  <img src="saroukhquessoloco.webp" alt="Saroukh XL QUESO LOCO" class="product-img">
-  <div class="product-details">
-    <h3 class="product-title">Saroukh XL QUESO LOCO</h3>
-    <div class="product-price">65 DH</div>
-    <p class="product-description">Pâte fraîche, poulet mariné, ognion, sauce cheesy, Mozzarella, cuit au four à la demande</p>
-  </div>
-</div>
-</div>
-</section>
-<section id="pasta">
-  <h2>🍝 Pasta</h2>
-  <div class="product-grid">
+    <div class="nav">
+      <a href="#pizzas">🍕 Pizzas</a>
+      <a href="#sandwichs">🥪 Sandwichs</a>
+      <a href="#boissons">🥤 Boissons</a>
+    </div>
 
-    <div class="product" onclick="openModal('Pasta Poulet Alfredo', '66', 'Pâtes penne en sauce Alfredo crémeuse avec fromage fondant, champignons savoureux et poulet tendre, servies dans une boîte spéciale qui maintient la chaleur et est compatible avec le micro-ondes pour un réchauffage pratique.', 'pastaalfredo.webp')">
-      <img src="pastaalfredo.webp" alt="Pasta Poulet Alfredo" class="product-img">
-      <div class="product-details">
-        <h3 class="product-title">Pasta Poulet Alfredo</h3>
-        <div class="product-price">66 DH</div>
-        <p class="product-description">Pâtes penne en sauce Alfredo crémeuse, fromage fondant, champignons, poulet tendre.</p>
+    <section class="section" id="pizzas">
+      <h2 class="section-title">🍕 Pizzas</h2>
+      <div class="cards">
+
+        <div class="card">
+          <img src="PouletAlfredo.webp" alt="Pizza Alfredo">
+          <div class="card-content">
+            <div class="row">
+              <div class="name">Alfredo</div>
+              <div class="price">45 Dh</div>
+            </div>
+            <div class="desc">Pizza savoureuse et gourmande.</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="LAKEFTA.webp" alt="Pizza Viande hachée">
+          <div class="card-content">
+            <div class="row">
+              <div class="name">Viande hachée</div>
+              <div class="price">50 Dh</div>
+            </div>
+            <div class="desc">Une pizza généreuse à la viande hachée.</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="Lapepperoni.webp" alt="Pizza Pepperoni">
+          <div class="card-content">
+            <div class="row">
+              <div class="name">Pepperoni</div>
+              <div class="price">45 Dh</div>
+            </div>
+            <div class="desc">Un classique intense et bien relevé.</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="latuna.webp" alt="Pizza Thon">
+          <div class="card-content">
+            <div class="row">
+              <div class="name">Thon</div>
+              <div class="price">40 Dh</div>
+            </div>
+            <div class="desc">Pizza au thon, simple et efficace.</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="POULETBERBECUE.webp" alt="Pizza Poulet">
+          <div class="card-content">
+            <div class="row">
+              <div class="name">Poulet</div>
+              <div class="price">45 Dh</div>
+            </div>
+            <div class="desc">Pizza au poulet, tendre et bien garnie.</div>
+          </div>
+        </div>
+
       </div>
-    </div>
+    </section>
 
-    <div class="product" onclick="openModal('Pasta Poulet Pesto', '75', 'Pâtes pasta en sauce pesto parfumée, accompagnées de morceaux de poulet tendre, servies dans une boîte spéciale qui garde la chaleur et peut être réchauffée au micro-ondes pour plus de praticité.', 'pastapesto.webp')">
-      <img src="pastapesto.webp" alt="Pasta Poulet Pesto" class="product-img">
-      <div class="product-details">
-        <h3 class="product-title">Pasta Poulet Pesto</h3>
-        <div class="product-price">75 DH</div>
-        <p class="product-description">Pâtes en sauce pesto parfumée, morceaux de poulet tendre.</p>
-      </div>
-    </div>
+    <section class="section" id="sandwichs">
+      <h2 class="section-title">🥪 Sandwichs</h2>
+      <div class="list">
 
-    <div class="product" onclick="openModal('Pasta Bolognaise', '67', 'Pâtes bolognaise généreusement garnies d\'une sauce tomate riche en saveurs et de viande hachée, servies dans une boîte spéciale qui conserve la chaleur et peut être réchauffée au micro-ondes pour plus de commodité.', 'pastabologiense.webp')">
-      <img src="pastabologiense.webp" alt="Pasta Bolognaise" class="product-img">
-      <div class="product-details">
-        <h3 class="product-title">Pasta Bolognaise</h3>
-        <div class="product-price">67 DH</div>
-        <p class="product-description">Pâtes bolognaise à la sauce tomate riche et viande hachée.</p>
+        <div class="list-item">
+          <span>Viande hachée</span>
+          <strong>35 Dh</strong>
+        </div>
+
+        <div class="list-item">
+          <span>Carnivore</span>
+          <strong>45 Dh</strong>
+        </div>
+
+        <div class="list-item">
+          <span>Merguez</span>
+          <strong>40 Dh</strong>
+        </div>
+
+        <div class="list-item">
+          <span>Dinde</span>
+          <strong>40 Dh</strong>
+        </div>
+
       </div>
+    </section>
+
+    <section class="section" id="boissons">
+      <h2 class="section-title">🥤 Boissons</h2>
+      <div class="list">
+
+        <div class="list-item"><span>Coca Cola</span><strong>10 Dh</strong></div>
+        <div class="list-item"><span>Fanta</span><strong>10 Dh</strong></div>
+        <div class="list-item"><span>Sprite</span><strong>10 Dh</strong></div>
+        <div class="list-item"><span>Orangina</span><strong>10 Dh</strong></div>
+        <div class="list-item"><span>Hawaï</span><strong>10 Dh</strong></div>
+        <div class="list-item"><span>Pom’s</span><strong>10 Dh</strong></div>
+        <div class="list-item"><span>Eau minérale</span><strong>10 Dh</strong></div>
+        <div class="list-item"><span>Jus de citron</span><strong>10 Dh</strong></div>
+        <div class="list-item"><span>Jus d’orange</span><strong>20 Dh</strong></div>
+
+      </div>
+    </section>
+
+    <div class="footer">
+      L'gordo • Menu digital
     </div>
 
   </div>
-</section>
-
-<div id="productModal" class="modal">
-  <div class="modal-content">
-    <img id="modalImage" src="" alt="">
-    <h3 id="modalTitle"></h3>
-    <p id="modalDescription"></p>
-    <p><strong><span id="modalPrice"></span> DH</strong></p>
-
-    <div class="extra-category">
-      <div class="extra-header" onclick="toggleExtras('sodas')">🥤 Sodas ▼</div>
-      <div class="extra-content" id="sodas">
-        <div class="extra-item">Pepsi – 10 DH <span><button onclick="adjustQty(this, -1)">-</button><span class="qty">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
-        <div class="extra-item">7up – 10 DH <span><button onclick="adjustQty(this, -1)">-</button><span class="qty">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
-<div class="extra-item">Mirinda Orange – 10 DH <span><button onclick="adjustQty(this, -1)">-</button><span class="qty">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
-<div class="extra-item">Mirinda Pomme – 10 DH <span><button onclick="adjustQty(this, -1)">-</button><span class="qty">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
-<div class="extra-item">Mirinda Citron – 10 DH <span><button onclick="adjustQty(this, -1)">-</button><span class="qty">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
-<div class="extra-item">Oulmes – 10 DH <span><button onclick="adjustQty(this, -1)">-</button><span class="qty">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
-      </div>
-    </div>
-
-    <div class="extra-category">
-      <div class="extra-header" onclick="toggleExtras('extras')">🧀 Extras ▼</div>
-      <div class="extra-content" id="extras">
-        <div class="extra-item"><label><input type="checkbox"> Fromage – 12 DH</label></div>
-        <div class="extra-item"><label><input type="checkbox"> Viande hachée – 15 DH</label></div>
-<div class="extra-item"><label><input type="checkbox"> Merguez – 15 DH</label></div>
-<div class="extra-item"><label><input type="checkbox"> Pepperoni – 17 DH</label></div>
-<div class="extra-item"><label><input type="checkbox"> Dinde fumée – 15 DH</label></div>
-      </div>
-    </div>
-
-    <div class="extra-category">
-      <div class="extra-header" onclick="toggleExtras('desserts')">🍪 Desserts ▼</div>
-      <div class="extra-content" id="desserts">
-        <div class="extra-item">Lotus – 25 DH <span><button onclick="adjustQty(this, -1)">-</button><span class="qty">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
-        <div class="extra-item">Oreo – 25 DH <span><button onclick="adjustQty(this, -1)">-</button><span class="qty">0</span><button onclick="adjustQty(this, 1)">+</button></span></div>
-      </div>
-    </div>
-
-    <div class="modal-buttons">
-      <button class="close-btn" onclick="closeModal()">Fermer</button>
-      <button class="add-btn">Ajouter au panier</button>
-    </div>
-  </div>
-</div>
-<div id="cart" onclick="openCartModal()">
-  🍴 Mon Panier: <span id="cartTotal">0 DH</span>
-</div>
-<div id="cartModal" class="modal">
-  <div class="modal-content">
-    <span onclick="closeCartModal()" style="position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: white;">&times;</span>
-    <h3>🛒 Mon Panier</h3>
-    <ul id="cartItems" style="list-style: none; padding-left: 0; margin-bottom: 1rem;"></ul>
-    <p><strong>Total:</strong> <span id="cartModalTotal">0 DH</span></p>
-    <div class="modal-buttons">
-      <button class="close-btn" onclick="closeCartModal()">Fermer</button>
-      <a href="#" id="whatsappLink" target="_blank" class="add-btn">Commander via WhatsApp</a>
-    </div>
-  </div>
-</div>
-<script>
-let cart = [];
-
-function openModal(title, price, description, imageSrc) {
-  
-
-  // Fermer toutes les catégories extras ouvertes
-  document.querySelectorAll('.extra-content').forEach(content => {
-    content.classList.remove('visible');
-  });
-  // Remettre toutes les quantités extras à zéro
-  document.querySelectorAll('.extra-item .qty').forEach(qty => {
-    qty.textContent = '0';
-  });
-
-  // Décocher toutes les cases d'extras cochables
-  document.querySelectorAll('#extras input[type="checkbox"]').forEach(checkbox => {
-    checkbox.checked = false;
-  });
-  document.getElementById('modalTitle').textContent = title;
-  document.getElementById('modalPrice').textContent = price;
-  document.getElementById('modalDescription').textContent = description;
-  document.getElementById('modalImage').src = imageSrc;
-  document.getElementById('productModal').style.display = 'flex';
-  document.getElementById('cart').style.display = 'none'; // cacher le bouton panier
-}
-
-function closeModal() {
-  document.getElementById('productModal').style.display = 'none';
-  document.getElementById('cart').style.display = 'flex'; // réafficher le bouton panier
-}
-
-function toggleExtras(id) {
-  const element = document.getElementById(id);
-  if (element) {
-    element.classList.toggle('visible');
-  }
-}
-
-function adjustQty(button, amount) {
-  const qtyElement = button.parentElement.querySelector('.qty');
-  let qty = parseInt(qtyElement.textContent);
-  qty += amount;
-  if (qty < 0) qty = 0;
-  qtyElement.textContent = qty;
-}
-
-document.querySelector('.add-btn').addEventListener('click', function () {
-  const title = document.getElementById('modalTitle').textContent;
-  const price = parseInt(document.getElementById('modalPrice').textContent);
-  const existing = cart.find(item => item.name === title);
-  const extras = [];
-
-  // Sodas
-  document.querySelectorAll('#sodas .extra-item').forEach(item => {
-    const qty = parseInt(item.querySelector('.qty').textContent);
-    if (qty > 0) {
-      const label = item.textContent.split('–')[0].trim();
-      extras.push({ name: `🥤 ${label}`, qty, price: 10 });
-    }
-  });
-
-  // Extras
-  document.querySelectorAll('#extras input[type=checkbox]').forEach(el => {
-    if (el.checked) {
-      const label = el.parentElement.textContent.split('–')[0].trim();
-      const price = parseInt(el.parentElement.textContent.split('–')[1]);
-      extras.push({ name: `🧀 ${label}`, qty: 1, price });
-    }
-  });
-
-  // Desserts
-  document.querySelectorAll('#desserts .extra-item').forEach(item => {
-    const qty = parseInt(item.querySelector('.qty').textContent);
-    if (qty > 0) {
-      const label = item.textContent.split('–')[0].trim();
-      extras.push({ name: `🍪 ${label}`, qty, price: 25 });
-    }
-  });
-
-  if (existing) {
-    existing.qty++;
-  } else {
-    cart.push({ name: title, price: price, qty: 1, extras });
-  }
-
-  updateCart();
-  closeModal();
-});
-
-function updateCart() {
-  const cartItems = document.getElementById('cartItems');
-  const cartTotal = document.getElementById('cartTotal');
-  const modalTotal = document.getElementById('cartModalTotal');
-  const whatsappLink = document.getElementById('whatsappLink');
-
-  cartItems.innerHTML = '';
-  let total = 0;
-
-  cart.forEach((item, index) => {
-    let itemTotal = item.price * item.qty;
-
-    if (item.extras && item.extras.length > 0) {
-      item.extras.forEach(extra => {
-        itemTotal += extra.price * extra.qty;
-      });
-    }
-
-    total += itemTotal;
-
-    const li = document.createElement('li');
-    li.style.marginBottom = '0.5rem';
-
-    let extrasText = '';
-    if (item.extras && item.extras.length > 0) {
-      extrasText = '<br><span style="font-size: 0.85rem; color: #ccc;">' + item.extras.map(e => `${e.name} x${e.qty}`).join(', ') + '</span>';
-    }
-
-    li.innerHTML = `${item.name} x${item.qty} - ${itemTotal} DH${extrasText} <button onclick="removeItem(${index})" style="margin-left: 1rem; background-color: #ff4444; color: white; border: none; border-radius: 4px; padding: 0.2rem 0.5rem; cursor: pointer;">Supprimer</button>`;
-    cartItems.appendChild(li);
-  });
-
-  cartTotal.textContent = total + ' DH';
-  modalTotal.textContent = total + ' DH';
-  let message = "🧾 Commande L'gordo :%0A";
-  cart.forEach(item => {
-    message += `- 🍕 ${item.name} x${item.qty} - ${item.price * item.qty} DH%0A`;
-    if (item.extras && item.extras.length > 0) {
-      message += item.extras.map(extra => `   ➔ ${extra.name} x${extra.qty} - ${extra.price * extra.qty} DH`).join('%0A') + '%0A';
-    }
-  });
-  message += `%0ATotal: ${total} DH`;
-
-  whatsappLink.href = `https://wa.me/212660548312?text=${message}`;
-}
-
-function removeItem(index) {
-  cart.splice(index, 1);
-  updateCart();
-}
-
-function openCartModal() {
-  document.getElementById('cartModal').style.display = 'flex';
-}
-
-function closeCartModal() {
-  document.getElementById('cartModal').style.display = 'none';
-}
-window.addEventListener('load', function() {
-  window.scrollTo(0, 0);
-});
-</script>
 </body>
 </html>
