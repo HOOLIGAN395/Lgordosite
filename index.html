@@ -4,185 +4,285 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>L'gordo - Menu</title>
-  <meta name="description" content="Menu digital L'gordo" />
+  <meta name="description" content="Menu digital L'gordo - Pizzas, Sandwichs et Boissons" />
   <style>
-    :root {
-      --bg: #0d1723;
-      --card: #152233;
-      --card2: #1b2b40;
-      --gold: #a27c27;
-      --yellow: #ffd500;
-      --text: #ffffff;
-      --muted: #c6d0dc;
-      --line: rgba(255,255,255,0.08);
+    :root{
+      --bg:#0d1723;
+      --bg2:#132133;
+      --card:#162537;
+      --card2:#1c2d42;
+      --gold:#a27c27;
+      --gold2:#c89a31;
+      --yellow:#ffd500;
+      --text:#ffffff;
+      --muted:#c6d0dc;
+      --line:rgba(255,255,255,0.08);
+      --shadow:0 10px 30px rgba(0,0,0,0.28);
+      --radius:20px;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
+    html{
+      scroll-behavior:smooth;
     }
 
-    body {
+    body{
       font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(180deg, #0d1723 0%, #101c2a 100%);
-      color: var(--text);
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255,213,0,0.08), transparent 25%),
+        radial-gradient(circle at top right, rgba(162,124,39,0.10), transparent 30%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 45%, #0b141f 100%);
+      min-height:100vh;
     }
 
-    .container {
-      max-width: 560px;
-      margin: 0 auto;
-      padding: 16px 14px 40px;
+    img{
+      display:block;
+      max-width:100%;
     }
 
-    .hero {
-      text-align: center;
-      padding: 22px 16px;
-      border-radius: 22px;
-      background: linear-gradient(135deg, rgba(162,124,39,0.20), rgba(255,213,0,0.06));
-      border: 1px solid var(--line);
-      margin-bottom: 16px;
+    a{
+      text-decoration:none;
+      color:inherit;
     }
 
-    .hero h1 {
-      font-size: 2rem;
-      margin-bottom: 8px;
-      color: var(--yellow);
+    .container{
+      width:100%;
+      max-width:560px;
+      margin:0 auto;
+      padding:16px 14px 40px;
     }
 
-    .hero p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.5;
+    .hero{
+      position:relative;
+      overflow:hidden;
+      border-radius:28px;
+      padding:28px 18px 24px;
+      text-align:center;
+      background:
+        linear-gradient(135deg, rgba(162,124,39,0.28), rgba(255,213,0,0.08)),
+        linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.08);
+      box-shadow:var(--shadow);
+      margin-bottom:16px;
     }
 
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding: 10px 0 14px;
-      background: rgba(13,23,35,0.92);
-      backdrop-filter: blur(8px);
-      scrollbar-width: none;
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:auto -40px -40px auto;
+      width:140px;
+      height:140px;
+      border-radius:50%;
+      background:rgba(255,213,0,0.06);
+      filter:blur(8px);
     }
 
-    .nav::-webkit-scrollbar {
-      display: none;
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:-30px auto auto -30px;
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      background:rgba(162,124,39,0.10);
+      filter:blur(10px);
     }
 
-    .nav a {
-      text-decoration: none;
-      color: #fff;
-      background: var(--card);
-      border: 1px solid var(--line);
-      padding: 10px 14px;
-      border-radius: 999px;
-      white-space: nowrap;
-      font-size: 0.92rem;
-      font-weight: bold;
+    .logo-wrap{
+      position:relative;
+      z-index:2;
+      margin-bottom:14px;
     }
 
-    .section {
-      margin-top: 10px;
-      margin-bottom: 28px;
+    .logo{
+      width:92px;
+      height:92px;
+      object-fit:cover;
+      margin:0 auto;
+      border-radius:50%;
+      border:3px solid var(--gold2);
+      background:#fff;
+      box-shadow:0 8px 24px rgba(0,0,0,0.25);
     }
 
-    .section-title {
-      font-size: 1.3rem;
-      margin-bottom: 14px;
-      color: var(--yellow);
-      padding-left: 4px;
+    .hero h1{
+      position:relative;
+      z-index:2;
+      font-size:2rem;
+      line-height:1.1;
+      margin-bottom:8px;
+      color:var(--yellow);
+      font-weight:800;
+      letter-spacing:0.5px;
     }
 
-    .cards {
-      display: grid;
-      gap: 14px;
+    .hero p{
+      position:relative;
+      z-index:2;
+      color:var(--muted);
+      font-size:0.96rem;
+      line-height:1.5;
+      margin-bottom:14px;
     }
 
-    .card {
-      background: linear-gradient(180deg, var(--card) 0%, var(--card2) 100%);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+    .hero-badges{
+      position:relative;
+      z-index:2;
+      display:flex;
+      justify-content:center;
+      gap:8px;
+      flex-wrap:wrap;
     }
 
-    .card img {
-      width: 100%;
-      height: 190px;
-      object-fit: cover;
-      display: block;
-      background: #223248;
+    .badge{
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:0.84rem;
+      font-weight:700;
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.08);
+      color:#fff;
     }
 
-    .card-content {
-      padding: 14px;
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:50;
+      display:flex;
+      gap:8px;
+      overflow-x:auto;
+      padding:10px 0 14px;
+      margin-bottom:6px;
+      background:rgba(13,23,35,0.88);
+      backdrop-filter:blur(10px);
+      scrollbar-width:none;
     }
 
-    .row {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 6px;
+    .nav::-webkit-scrollbar{
+      display:none;
     }
 
-    .name {
-      font-size: 1.05rem;
-      font-weight: 800;
-      line-height: 1.3;
+    .nav a{
+      white-space:nowrap;
+      padding:10px 14px;
+      border-radius:999px;
+      background:linear-gradient(180deg, var(--card) 0%, var(--card2) 100%);
+      border:1px solid var(--line);
+      font-size:0.92rem;
+      font-weight:800;
+      color:#fff;
+      box-shadow:var(--shadow);
+      flex:0 0 auto;
     }
 
-    .price {
-      color: var(--yellow);
-      font-weight: 800;
-      white-space: nowrap;
+    .section{
+      margin-top:12px;
+      margin-bottom:28px;
     }
 
-    .desc {
-      color: var(--muted);
-      font-size: 0.92rem;
-      line-height: 1.45;
+    .section-title{
+      font-size:1.28rem;
+      font-weight:800;
+      color:var(--yellow);
+      margin-bottom:14px;
+      padding-left:4px;
     }
 
-    .list {
-      display: grid;
-      gap: 10px;
+    .cards{
+      display:grid;
+      gap:14px;
     }
 
-    .list-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      background: linear-gradient(180deg, var(--card) 0%, var(--card2) 100%);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 14px;
+    .card{
+      overflow:hidden;
+      border-radius:var(--radius);
+      background:linear-gradient(180deg, var(--card) 0%, var(--card2) 100%);
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
     }
 
-    .list-item span:first-child {
-      font-weight: 700;
+    .card img{
+      width:100%;
+      height:200px;
+      object-fit:cover;
+      background:#223248;
     }
 
-    .footer {
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin-top: 10px;
-      line-height: 1.5;
+    .card-content{
+      padding:14px;
     }
 
-    @media (min-width: 700px) {
-      .card img {
-        height: 240px;
+    .row{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+      margin-bottom:6px;
+    }
+
+    .name{
+      font-size:1.06rem;
+      font-weight:800;
+      line-height:1.3;
+    }
+
+    .price{
+      color:var(--yellow);
+      font-weight:800;
+      white-space:nowrap;
+      font-size:1rem;
+    }
+
+    .desc{
+      color:var(--muted);
+      font-size:0.93rem;
+      line-height:1.45;
+    }
+
+    .list{
+      display:grid;
+      gap:10px;
+    }
+
+    .list-item{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:14px;
+      border-radius:16px;
+      background:linear-gradient(180deg, var(--card) 0%, var(--card2) 100%);
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+    }
+
+    .list-item span{
+      font-weight:700;
+      line-height:1.4;
+    }
+
+    .list-item strong{
+      color:var(--yellow);
+      white-space:nowrap;
+    }
+
+    .footer{
+      text-align:center;
+      color:var(--muted);
+      font-size:0.9rem;
+      line-height:1.5;
+      padding-top:6px;
+    }
+
+    @media (min-width:700px){
+      .card img{
+        height:240px;
       }
     }
   </style>
@@ -190,16 +290,24 @@
 <body>
   <div class="container">
 
-    <div class="hero">
+    <header class="hero">
+      <div class="logo-wrap">
+        <img src="logo.webp" alt="Logo L'gordo" class="logo">
+      </div>
       <h1>L'gordo</h1>
       <p>Menu digital<br>Pizzas, Sandwichs et Boissons</p>
-    </div>
+      <div class="hero-badges">
+        <div class="badge">🍕 Pizza</div>
+        <div class="badge">🥪 Sandwich</div>
+        <div class="badge">🥤 Boissons</div>
+      </div>
+    </header>
 
-    <div class="nav">
+    <nav class="nav">
       <a href="#pizzas">🍕 Pizzas</a>
       <a href="#sandwichs">🥪 Sandwichs</a>
       <a href="#boissons">🥤 Boissons</a>
-    </div>
+    </nav>
 
     <section class="section" id="pizzas">
       <h2 class="section-title">🍕 Pizzas</h2>
@@ -265,26 +373,50 @@
 
     <section class="section" id="sandwichs">
       <h2 class="section-title">🥪 Sandwichs</h2>
-      <div class="list">
+      <div class="cards">
 
-        <div class="list-item">
-          <span>Viande hachée</span>
-          <strong>35 Dh</strong>
+        <div class="card">
+          <img src="sviandehachée.webp" alt="Sandwich Viande hachée">
+          <div class="card-content">
+            <div class="row">
+              <div class="name">Viande hachée</div>
+              <div class="price">35 Dh</div>
+            </div>
+            <div class="desc">Sandwich généreux au pain maison.</div>
+          </div>
         </div>
 
-        <div class="list-item">
-          <span>Carnivore</span>
-          <strong>45 Dh</strong>
+        <div class="card">
+          <img src="scarnivore.webp" alt="Sandwich Carnivore">
+          <div class="card-content">
+            <div class="row">
+              <div class="name">Carnivore</div>
+              <div class="price">45 Dh</div>
+            </div>
+            <div class="desc">Un sandwich gourmand et bien chargé.</div>
+          </div>
         </div>
 
-        <div class="list-item">
-          <span>Merguez</span>
-          <strong>40 Dh</strong>
+        <div class="card">
+          <img src="smeguez.webp" alt="Sandwich Merguez">
+          <div class="card-content">
+            <div class="row">
+              <div class="name">Merguez</div>
+              <div class="price">40 Dh</div>
+            </div>
+            <div class="desc">Sandwich relevé et plein de goût.</div>
+          </div>
         </div>
 
-        <div class="list-item">
-          <span>Dinde</span>
-          <strong>40 Dh</strong>
+        <div class="card">
+          <img src="sdinde.webp" alt="Sandwich Dinde">
+          <div class="card-content">
+            <div class="row">
+              <div class="name">Dinde</div>
+              <div class="price">40 Dh</div>
+            </div>
+            <div class="desc">Sandwich à la dinde, simple et efficace.</div>
+          </div>
         </div>
 
       </div>
@@ -293,7 +425,6 @@
     <section class="section" id="boissons">
       <h2 class="section-title">🥤 Boissons</h2>
       <div class="list">
-
         <div class="list-item"><span>Coca Cola</span><strong>10 Dh</strong></div>
         <div class="list-item"><span>Fanta</span><strong>10 Dh</strong></div>
         <div class="list-item"><span>Sprite</span><strong>10 Dh</strong></div>
@@ -303,13 +434,12 @@
         <div class="list-item"><span>Eau minérale</span><strong>10 Dh</strong></div>
         <div class="list-item"><span>Jus de citron</span><strong>10 Dh</strong></div>
         <div class="list-item"><span>Jus d’orange</span><strong>20 Dh</strong></div>
-
       </div>
     </section>
 
-    <div class="footer">
+    <footer class="footer">
       L'gordo • Menu digital
-    </div>
+    </footer>
 
   </div>
 </body>
